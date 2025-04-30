@@ -1,0 +1,11 @@
+.header {
+    grid-area: h;
+    background-color: #231c43;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.header img {
+    width: 48px;
+}
