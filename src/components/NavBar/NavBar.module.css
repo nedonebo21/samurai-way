@@ -1,0 +1,26 @@
+.nav {
+    border-top: 2px solid #fff;
+    grid-area: n;
+    background-color: #231c43;
+    padding: 20px;
+
+    font-size: 18px;
+}
+
+.item a {
+    color: #fff;
+    text-decoration: none;
+}
+.item a:hover {
+    color: #00fdfd;
+}
+
+.item {
+    color: #fff;
+}
+.item:not(:last-child) {
+    margin-bottom: 10px;
+}
+.item.active a {
+    color: #00fdfd;
+}
