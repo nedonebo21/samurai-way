@@ -12,8 +12,8 @@ export const MyPosts = () => {
                 <button>Remove</button>
             </div>
             <div className={s.posts}>
-                <Post message={"Yo"}/>
-                <Post message={"Its my social network!!!"}/>
+                <Post likesCount={12} message={"Yo"}/>
+                <Post likesCount={73} message={"Its my social network!!!"}/>
             </div>
         </div>
     );

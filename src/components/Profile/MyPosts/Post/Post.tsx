@@ -4,6 +4,7 @@ import {PostsAvatar} from "../PostsAvatar/PostsAvatar";
 
 type PostMessageType = {
     message: string
+    likesCount: number
 }
 
 export const Post = (props:PostMessageType) => {
@@ -11,7 +12,7 @@ export const Post = (props:PostMessageType) => {
         <div className={s.item}>
             <PostsAvatar/>
             {props.message}
-            <button>Like</button>
+            <button>Like <strong>{props.likesCount}</strong></button>
         </div>
     );
 };
