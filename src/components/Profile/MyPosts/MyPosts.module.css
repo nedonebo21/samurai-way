@@ -1,6 +1,6 @@
 .posts {
     display: grid;
-    row-gap: 1.5rem;
+    row-gap: 1rem;
     margin-top: 15px;
 }
 .posts_wrapper {

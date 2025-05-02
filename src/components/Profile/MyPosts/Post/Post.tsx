@@ -2,17 +2,17 @@ import React from 'react';
 import s from "./Post.module.css";
 import {PostsAvatar} from "../PostsAvatar/PostsAvatar";
 
-type PostMessageType = {
+type Props = {
     message: string
     likesCount: number
 }
 
-export const Post = (props:PostMessageType) => {
+export const Post = ({message, likesCount}:Props) => {
     return (
         <div className={s.item}>
             <PostsAvatar/>
-            {props.message}
-            <button>Like <strong>{props.likesCount}</strong></button>
+            {message}
+            <button>Like <strong>{likesCount}</strong></button>
         </div>
     );
 };
