@@ -1,6 +1,7 @@
 .posts {
     display: grid;
     row-gap: 1.5rem;
+    margin-top: 15px;
 }
 .posts_wrapper {
     padding: 0 10px;
