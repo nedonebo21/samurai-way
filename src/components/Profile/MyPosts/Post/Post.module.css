@@ -14,4 +14,18 @@
 .item button {
     justify-self: end;
     grid-column: 2;
+
+    color: white;
+    background-color: #231c43;
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 80px;
+    height: 28px;
+    transition: 0.3s;
+}
+.item button:hover {
+    cursor: pointer;
+
+    background-color: white;
+    color: #231c43;
 }

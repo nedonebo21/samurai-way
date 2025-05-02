@@ -5,9 +5,9 @@ import {Post} from "./Post/Post";
 export const MyPosts = () => {
     return (
         <div className={s.posts_wrapper}>
-            my posts
-            <div>
-                <textarea ></textarea>
+            <h3>My Posts</h3>
+            <div className={s.new_post}>
+                <textarea placeholder={"Черкани че-нить...."}></textarea>
                 <button>Add Post</button>
                 <button>Remove</button>
             </div>

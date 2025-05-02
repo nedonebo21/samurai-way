@@ -12,7 +12,7 @@ export const Post = ({message, likesCount}:Props) => {
         <div className={s.item}>
             <PostsAvatar/>
             {message}
-            <button>Like <strong>{likesCount}</strong></button>
+            <button>Like: <strong>{likesCount}</strong></button>
         </div>
     );
 };
