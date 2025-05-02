@@ -8,6 +8,7 @@
     max-height: 300px;
     aspect-ratio: 1/1;
     filter: brightness(90%);
+    /*background-image: linear-gradient(to bottom, rgb(33 44 55 / 0), rgb(33 44 55 / 0), rgb(33 44 55 /0.75));*/
 
     transition: .3s;
 }
@@ -15,6 +16,3 @@
     filter: brightness(100%);
 }
 
-.item {
-    color: green;
-}
