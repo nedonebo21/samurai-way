@@ -8,6 +8,15 @@
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
     /*grid-gap: 10px;*/
+
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.app-wrapper-content {
+    grid-area: c;
+    background-color: #eeadff;
+    overflow: hidden;
 }
 
 .App-logo {
