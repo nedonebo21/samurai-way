@@ -2,11 +2,15 @@ import React from 'react';
 import s from "./Post.module.css";
 import {PostsAvatar} from "../PostsAvatar/PostsAvatar";
 
-export const Post = () => {
+type PostMessageType = {
+    message: string
+}
+
+export const Post = (props:PostMessageType) => {
     return (
         <div className={s.item}>
             <PostsAvatar/>
-            Yo
+            {props.message}
             <button>Like</button>
         </div>
     );
