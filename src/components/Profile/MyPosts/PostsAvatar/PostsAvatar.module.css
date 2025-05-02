@@ -1,0 +1,6 @@
+.img{
+    max-width: 50px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    box-shadow: 0 0 12px 5px rgba(0, 0, 0, 0.3);
+}
