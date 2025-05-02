@@ -7,9 +7,7 @@ export const Post = () => {
         <div className={s.item}>
             <PostsAvatar/>
             Yo
-            <div>
-                <button>Like</button>
-            </div>
+            <button>Like</button>
         </div>
     );
 };

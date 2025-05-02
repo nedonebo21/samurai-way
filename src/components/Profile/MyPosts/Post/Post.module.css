@@ -11,3 +11,7 @@
     border: 1px solid white;
     border-radius: 10px;
 }
+.item button {
+    justify-self: end;
+    grid-column: 2;
+}
