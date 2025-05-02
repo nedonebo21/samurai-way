@@ -1,3 +1,7 @@
-.item {
-    color: green;
+.posts {
+    display: grid;
+    row-gap: 1.5rem;
+}
+.posts_wrapper {
+    padding: 0 10px;
 }
