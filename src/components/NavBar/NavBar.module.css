@@ -20,14 +20,10 @@
 }
 .item a {
     color: #fff;
-    text-decoration: none;
     display: inline-block;
     width: 100%;
 
     transition: .4s;
-}
-.item:hover a {
-    color: #00fdfd;
 }
 .item:hover {
     background-color: rgba(0, 0, 0, 0.35);
@@ -36,6 +32,6 @@
 .item:not(:last-child) {
     margin-bottom: 10px;
 }
-.item.active a {
+.item a.active {
     color: #00fdfd;
 }
