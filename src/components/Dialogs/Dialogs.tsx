@@ -11,7 +11,7 @@ const DialogItem = ({id, name, ...props}: DialogPropsType) => {
     const pathId = `/dialogs/${id}`
 
     return (
-        <NavLink to={pathId} activeClassName={s.active} className={s.dialog}>{name}</NavLink>
+        <NavLink to={pathId} className={s.dialog} activeClassName={s.active}>{name}</NavLink>
     )
 }
 
@@ -25,21 +25,33 @@ const Message = ({message}: MessagePropsType) => {
 }
 
 export const Dialogs = () => {
+    const usersDialogsData = [
+        {id: "1", name: "Pudge"},
+        {id: "2", name: "Morphling"},
+        {id: "3", name: "KOTL"},
+        {id: "4", name: "Viper"},
+        {id: "5", name: "Phoenix"},
+        {id: "6", name: "Ember"},
+        {id: "7", name: "Storm"},
+    ]
+    const messagesData = [
+        {id: "1", text: "Yo"},
+        {id: "2", text: "Its really your social network??"},
+        {id: "3", text: "Do you like gachi cinema??"},
+        {id: "4", text: "Yes."},
+    ]
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs_items}>
-                <DialogItem id={"1"} name={"4el 1"}/>
-                <DialogItem id={"2"} name={"4el 2"}/>
-                <DialogItem id={"3"} name={"4el 3"}/>
-                <DialogItem id={"4"} name={"4el 4"}/>
-                <DialogItem id={"5"} name={"4el 5"}/>
-                <DialogItem id={"6"} name={"4el 6"}/>
-                <DialogItem id={"7"} name={"4el 7"}/>
+                {usersDialogsData.map((user) => (
+                    <DialogItem key={user.id} id={user.id} name={user.name}/>
+                ))}
             </div>
             <div className={s.messages}>
-                <Message message={"Yo"} />
-                <Message message={"Its really your social network"} />
-                <Message message={"Yo"} />
+                {messagesData.map((message) => (
+                    <Message key={message.id} message={message.text}/>
+                ))}
             </div>
         </div>
     );
