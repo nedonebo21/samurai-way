@@ -1,6 +1,7 @@
 .app-wrapper {
     margin: 0 auto;
-    width: 1200px;
+    width: 100%;
+    overflow: hidden;
     display: grid;
     grid-template-areas:
     "h h h"
@@ -9,8 +10,8 @@
     grid-template-columns: 2fr 10fr;
     /*grid-gap: 10px;*/
 
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+    /*border-left: 1px solid white;*/
+    /*border-right: 1px solid white;*/
 
     font-size: 18px;
 }
