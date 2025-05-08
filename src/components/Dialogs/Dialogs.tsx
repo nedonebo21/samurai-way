@@ -1,31 +1,20 @@
 import React from 'react';
 import s from './Dialogs.module.css'
-import {NavLink} from "react-router-dom";
+import {DialogItem} from "./DialogItem/DialogItem";
+import {Message} from "./Message/Message";
 
-type DialogPropsType = {
-    name: string
+
+type UserDataType = {
     id: string
+    name: string
 }
-
-const DialogItem = ({id, name, ...props}: DialogPropsType) => {
-    const pathId = `/dialogs/${id}`
-
-    return (
-        <NavLink to={pathId} className={s.dialog} activeClassName={s.active}>{name}</NavLink>
-    )
-}
-
-type MessagePropsType = {
+type MessageType = {
+    id: string
     message: string
-}
-const Message = ({message}: MessagePropsType) => {
-    return (
-        <div className={s.message}>{message}</div>
-    )
 }
 
 export const Dialogs = () => {
-    const usersDialogsData = [
+    const usersDialogsData: UserDataType[] = [
         {id: "1", name: "Pudge"},
         {id: "2", name: "Morphling"},
         {id: "3", name: "KOTL"},
@@ -34,24 +23,34 @@ export const Dialogs = () => {
         {id: "6", name: "Ember"},
         {id: "7", name: "Storm"},
     ]
-    const messagesData = [
-        {id: "1", text: "Yo"},
-        {id: "2", text: "Its really your social network??"},
-        {id: "3", text: "Do you like gachi cinema??"},
-        {id: "4", text: "Yes."},
+    const messagesData: MessageType[] = [
+        {id: "1", message: "Yo"},
+        {id: "2", message: "Its really your social network??"},
+        {id: "3", message: "Do you like gachi cinema??"},
+        {id: "4", message: "Yes."},
     ]
+
+    const usersDialogsList = usersDialogsData
+        .map((user) => (
+            <DialogItem key={user.id} id={user.id} name={user.name}/>
+        ))
+    const messagesList = messagesData
+        .map((message) => (
+            <Message key={message.id} message={message.message}/>
+        ))
+
+    const usersDialogsItems = usersDialogsData.length ? usersDialogsList
+        : <p>No dialogs, you should find friends :)</p>
+    const messagesItems = messagesData.length ? messagesList
+        : <p>No messages. Write smth to start dialog</p>
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs_items}>
-                {usersDialogsData.map((user) => (
-                    <DialogItem key={user.id} id={user.id} name={user.name}/>
-                ))}
+                {usersDialogsItems}
             </div>
             <div className={s.messages}>
-                {messagesData.map((message) => (
-                    <Message key={message.id} message={message.text}/>
-                ))}
+                {messagesItems}
             </div>
         </div>
     );

@@ -9,28 +9,14 @@
     background-color: #363159;
 
 }
-.dialog{
-    padding: 18px;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background-color: rgba(0, 0, 0, 0.2);
-
-    display: block;
-
-    transition: .2s;
-}
-.dialog:hover{
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-}
 .dialogs_items .active {
     color: #00fdfd;
     background-color: rgba(0, 0, 0, 0.45);
 }
-
+.dialogs_items:hover .active {
+    background-color: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
 .messages{
     padding: 10px;
-}
-.message{
-
 }
