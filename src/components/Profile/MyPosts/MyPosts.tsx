@@ -3,6 +3,11 @@ import s from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
 
 export const MyPosts = () => {
+    const postsData = [
+        {id: "1", message: "Yo", likes: 12},
+        {id: "2", message: "Its my social network!!!", likes: 12}
+    ]
+
     return (
         <div className={s.posts_wrapper}>
             <h3>My Posts</h3>
@@ -12,8 +17,9 @@ export const MyPosts = () => {
                 <button>Remove</button>
             </div>
             <div className={s.posts}>
-                <Post likesCount={12} message={"Yo"}/>
-                <Post likesCount={73} message={"Its my social network!!!"}/>
+                {postsData.map((post) => (
+                    <Post key={post.id} message={post.message} likesCount={post.likes}/>
+                ))}
             </div>
         </div>
     );
