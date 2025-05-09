@@ -1,10 +1,10 @@
 import React from 'react';
 import s from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
-import {PostsDataType} from "../../../index";
+import {ProfilePageType} from "../../../redux/state";
 
 
-export const MyPosts = ({postsData}: PostsDataType) => {
+export const MyPosts = ({postsData}: ProfilePageType) => {
 
     const postsList = postsData
         .map((post) => (

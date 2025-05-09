@@ -2,9 +2,9 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogsDataType} from "../../index";
+import {MessagesPageType} from "../../redux/state";
 
-export const Dialogs = ({messagesData, usersDialogsData}: DialogsDataType) => {
+export const Dialogs = ({messagesData, usersDialogsData}: MessagesPageType) => {
 
     const usersDialogsList = usersDialogsData
         .map((user) => (

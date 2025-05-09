@@ -1,10 +1,10 @@
 import React from "react";
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {PostsDataType} from "../../index";
+import {ProfilePageType} from "../../redux/state";
 
 
-export const Profile = ({postsData}: PostsDataType) => {
+export const Profile = ({postsData}: ProfilePageType) => {
     return (
         <div>
             <ProfileInfo/>
