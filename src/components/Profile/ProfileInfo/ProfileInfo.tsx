@@ -1,5 +1,5 @@
 import s from "./ProfileInfo.module.css";
-import {Description} from "../Description/Description";
+import {Description} from "./Description/Description";
 import React from "react";
 
 export const ProfileInfo = () => {
