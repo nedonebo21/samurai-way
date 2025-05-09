@@ -8,7 +8,7 @@ export const Dialogs = ({messagesData, usersDialogsData}: MessagesPageType) => {
 
     const usersDialogsList = usersDialogsData
         .map((user) => (
-            <DialogItem key={user.id} id={user.id} name={user.name}/>
+            <DialogItem key={user.id} id={user.id} name={user.name} imgUrl={user.imgUrl}/>
         ))
     const messagesList = messagesData
         .map((message) => (
