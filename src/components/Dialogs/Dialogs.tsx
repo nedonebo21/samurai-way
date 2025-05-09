@@ -2,33 +2,9 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
+import {DialogsDataType} from "../../index";
 
-
-type UserDataType = {
-    id: string
-    name: string
-}
-type MessageType = {
-    id: string
-    message: string
-}
-
-export const Dialogs = () => {
-    const usersDialogsData: UserDataType[] = [
-        {id: "1", name: "Pudge"},
-        {id: "2", name: "Morphling"},
-        {id: "3", name: "KOTL"},
-        {id: "4", name: "Viper"},
-        {id: "5", name: "Phoenix"},
-        {id: "6", name: "Ember"},
-        {id: "7", name: "Storm"},
-    ]
-    const messagesData: MessageType[] = [
-        {id: "1", message: "Yo"},
-        {id: "2", message: "Its really your social network??"},
-        {id: "3", message: "Do you like gachi cinema??"},
-        {id: "4", message: "Yes."},
-    ]
+export const Dialogs = ({messagesData, usersDialogsData}: DialogsDataType) => {
 
     const usersDialogsList = usersDialogsData
         .map((user) => (

@@ -1,17 +1,10 @@
 import React from 'react';
 import s from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
+import {PostsDataType} from "../../../index";
 
-export type PostType = {
-    id: string
-    message: string
-    likes: number
-}
-type PostsDataType = {
-    postsData: PostType[]
-}
 
-export const MyPosts = ({postsData}:PostsDataType) => {
+export const MyPosts = ({postsData}: PostsDataType) => {
 
     const postsList = postsData
         .map((post) => (
