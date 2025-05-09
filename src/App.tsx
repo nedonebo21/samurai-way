@@ -11,12 +11,12 @@ import {Settings} from "./components/Settings/Settings";
 import {StateType} from "./redux/state";
 
 
-export const App = ({dialogsPage, profilePage}: StateType) => {
+export const App = ({dialogsPage, profilePage, sideBar}: StateType) => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
-                <Header/>
-                <NavBar/>
+                <Header />
+                <NavBar {...sideBar}/>
                 <div className="app-wrapper-content">
                     <Route path={'/dialogs'} render={() => <Dialogs {...dialogsPage} />}/>
                     <Route path={'/profile'} render={() => <Profile {...profilePage} />}/>
