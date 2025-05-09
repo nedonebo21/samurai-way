@@ -19,4 +19,37 @@
 }
 .messages{
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    align-self: end;
+}
+.send_message{
+    display: flex;
+    align-items: center;
+    justify-self: end;
+}
+.send_message textarea{
+    resize: none;
+    width: 100%;
+    padding: 10px;
+
+    border: 2px solid #231c43;
+    border-radius: 10px;
+    font-size: 18px;
+}
+.send_message button{
+    width: 60px;
+    height:60px;
+    color: white;
+    background-color: #231c43;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: .2s;
+}
+.send_message button:hover {
+    background-color: white;
+    color: #231c43;
 }

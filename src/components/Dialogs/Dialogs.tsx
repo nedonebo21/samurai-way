@@ -27,6 +27,10 @@ export const Dialogs = ({messagesData, usersDialogsData}: MessagesPageType) => {
             </div>
             <div className={s.messages}>
                 {messagesItems}
+                <div className={s.send_message}>
+                    <textarea placeholder={"Пишем"}></textarea>
+                    <button> →</button>
+                </div>
             </div>
         </div>
     );
