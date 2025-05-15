@@ -14,7 +14,7 @@ import {StateType} from "./redux/state";
 export const App = (props: StateType & {addPost: (postText:string) => void}) => {
     const {dialogsPage, profilePage, sideBar, addPost} = props
     return (
-        <BrowserRouter>
+
             <div className="app-wrapper">
                 <Header />
                 <NavBar {...sideBar}/>
@@ -26,6 +26,5 @@ export const App = (props: StateType & {addPost: (postText:string) => void}) => 
                     <Route path={'/settings'} render={() => <Settings/>}/>
                 </div>
             </div>
-        </BrowserRouter>
     )
 }
