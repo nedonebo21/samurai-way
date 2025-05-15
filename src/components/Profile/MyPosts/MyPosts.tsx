@@ -22,6 +22,7 @@ export const MyPosts = (props: ProfilePageType & {addPost: (postText:string) => 
     const addPostHandler = () => {
         const text = newPostElement.current.value
         addPost(text)
+        newPostElement.current.value = ''
     }
 
     return (
