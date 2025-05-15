@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {KeyboardEvent, RefObject} from 'react';
 import s from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
 import {ProfilePageType} from "../../../redux/state";
@@ -12,12 +12,25 @@ export const MyPosts = ({postsData}: ProfilePageType) => {
         ))
     const postsItems = postsData.length ? postsList : <p>No posts. Lets post something!</p>
 
+    const newPostElement = React.createRef<any>()
+    const onKeyDownHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+        if (event.ctrlKey && event.key === "Enter") {
+            addPost()
+        }
+    }
+    const addPost = () => {
+        const text = newPostElement.current.value
+        alert(text)
+    }
+
     return (
         <div className={s.posts_wrapper}>
             <h3>My Posts</h3>
             <div className={s.new_post}>
-                <textarea placeholder={"Черкани че-нить...."}></textarea>
-                <button>Add Post</button>
+                <textarea onKeyDown={onKeyDownHandler}
+                          ref={newPostElement}
+                          placeholder={"Черкани че-нить...."}></textarea>
+                <button onClick={addPost}>Add Post</button>
                 <button>Remove</button>
             </div>
             <div className={s.posts}>
