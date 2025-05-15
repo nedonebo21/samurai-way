@@ -4,7 +4,8 @@ import {Post} from "./Post/Post";
 import {ProfilePageType} from "../../../redux/state";
 
 
-export const MyPosts = ({postsData}: ProfilePageType) => {
+export const MyPosts = (props: ProfilePageType & {addPost: (postText:string) => void}) => {
+    const {postsData, addPost} = props
 
     const postsList = postsData
         .map((post) => (
@@ -15,12 +16,12 @@ export const MyPosts = ({postsData}: ProfilePageType) => {
     const newPostElement = React.createRef<any>()
     const onKeyDownHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.ctrlKey && event.key === "Enter") {
-            addPost()
+            addPostHandler()
         }
     }
-    const addPost = () => {
+    const addPostHandler = () => {
         const text = newPostElement.current.value
-        alert(text)
+        addPost(text)
     }
 
     return (
@@ -30,7 +31,7 @@ export const MyPosts = ({postsData}: ProfilePageType) => {
                 <textarea onKeyDown={onKeyDownHandler}
                           ref={newPostElement}
                           placeholder={"Черкани че-нить...."}></textarea>
-                <button onClick={addPost}>Add Post</button>
+                <button onClick={addPostHandler}>Add Post</button>
                 <button>Remove</button>
             </div>
             <div className={s.posts}>
