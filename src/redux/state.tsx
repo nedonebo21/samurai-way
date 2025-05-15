@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../render";
+
 type UserDataType = {
     id: string
     name: string
@@ -84,4 +86,5 @@ export const addPost = (postText: string) => {
         likes: 0
     }
     state.profilePage.postsData.push(newPost);
+    rerenderEntireTree(state);
 }
