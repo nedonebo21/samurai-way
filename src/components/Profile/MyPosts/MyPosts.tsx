@@ -2,10 +2,11 @@ import React, {KeyboardEvent, RefObject} from 'react';
 import s from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
 import {ProfilePageType} from "../../../redux/state";
+import {FuncPostType} from "../../../App";
 
 
-export const MyPosts = (props: ProfilePageType & {addPost: (postText:string) => void}) => {
-    const {postsData, addPost} = props
+export const MyPosts = (props: ProfilePageType & FuncPostType) => {
+    const {postsData, addPost, updateNewPostText} = props
 
     const postsList = postsData
         .map((post) => (
@@ -20,9 +21,11 @@ export const MyPosts = (props: ProfilePageType & {addPost: (postText:string) => 
         }
     }
     const addPostHandler = () => {
+        addPost()
+    }
+    const onPostChangeHandler = () => {
         const text = newPostElement.current.value
-        addPost(text)
-        newPostElement.current.value = ''
+        props.updateNewPostText(text)
     }
 
     return (
@@ -31,6 +34,8 @@ export const MyPosts = (props: ProfilePageType & {addPost: (postText:string) => 
             <div className={s.new_post}>
                 <textarea onKeyDown={onKeyDownHandler}
                           ref={newPostElement}
+                          value={props.newPostText}
+                          onChange={onPostChangeHandler}
                           placeholder={"Черкани че-нить...."}></textarea>
                 <button onClick={addPostHandler}>Add Post</button>
                 <button>Remove</button>

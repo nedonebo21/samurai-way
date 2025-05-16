@@ -10,9 +10,12 @@ import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {StateType} from "./redux/state";
 
-
-export const App = (props: StateType & {addPost: (postText:string) => void}) => {
-    const {dialogsPage, profilePage, sideBar, addPost} = props
+export type FuncPostType = {
+    addPost: () => void
+    updateNewPostText: (newText:string) => void
+}
+export const App = (props: StateType & FuncPostType) => {
+    const {dialogsPage, profilePage, sideBar, addPost, updateNewPostText} = props
     return (
 
             <div className="app-wrapper">
@@ -20,7 +23,7 @@ export const App = (props: StateType & {addPost: (postText:string) => void}) => 
                 <NavBar {...sideBar}/>
                 <div className="app-wrapper-content">
                     <Route path={'/dialogs'} render={() => <Dialogs {...dialogsPage} />}/>
-                    <Route path={'/profile'} render={() => <Profile addPost={addPost} {...profilePage} />}/>
+                    <Route path={'/profile'} render={() => <Profile updateNewPostText={updateNewPostText} addPost={addPost} {...profilePage} />}/>
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>
                     <Route path={'/settings'} render={() => <Settings/>}/>

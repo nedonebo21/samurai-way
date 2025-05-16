@@ -25,6 +25,7 @@ type UsersOnlineType = {
 
 export type ProfilePageType = {
     postsData: PostType[]
+    newPostText: string
 }
 export type MessagesPageType = {
     usersDialogsData: UserDataType[]
@@ -48,6 +49,7 @@ export const state: StateType = {
             {id: "2", message: "Its my social network!!!", likes: 73},
             {id: "3", message: "I hope serega pirat will be my fan", likes: 999},
         ],
+        newPostText: 'Yo'
     },
     dialogsPage: {
         usersDialogsData: [
@@ -79,12 +81,17 @@ export const state: StateType = {
     }
 }
 
-export const addPost = (postText: string) => {
+export const addPost = () => {
     const newPost: PostType = {
         id: "5",
-        message: postText,
+        message: state.profilePage.newPostText,
         likes: 0
     }
     state.profilePage.postsData.push(newPost);
+    state.profilePage.newPostText = ''
     rerenderEntireTree(state);
+}
+export const updateNewPostText = (newText: string) => {
+    state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
 }
