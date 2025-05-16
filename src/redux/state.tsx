@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = () => {
+    console.log('state changed')
+}
 
 type UserDataType = {
     id: string
@@ -89,9 +91,13 @@ export const addPost = () => {
     }
     state.profilePage.postsData.push(newPost);
     state.profilePage.newPostText = ''
-    rerenderEntireTree(state);
+    rerenderEntireTree();
 }
 export const updateNewPostText = (newText: string) => {
     state.profilePage.newPostText = newText
-    rerenderEntireTree(state)
+    rerenderEntireTree()
+}
+
+export const subscriber = (observer: () => void) => {
+    rerenderEntireTree = observer
 }
