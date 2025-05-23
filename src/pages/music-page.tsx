@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Music = () => {
+export const MusicPage = () => {
     return (
         <div className={"Music"}>
            Music

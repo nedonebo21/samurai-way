@@ -1,10 +1,10 @@
 import React, {KeyboardEvent} from 'react';
-import s from './Dialogs.module.css'
-import {DialogItem} from "./DialogItem/DialogItem";
-import {Message} from "./Message/Message";
-import {MessagesPageType} from "../../redux/state";
+import s from '../components/dialogs/dialogs.module.css'
+import {DialogItem} from "../components/dialogs/dialog-item/dialog-item";
+import {Message} from "../components/dialogs/message/message";
+import {MessagesPageType} from "../redux/state";
 
-export const Dialogs = ({messagesData, usersDialogsData}: MessagesPageType) => {
+export const DialogsPage = ({messagesData, usersDialogsData}: MessagesPageType) => {
 
     const usersDialogsList = usersDialogsData
         .map((user) => (
