@@ -1,4 +1,4 @@
-import './index.css';
+import './shared/styles/global.css';
 import {state, subscriber} from "./redux/state";
 
 import React from 'react';

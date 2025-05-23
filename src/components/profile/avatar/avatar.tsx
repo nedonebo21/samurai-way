@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Avatar.module.css';
+import s from './avatar.module.css';
 
 export const Avatar = () => {
     return (

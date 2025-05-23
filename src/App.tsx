@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import {Header} from "./components/Header/Header";
-import {NavBar} from "./components/NavBar/NavBar";
-import {Profile} from "./components/Profile/Profile";
-import {Dialogs} from "./components/Dialogs/Dialogs";
+import {Header} from "./components/header/header";
+import {NavBar} from "./components/nav-bar/nav-bar";
+import {ProfilePage} from "./pages/profile-page";
+import {DialogsPage} from "./pages/dialogs-page";
 import {BrowserRouter, Route} from "react-router-dom";
-import {News} from "./components/News/News";
-import {Music} from "./components/Music/Music";
-import {Settings} from "./components/Settings/Settings";
+import {NewsPage} from "./pages/news-page";
+import {MusicPage} from "./pages/music-page";
+import {SettingsPage} from "./pages/settings-page";
 import {StateType} from "./redux/state";
 
 export type FuncPostType = {
@@ -22,11 +22,11 @@ export const App = (props: StateType & FuncPostType) => {
                 <Header />
                 <NavBar {...sideBar}/>
                 <div className="app-wrapper-content">
-                    <Route path={'/dialogs'} render={() => <Dialogs {...dialogsPage} />}/>
-                    <Route path={'/profile'} render={() => <Profile updateNewPostText={updateNewPostText} addPost={addPost} {...profilePage} />}/>
-                    <Route path={'/news'} render={() => <News/>}/>
-                    <Route path={'/music'} render={() => <Music/>}/>
-                    <Route path={'/settings'} render={() => <Settings/>}/>
+                    <Route path={'/dialogs'} render={() => <DialogsPage {...dialogsPage} />}/>
+                    <Route path={'/profile'} render={() => <ProfilePage updateNewPostText={updateNewPostText} addPost={addPost} {...profilePage} />}/>
+                    <Route path={'/news'} render={() => <NewsPage/>}/>
+                    <Route path={'/music'} render={() => <MusicPage/>}/>
+                    <Route path={'/settings'} render={() => <SettingsPage/>}/>
                 </div>
             </div>
     )

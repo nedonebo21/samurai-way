@@ -1,4 +1,4 @@
-import s from "./Message.module.css";
+import s from "./message.module.css";
 import React from "react";
 
 type Props = {

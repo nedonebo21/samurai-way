@@ -97,7 +97,6 @@ export const updateNewPostText = (newText: string) => {
     state.profilePage.newPostText = newText
     rerenderEntireTree()
 }
-
 export const subscriber = (observer: () => void) => {
     rerenderEntireTree = observer
 }

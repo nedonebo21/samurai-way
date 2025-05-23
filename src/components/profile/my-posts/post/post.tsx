@@ -1,6 +1,6 @@
 import React from 'react';
-import s from "./Post.module.css";
-import {PostsAvatar} from "../PostsAvatar/PostsAvatar";
+import s from "./post.module.css";
+import {PostsAvatar} from "../posts-avatar/posts-avatar";
 
 type Props = {
     message: string
@@ -11,7 +11,7 @@ export const Post = ({message, likesCount}:Props) => {
     return (
         <div className={s.item}>
             <PostsAvatar/>
-            {message}
+            <div className={s.post_text}>{message}</div>
             <button>Like: <strong>{likesCount}</strong></button>
         </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "./PostsAvatar.module.css";
+import s from "./posts-avatar.module.css";
 
 export const PostsAvatar = () => {
     return (

@@ -35,6 +35,12 @@
 
 .friends_online {
     color: white;
+
+    margin-top: 32px;
+}
+.friends_online h3{
+    margin-bottom: 14px;
+    font-weight: 700;
 }
 .friends_items{
     list-style: none;

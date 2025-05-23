@@ -1,6 +1,6 @@
 import React from 'react';
-import s from './Description.module.css'
-import {Avatar} from "../../Avatar/Avatar";
+import s from './description.module.css'
+import {Avatar} from "../../avatar/avatar";
 
 export const Description = () => {
     return (

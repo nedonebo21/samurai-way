@@ -1,6 +1,6 @@
 import React, {KeyboardEvent, RefObject} from 'react';
-import s from "./MyPosts.module.css";
-import {Post} from "./Post/Post";
+import s from "./my-posts.module.css";
+import {Post} from "./post/post";
 import {ProfilePageType} from "../../../redux/state";
 import {FuncPostType} from "../../../App";
 

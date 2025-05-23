@@ -1,5 +1,5 @@
 import React from "react";
-import s from './NavBar.module.css'
+import s from './nav-bar.module.css'
 import {NavLink} from "react-router-dom";
 import {SideBarType} from "../../redux/state";
 
