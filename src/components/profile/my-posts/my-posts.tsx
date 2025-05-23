@@ -1,11 +1,10 @@
 import React, {KeyboardEvent, RefObject} from 'react';
 import s from "./my-posts.module.css";
 import {Post} from "./post/post";
-import {ProfilePageType} from "../../../redux/state";
-import {FuncPostType} from "../../../App";
+import {ProfilePageProps} from "../../../pages/profile-page";
 
 
-export const MyPosts = (props: ProfilePageType & FuncPostType) => {
+export const MyPosts = (props: ProfilePageProps) => {
     const {postsData, addPost, updateNewPostText} = props
 
     const postsList = postsData
@@ -25,7 +24,7 @@ export const MyPosts = (props: ProfilePageType & FuncPostType) => {
     }
     const onPostChangeHandler = () => {
         const text = newPostElement.current.value
-        props.updateNewPostText(text)
+        updateNewPostText(text)
     }
 
     return (

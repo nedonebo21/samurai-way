@@ -8,26 +8,50 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {NewsPage} from "./pages/news-page";
 import {MusicPage} from "./pages/music-page";
 import {SettingsPage} from "./pages/settings-page";
-import {StateType} from "./redux/state";
+import {StoreType} from "./redux/state";
 
-export type FuncPostType = {
-    addPost: () => void
-    updateNewPostText: (newText:string) => void
+type Props = {
+    store: StoreType
 }
-export const App = (props: StateType & FuncPostType) => {
-    const {dialogsPage, profilePage, sideBar, addPost, updateNewPostText} = props
+export const App = (props: Props) => {
+    const {store} = props
+    const state = store.getState()
     return (
 
-            <div className="app-wrapper">
-                <Header />
-                <NavBar {...sideBar}/>
-                <div className="app-wrapper-content">
-                    <Route path={'/dialogs'} render={() => <DialogsPage {...dialogsPage} />}/>
-                    <Route path={'/profile'} render={() => <ProfilePage updateNewPostText={updateNewPostText} addPost={addPost} {...profilePage} />}/>
-                    <Route path={'/news'} render={() => <NewsPage/>}/>
-                    <Route path={'/music'} render={() => <MusicPage/>}/>
-                    <Route path={'/settings'} render={() => <SettingsPage/>}/>
-                </div>
+        <div className="app-wrapper">
+            <Header/>
+            <NavBar {...state.sideBar}/>
+            <div className="app-wrapper-content">
+                <Route
+                    path={'/dialogs'}
+                    render={() =>
+                        <DialogsPage {...state.dialogsPage}/>
+                    }/>
+                <Route
+                    path={'/profile'}
+                    render={() =>
+                        <ProfilePage
+                            updateNewPostText={store.updateNewPostText.bind(store)}
+                            addPost={store.addPost.bind(store)}
+                            {...state.profilePage}
+                        />
+                    }/>
+                <Route
+                    path={'/news'}
+                    render={() =>
+                        <NewsPage/>
+                    }/>
+                <Route
+                    path={'/music'}
+                    render={() =>
+                        <MusicPage/>
+                    }/>
+                <Route
+                    path={'/settings'}
+                    render={() =>
+                        <SettingsPage/>
+                    }/>
             </div>
+        </div>
     )
 }
