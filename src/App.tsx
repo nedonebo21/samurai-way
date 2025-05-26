@@ -4,7 +4,7 @@ import {Header} from "./components/header/header";
 import {NavBar} from "./components/nav-bar/nav-bar";
 import {ProfilePage} from "./pages/profile-page";
 import {DialogsPage} from "./pages/dialogs-page";
-import {BrowserRouter, Route} from "react-router-dom";
+import { Route} from "react-router-dom";
 import {NewsPage} from "./pages/news-page";
 import {MusicPage} from "./pages/music-page";
 import {SettingsPage} from "./pages/settings-page";

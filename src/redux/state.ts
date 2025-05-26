@@ -1,3 +1,7 @@
+import {ProfileReducer} from "./profile-reducer";
+import {DialogsReducer} from "./dialogs-reducer";
+import {SidebarReducer} from "./sidebar-reducer";
+
 export type UserDataType = {
     id: string
     name: string
@@ -7,7 +11,7 @@ export type MessageType = {
     id: string
     message: string
 }
-type PostType = {
+export type PostType = {
     id: string
     message: string
     likes: number
@@ -41,17 +45,17 @@ export type StateType = {
     sideBar: SideBarType
 }
 
-type AddPostActionType = {
+export type AddPostActionType = {
     type: 'ADD-POST'
 }
-type UpdatePostTextActionType = {
+export type UpdatePostTextActionType = {
     type: 'UPDATE-NEW-POST-TEXT'
     newText: string
 }
-type AddMessageActionType = {
+export type AddMessageActionType = {
     type: 'ADD-MESSAGE'
 }
-type UpdateMessageTextType = {
+export type UpdateMessageTextType = {
     type: 'UPDATE-NEW-MESSAGE-TEXT'
     newMessage: string
 }
@@ -165,43 +169,13 @@ export const store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            const newPost: PostType = {
-                id: "5",
-                message: this._state.profilePage.newPostText,
-                likes: 0
-            }
-            this._state.profilePage.postsData.push(newPost);
-            this._state.profilePage.newPostText = ''
-            this._rerenderEntireTree();
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText
-            this._rerenderEntireTree()
-        } else if (action.type === 'ADD-MESSAGE'){
-            const newMessage: MessageType = {
-                id: "5",
-                message: this._state.dialogsPage.newMessageText
-            }
-            this._state.dialogsPage.messagesData.push(newMessage)
-            this._state.dialogsPage.newMessageText = ''
-            this._rerenderEntireTree()
-        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT'){
-            this._state.dialogsPage.newMessageText = action.newMessage
-            this._rerenderEntireTree()
-        }
+        this._state.profilePage = ProfileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = DialogsReducer(this._state.dialogsPage, action)
+        this._state.sideBar = SidebarReducer(this._state.sideBar, action)
+
+        this._rerenderEntireTree()
     }
 }
 
 
-export const addPostAC = (): AddPostActionType => (
-    {type: 'ADD-POST'}
-)
-export const updatePostTextAC = (text: string):UpdatePostTextActionType => (
-    {type: 'UPDATE-NEW-POST-TEXT', newText: text}
-)
-export const addMessageAC = ():AddMessageActionType => (
-    {type: 'ADD-MESSAGE'}
-)
-export const updateMessageTextAC = (text:string):UpdateMessageTextType => (
-    {type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: text}
-)
+

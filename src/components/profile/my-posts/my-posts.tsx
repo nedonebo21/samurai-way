@@ -2,7 +2,7 @@ import React, {KeyboardEvent, RefObject} from 'react';
 import s from "./my-posts.module.css";
 import {Post} from "./post/post";
 import {ProfilePageProps} from "../../../pages/profile-page";
-import {addPostAC, updatePostTextAC} from "../../../redux/state";
+import {addPostAC, updatePostTextAC} from "../../../redux/profile-reducer";
 import {Button} from "../../../shared/ui/button/button";
 import {Textarea} from "../../../shared/ui/textarea/textarea";
 
