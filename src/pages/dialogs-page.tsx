@@ -13,13 +13,9 @@ type MessagesPageProps = MessagesPageType & {
 export const DialogsPage = (props: MessagesPageProps) => {
     const {messagesData, usersDialogsData, dispatch} = props
     const usersDialogsList = usersDialogsData
-        .map((user) => (
-            <DialogItem key={user.id} id={user.id} name={user.name} imgUrl={user.imgUrl}/>
-        ))
+        .map((user) => (<DialogItem key={user.id} id={user.id} name={user.name} imgUrl={user.imgUrl}/>))
     const messagesList = messagesData
-        .map((message) => (
-            <Message key={message.id} message={message.message}/>
-        ))
+        .map((message) => (<Message key={message.id} message={message.message}/>))
 
     const usersDialogsItems = usersDialogsData.length ? usersDialogsList
         : <p>No dialogs, you should find friends :)</p>
@@ -32,7 +28,6 @@ export const DialogsPage = (props: MessagesPageProps) => {
         if (event.key === 'Enter') handleMessageSend()
     }
     const handleMessageSend = () => {
-        const message = newMessage.current.value
         dispatch(addMessageAC())
     }
     const handleMessageChange = () => {
@@ -49,7 +44,8 @@ export const DialogsPage = (props: MessagesPageProps) => {
             <div className={s.messages}>
                 {messagesItems}
                 <div className={s.send_message}>
-                    <Textarea onKeyDown={handleKeyDown} value={props.newMessageData} onChange={handleMessageChange} ref={newMessage} placeholder={"Пишем"}/>
+                    <Textarea onKeyDown={handleKeyDown} value={props.newMessageText} onChange={handleMessageChange}
+                              ref={newMessage} placeholder={"Пишем"}/>
                     <Button onClick={handleMessageSend}>Send</Button>
                 </div>
             </div>

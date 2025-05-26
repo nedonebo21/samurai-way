@@ -28,7 +28,7 @@ export type ProfilePageType = {
 export type MessagesPageType = {
     usersDialogsData: UserDataType[]
     messagesData: MessageType[]
-    newMessageData: string
+    newMessageText: string
 }
 export type SideBarType = {
     usersOnlineData: UsersOnlineType[]
@@ -53,7 +53,7 @@ type AddMessageActionType = {
 }
 type UpdateMessageTextType = {
     type: 'UPDATE-NEW-MESSAGE-TEXT'
-    newText: string
+    newMessage: string
 }
 
 export type ActionsType = AddPostActionType | UpdatePostTextActionType | AddMessageActionType | UpdateMessageTextType
@@ -109,7 +109,7 @@ export const store: StoreType = {
                 {id: "3", message: "Do you like gachi cinema??"},
                 {id: "4", message: "Yes."},
             ],
-            newMessageData: 'asd'
+            newMessageText: 'asd'
         },
         sideBar: {
             usersOnlineData: [
@@ -180,13 +180,13 @@ export const store: StoreType = {
         } else if (action.type === 'ADD-MESSAGE'){
             const newMessage: MessageType = {
                 id: "5",
-                message: this._state.dialogsPage.newMessageData
+                message: this._state.dialogsPage.newMessageText
             }
             this._state.dialogsPage.messagesData.push(newMessage)
-            this._state.dialogsPage.newMessageData = ''
+            this._state.dialogsPage.newMessageText = ''
             this._rerenderEntireTree()
         } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT'){
-            this._state.dialogsPage.newMessageData = action.newText
+            this._state.dialogsPage.newMessageText = action.newMessage
             this._rerenderEntireTree()
         }
     }
@@ -203,5 +203,5 @@ export const addMessageAC = ():AddMessageActionType => (
     {type: 'ADD-MESSAGE'}
 )
 export const updateMessageTextAC = (text:string):UpdateMessageTextType => (
-    {type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text}
+    {type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: text}
 )
