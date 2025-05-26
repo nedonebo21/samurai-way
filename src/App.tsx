@@ -31,8 +31,7 @@ export const App = (props: Props) => {
                     path={'/profile'}
                     render={() =>
                         <ProfilePage
-                            updateNewPostText={store.updateNewPostText.bind(store)}
-                            addPost={store.addPost.bind(store)}
+                            dispatch={store.dispatch.bind(store)}
                             {...state.profilePage}
                         />
                     }/>

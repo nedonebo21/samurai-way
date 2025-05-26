@@ -5,7 +5,7 @@ import {ProfilePageProps} from "../../../pages/profile-page";
 
 
 export const MyPosts = (props: ProfilePageProps) => {
-    const {postsData, addPost, updateNewPostText} = props
+    const {postsData, dispatch} = props
 
     const postsList = postsData
         .map((post) => (
@@ -20,11 +20,11 @@ export const MyPosts = (props: ProfilePageProps) => {
         }
     }
     const addPostHandler = () => {
-        addPost()
+        dispatch({type: "ADD-POST"})
     }
     const onPostChangeHandler = () => {
         const text = newPostElement.current.value
-        updateNewPostText(text)
+        dispatch({type: "UPDATE-NEW-POST-TEXT", newText: text})
     }
 
     return (
