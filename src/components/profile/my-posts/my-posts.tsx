@@ -2,7 +2,7 @@ import React, {KeyboardEvent, RefObject} from 'react';
 import s from "./my-posts.module.css";
 import {Post} from "./post/post";
 import {ProfilePageProps} from "../../../pages/profile-page";
-
+import {addPostAC, updatePostTextAC} from "../../../redux/state";
 
 export const MyPosts = (props: ProfilePageProps) => {
     const {postsData, dispatch} = props
@@ -20,11 +20,12 @@ export const MyPosts = (props: ProfilePageProps) => {
         }
     }
     const handleAddPost = () => {
-        dispatch({type: "ADD-POST"})
+        dispatch(addPostAC())
     }
     const handlePostChange = () => {
         const text = newPostElement.current.value
-        dispatch({type: "UPDATE-NEW-POST-TEXT", newText: text})
+        const action = updatePostTextAC(text)
+        dispatch(action)
     }
 
     return (
