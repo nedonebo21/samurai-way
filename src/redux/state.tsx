@@ -28,6 +28,7 @@ export type ProfilePageType = {
 export type MessagesPageType = {
     usersDialogsData: UserDataType[]
     messagesData: MessageType[]
+    newMessageData: string
 }
 export type SideBarType = {
     usersOnlineData: UsersOnlineType[]
@@ -47,8 +48,15 @@ type UpdatePostTextActionType = {
     type: 'UPDATE-NEW-POST-TEXT'
     newText: string
 }
+type AddMessageActionType = {
+    type: 'ADD-MESSAGE'
+}
+type UpdateMessageTextType = {
+    type: 'UPDATE-NEW-MESSAGE-TEXT'
+    newText: string
+}
 
-export type ActionsType = AddPostActionType | UpdatePostTextActionType
+export type ActionsType = AddPostActionType | UpdatePostTextActionType | AddMessageActionType | UpdateMessageTextType
 
 export type StoreType = {
     _state: StateType
@@ -100,7 +108,8 @@ export const store: StoreType = {
                 {id: "2", message: "Its really your social network??"},
                 {id: "3", message: "Do you like gachi cinema??"},
                 {id: "4", message: "Yes."},
-            ]
+            ],
+            newMessageData: 'asd'
         },
         sideBar: {
             usersOnlineData: [
@@ -168,6 +177,17 @@ export const store: StoreType = {
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText
             this._rerenderEntireTree()
+        } else if (action.type === 'ADD-MESSAGE'){
+            const newMessage: MessageType = {
+                id: "5",
+                message: this._state.dialogsPage.newMessageData
+            }
+            this._state.dialogsPage.messagesData.push(newMessage)
+            this._state.dialogsPage.newMessageData = ''
+            this._rerenderEntireTree()
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT'){
+            this._state.dialogsPage.newMessageData = action.newText
+            this._rerenderEntireTree()
         }
     }
 }
@@ -178,4 +198,10 @@ export const addPostAC = (): AddPostActionType => (
 )
 export const updatePostTextAC = (text: string):UpdatePostTextActionType => (
     {type: 'UPDATE-NEW-POST-TEXT', newText: text}
+)
+export const addMessageAC = ():AddMessageActionType => (
+    {type: 'ADD-MESSAGE'}
+)
+export const updateMessageTextAC = (text:string):UpdateMessageTextType => (
+    {type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text}
 )
