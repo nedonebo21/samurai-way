@@ -3,6 +3,8 @@ import s from "./my-posts.module.css";
 import {Post} from "./post/post";
 import {ProfilePageProps} from "../../../pages/profile-page";
 import {addPostAC, updatePostTextAC} from "../../../redux/state";
+import {Button} from "../../../shared/ui/button/button";
+import {Textarea} from "../../../shared/ui/textarea/textarea";
 
 export const MyPosts = (props: ProfilePageProps) => {
     const {postsData, dispatch} = props
@@ -32,13 +34,14 @@ export const MyPosts = (props: ProfilePageProps) => {
         <div className={s.posts_wrapper}>
             <h3>My Posts</h3>
             <div className={s.new_post}>
-                <textarea onKeyDown={handleKeyDown}
-                          ref={newPostElement}
-                          value={props.newPostText}
-                          onChange={handlePostChange}
-                          placeholder={"Черкани че-нить...."}></textarea>
-                <button onClick={handleAddPost}>Add Post</button>
-                <button>Remove</button>
+                {/*<textarea onKeyDown={handleKeyDown}*/}
+                {/*          ref={newPostElement}*/}
+                {/*          value={props.newPostText}*/}
+                {/*          onChange={handlePostChange}*/}
+                {/*          placeholder={"Черкани че-нить...."}></textarea>*/}
+                <Textarea onKeyDown={handleKeyDown} ref={newPostElement} value={props.newPostText} onChange={handlePostChange} placeholder={'Черкани че-нить....'}/>
+                <Button onClick={handleAddPost}>Add Post</Button>
+                <Button onClick={() => {}}>Remove</Button>
             </div>
             <div className={s.posts}>
                 {postsItems}

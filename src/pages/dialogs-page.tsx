@@ -3,6 +3,8 @@ import s from '../components/dialogs/dialogs.module.css'
 import {DialogItem} from "../components/dialogs/dialog-item/dialog-item";
 import {Message} from "../components/dialogs/message/message";
 import {MessagesPageType} from "../redux/state";
+import {Button} from "../shared/ui/button/button";
+import {Textarea} from "../shared/ui/textarea/textarea";
 
 export const DialogsPage = ({messagesData, usersDialogsData}: MessagesPageType) => {
 
@@ -36,8 +38,8 @@ export const DialogsPage = ({messagesData, usersDialogsData}: MessagesPageType) 
             <div className={s.messages}>
                 {messagesItems}
                 <div className={s.send_message}>
-                    <textarea onKeyDown={handleKeyDown} ref={newMessage} placeholder={"Пишем"}></textarea>
-                    <button onClick={sendMessage}> →</button>
+                    <Textarea onKeyDown={handleKeyDown} value={''} onChange={() => {}} ref={newMessage} placeholder={"Пишем"}/>
+                    <Button onClick={sendMessage}>Send</Button>
                 </div>
             </div>
         </div>

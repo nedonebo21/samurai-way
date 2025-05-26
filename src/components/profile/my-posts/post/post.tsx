@@ -1,6 +1,7 @@
 import React from 'react';
 import s from "./post.module.css";
 import {PostsAvatar} from "../posts-avatar/posts-avatar";
+import {Button} from "../../../../shared/ui/button/button";
 
 type Props = {
     message: string
@@ -12,7 +13,7 @@ export const Post = ({message, likesCount}:Props) => {
         <div className={s.item}>
             <PostsAvatar/>
             <div className={s.post_text}>{message}</div>
-            <button>Like: <strong>{likesCount}</strong></button>
+            <Button onClick={() => {}}>Like: <strong>{likesCount}</strong></Button>
         </div>
     );
 };
