@@ -14,21 +14,8 @@
 .item button {
     justify-self: end;
     grid-column: 2;
-
-    color: white;
-    padding: 4px;
-    background-color: #231c43;
-    border: 1px solid white;
-    border-radius: 10px;
     width: 80px;
     height: 30px;
-    transition: 0.2s;
-}
-.item button:hover {
-    cursor: pointer;
-
-    background-color: white;
-    color: #231c43;
 }
 .post_text{
     overflow: hidden;
