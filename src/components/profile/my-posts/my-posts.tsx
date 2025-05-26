@@ -14,15 +14,15 @@ export const MyPosts = (props: ProfilePageProps) => {
     const postsItems = postsData.length ? postsList : <p>No posts. Lets post something!</p>
 
     const newPostElement = React.createRef<any>()
-    const onKeyDownHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.ctrlKey && event.key === "Enter") {
-            addPostHandler()
+            handleAddPost()
         }
     }
-    const addPostHandler = () => {
+    const handleAddPost = () => {
         dispatch({type: "ADD-POST"})
     }
-    const onPostChangeHandler = () => {
+    const handlePostChange = () => {
         const text = newPostElement.current.value
         dispatch({type: "UPDATE-NEW-POST-TEXT", newText: text})
     }
@@ -31,12 +31,12 @@ export const MyPosts = (props: ProfilePageProps) => {
         <div className={s.posts_wrapper}>
             <h3>My Posts</h3>
             <div className={s.new_post}>
-                <textarea onKeyDown={onKeyDownHandler}
+                <textarea onKeyDown={handleKeyDown}
                           ref={newPostElement}
                           value={props.newPostText}
-                          onChange={onPostChangeHandler}
+                          onChange={handlePostChange}
                           placeholder={"Черкани че-нить...."}></textarea>
-                <button onClick={addPostHandler}>Add Post</button>
+                <button onClick={handleAddPost}>Add Post</button>
                 <button>Remove</button>
             </div>
             <div className={s.posts}>

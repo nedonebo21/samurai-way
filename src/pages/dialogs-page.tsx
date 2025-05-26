@@ -20,7 +20,7 @@ export const DialogsPage = ({messagesData, usersDialogsData}: MessagesPageType) 
     const messagesItems = messagesData.length ? messagesList
         : <p>No messages. Write smth to start dialog</p>
     const newMessage = React.createRef<any>()
-    const onKeyDownHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.key === 'Enter') sendMessage()
     }
     const sendMessage = () => {
@@ -36,7 +36,7 @@ export const DialogsPage = ({messagesData, usersDialogsData}: MessagesPageType) 
             <div className={s.messages}>
                 {messagesItems}
                 <div className={s.send_message}>
-                    <textarea onKeyDown={onKeyDownHandler} ref={newMessage} placeholder={"Пишем"}></textarea>
+                    <textarea onKeyDown={handleKeyDown} ref={newMessage} placeholder={"Пишем"}></textarea>
                     <button onClick={sendMessage}> →</button>
                 </div>
             </div>
