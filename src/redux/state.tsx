@@ -1,9 +1,9 @@
-type UserDataType = {
+export type UserDataType = {
     id: string
     name: string
     imgUrl: string
 }
-type MessageType = {
+export type MessageType = {
     id: string
     message: string
 }
