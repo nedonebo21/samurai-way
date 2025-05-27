@@ -1,5 +1,5 @@
 import './shared/styles/global.css';
-import {store} from "./redux/state";
+import {store} from "./redux/redux-store";
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -17,6 +17,5 @@ export const rerenderEntireTree = () => {
         document.getElementById('root')
     )
 }
-
 rerenderEntireTree()
-store.subscriber(rerenderEntireTree)
+store.subscribe(rerenderEntireTree)
