@@ -3,18 +3,14 @@ import s from '../components/dialogs/dialogs.module.css'
 import {ActionsType, MessagesPageType} from "../redux/store";
 import {DialogItems} from "../components/dialogs/dialog-items/dialog-items";
 import {Messages} from "../components/dialogs/messages/messages";
+import {StoreType} from "../redux/redux-store";
+import {DialogsContainer} from "../components/dialogs/dialogs-container";
 
-export type MessagesPageProps = MessagesPageType & {
-    dispatch: (action: ActionsType) => void
+export type MessagesPageProps =  {
+    store: StoreType
 }
 
 export const DialogsPage = (props: MessagesPageProps) => {
-    const {messagesData, usersDialogsData, dispatch} = props
 
-    return (
-        <div className={s.dialogs}>
-            <DialogItems usersDialogsData={usersDialogsData}/>
-            <Messages newMessageText={props.newMessageText} messagesData={messagesData} dispatch={dispatch}/>
-        </div>
-    );
-};
+    return (<DialogsContainer store={props.store}/>)
+}

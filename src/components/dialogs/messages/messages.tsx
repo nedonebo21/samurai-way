@@ -3,17 +3,18 @@ import s from "../dialogs.module.css";
 import {Textarea} from "../../../shared/ui/textarea/textarea";
 import {Button} from "../../../shared/ui/button/button";
 import {Message} from "./message/message";
-import {ActionsType, MessageType} from "../../../redux/store";
+import {ActionsType, MessagesPageType, MessageType} from "../../../redux/store";
 import {addMessageAC, updateMessageTextAC} from "../../../redux/dialogs-reducer"
 
 type MessagesProps = {
-    messagesData: MessageType[];
+    messageSend: () => void
+    messageChange: (text: string) => void
+    messagesData: MessageType[]
     newMessageText: string
-    dispatch: (action: ActionsType) => void
 }
 
 export const Messages = (props: MessagesProps) => {
-    const {messagesData, dispatch} = props
+    const {messagesData} = props
 
     const messagesList = messagesData
         .map((message) => (<Message key={message.id} message={message.message}/>))
@@ -26,12 +27,11 @@ export const Messages = (props: MessagesProps) => {
         if (event.key === 'Enter') handleMessageSend()
     }
     const handleMessageSend = () => {
-        dispatch(addMessageAC())
+        props.messageSend()
     }
     const handleMessageChange = () => {
         const text = newMessage.current.value
-        const action = updateMessageTextAC(text)
-        dispatch(action)
+        props.messageChange(text)
     }
     return (
         <div className={s.messages}>

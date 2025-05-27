@@ -26,8 +26,7 @@ export const App = (props: Props) => {
                     path={'/dialogs'}
                     render={() =>
                         <DialogsPage
-                            dispatch={store.dispatch.bind(store)}
-                            {...state.DialogsPage}/>
+                            store={store}/>
                     }/>
                 <Route
                     path={'/profile'}
