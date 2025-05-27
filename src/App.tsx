@@ -8,10 +8,10 @@ import { Route} from "react-router-dom";
 import {NewsPage} from "./pages/news-page";
 import {MusicPage} from "./pages/music-page";
 import {SettingsPage} from "./pages/settings-page";
-import {AppStoreType} from "./redux/redux-store";
+import {StoreType} from "./redux/redux-store";
 
 type Props = {
-    store: AppStoreType
+    store: StoreType
 }
 export const App = (props: Props) => {
     const {store} = props
@@ -33,8 +33,7 @@ export const App = (props: Props) => {
                     path={'/profile'}
                     render={() =>
                         <ProfilePage
-                            dispatch={store.dispatch.bind(store)}
-                            {...state.ProfilePage}
+                            store={store}
                         />
                     }/>
                 <Route

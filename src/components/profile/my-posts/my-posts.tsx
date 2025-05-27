@@ -2,12 +2,17 @@ import React, {KeyboardEvent, RefObject} from 'react';
 import s from "./my-posts.module.css";
 import {Post} from "./post/post";
 import {ProfilePageProps} from "../../../pages/profile-page";
-import {addPostAC, updatePostTextAC} from "../../../redux/profile-reducer";
 import {Button} from "../../../shared/ui/button/button";
 import {Textarea} from "../../../shared/ui/textarea/textarea";
+import {ProfilePageType} from "../../../redux/store";
 
-export const MyPosts = (props: ProfilePageProps) => {
-    const {postsData, dispatch} = props
+type MyPostsType = ProfilePageType & {
+    updateNewPostText: (text: string) => void
+    addPost: () => void
+}
+
+export const MyPosts = (props: MyPostsType) => {
+    const {postsData} = props
 
     const postsList = postsData
         .map((post) => (
@@ -22,23 +27,17 @@ export const MyPosts = (props: ProfilePageProps) => {
         }
     }
     const handleAddPost = () => {
-        dispatch(addPostAC())
+        props.addPost()
     }
     const handlePostChange = () => {
         const text = newPostElement.current.value
-        const action = updatePostTextAC(text)
-        dispatch(action)
+        props.updateNewPostText(text)
     }
 
     return (
         <div className={s.posts_wrapper}>
             <h3>My Posts</h3>
             <div className={s.new_post}>
-                {/*<textarea onKeyDown={handleKeyDown}*/}
-                {/*          ref={newPostElement}*/}
-                {/*          value={props.newPostText}*/}
-                {/*          onChange={handlePostChange}*/}
-                {/*          placeholder={"Черкани че-нить...."}></textarea>*/}
                 <Textarea onKeyDown={handleKeyDown} ref={newPostElement} value={props.newPostText} onChange={handlePostChange} placeholder={'Черкани че-нить....'}/>
                 <Button onClick={handleAddPost}>Add Post</Button>
                 <Button onClick={() => {}}>Remove</Button>

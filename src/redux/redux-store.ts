@@ -11,5 +11,5 @@ let reducers = combineReducers({
     sideBar: SidebarReducer
 })
 
-export type AppStoreType = typeof store
+export type StoreType = typeof store
 export let store = createStore(reducers)
