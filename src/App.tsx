@@ -1,55 +1,31 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './App.css';
 import {Header} from "./components/header/header";
 import {NavBar} from "./components/nav-bar/nav-bar";
 import {ProfilePage} from "./pages/profile-page";
 import {DialogsPage} from "./pages/dialogs-page";
-import { Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import {NewsPage} from "./pages/news-page";
 import {MusicPage} from "./pages/music-page";
 import {SettingsPage} from "./pages/settings-page";
-import {StoreType} from "./redux/redux-store";
+import {StoreContext} from "./store-context";
 
-type Props = {
-    store: StoreType
-}
-export const App = (props: Props) => {
-    const {store} = props
+
+export const App = () => {
+    const store = useContext(StoreContext)
+    if (!store) return null
+
     const state = store.getState()
     return (
-
         <div className="app-wrapper">
             <Header/>
             <NavBar {...state.sideBar}/>
             <div className="app-wrapper-content">
-                <Route
-                    path={'/dialogs'}
-                    render={() =>
-                        <DialogsPage
-                            store={store}/>
-                    }/>
-                <Route
-                    path={'/profile'}
-                    render={() =>
-                        <ProfilePage
-                            store={store}
-                        />
-                    }/>
-                <Route
-                    path={'/news'}
-                    render={() =>
-                        <NewsPage/>
-                    }/>
-                <Route
-                    path={'/music'}
-                    render={() =>
-                        <MusicPage/>
-                    }/>
-                <Route
-                    path={'/settings'}
-                    render={() =>
-                        <SettingsPage/>
-                    }/>
+                <Route path={'/dialogs'} render={() => <DialogsPage/>}/>
+                <Route path={'/profile'} render={() => <ProfilePage/>}/>
+                <Route path={'/news'} render={() => <NewsPage/>}/>
+                <Route path={'/music'} render={() => <MusicPage/>}/>
+                <Route path={'/settings'} render={() => <SettingsPage/>}/>
             </div>
         </div>
     )

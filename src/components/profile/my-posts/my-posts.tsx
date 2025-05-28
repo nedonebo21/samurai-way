@@ -1,7 +1,6 @@
-import React, {KeyboardEvent, RefObject} from 'react';
+import React, {KeyboardEvent} from 'react';
 import s from "./my-posts.module.css";
 import {Post} from "./post/post";
-import {ProfilePageProps} from "../../../pages/profile-page";
 import {Button} from "../../../shared/ui/button/button";
 import {Textarea} from "../../../shared/ui/textarea/textarea";
 import {ProfilePageType} from "../../../redux/store";
