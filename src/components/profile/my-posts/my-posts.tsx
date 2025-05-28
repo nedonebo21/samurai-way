@@ -5,19 +5,18 @@ import {Button} from "../../../shared/ui/button/button";
 import {Textarea} from "../../../shared/ui/textarea/textarea";
 import {ProfilePageType} from "../../../redux/store";
 
-type MyPostsType = ProfilePageType & {
+type MyPostsType = {
     updateNewPostText: (text: string) => void
     addPost: () => void
+    profilePage: ProfilePageType
 }
 
 export const MyPosts = (props: MyPostsType) => {
-    const {postsData} = props
-
-    const postsList = postsData
+    const postsList = props.profilePage.postsData
         .map((post) => (
             <Post key={post.id} message={post.message} likesCount={post.likes}/>
         ))
-    const postsItems = postsData.length ? postsList : <p>No posts. Lets post something!</p>
+    const postsItems = props.profilePage.postsData.length ? postsList : <p>No posts. Lets post something!</p>
 
     const newPostElement = React.createRef<any>()
     const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -37,7 +36,7 @@ export const MyPosts = (props: MyPostsType) => {
         <div className={s.posts_wrapper}>
             <h3>My Posts</h3>
             <div className={s.new_post}>
-                <Textarea onKeyDown={handleKeyDown} ref={newPostElement} value={props.newPostText} onChange={handlePostChange} placeholder={'Черкани че-нить....'}/>
+                <Textarea onKeyDown={handleKeyDown} ref={newPostElement} value={props.profilePage.newPostText} onChange={handlePostChange} placeholder={'Черкани че-нить....'}/>
                 <Button onClick={handleAddPost}>Add Post</Button>
                 <Button onClick={() => {}}>Remove</Button>
             </div>

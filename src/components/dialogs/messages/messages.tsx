@@ -9,16 +9,15 @@ import {addMessageAC, updateMessageTextAC} from "../../../redux/dialogs-reducer"
 type MessagesProps = {
     messageSend: () => void
     messageChange: (text: string) => void
-    messagesData: MessageType[]
-    newMessageText: string
+    dialogsPage: MessagesPageType
 }
 
 export const Messages = (props: MessagesProps) => {
-    const {messagesData} = props
+    const {dialogsPage} = props
 
-    const messagesList = messagesData
+    const messagesList = dialogsPage.messagesData
         .map((message) => (<Message key={message.id} message={message.message}/>))
-    const messagesItems = messagesData.length ? messagesList
+    const messagesItems = dialogsPage.messagesData.length ? messagesList
         : <p>No messages. Write smth to start dialog</p>
 
     const newMessage = React.createRef<any>()
@@ -37,7 +36,7 @@ export const Messages = (props: MessagesProps) => {
         <div className={s.messages}>
             {messagesItems}
             <div className={s.send_message}>
-                <Textarea onKeyDown={handleKeyDown} value={props.newMessageText} onChange={handleMessageChange}
+                <Textarea onKeyDown={handleKeyDown} value={props.dialogsPage.newMessageText} onChange={handleMessageChange}
                           ref={newMessage} placeholder={"Пишем"}/>
                 <Button onClick={handleMessageSend}>Send</Button>
             </div>

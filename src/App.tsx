@@ -8,11 +8,11 @@ import {Route} from "react-router-dom";
 import {NewsPage} from "./pages/news-page";
 import {MusicPage} from "./pages/music-page";
 import {SettingsPage} from "./pages/settings-page";
-import {StoreContext} from "./store-context";
+import {useStore} from "react-redux";
 
 
 export const App = () => {
-    const store = useContext(StoreContext)
+    const store = useStore()
     if (!store) return null
 
     const state = store.getState()
