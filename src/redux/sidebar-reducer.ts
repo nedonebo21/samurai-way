@@ -42,6 +42,6 @@ let initialState: SideBarType = {
     ]
 }
 
-export const SidebarReducer = (state: SideBarType = initialState,actions: ActionsType) => {
+export const sidebarReducer = (state: SideBarType = initialState,actions: ActionsType) => {
     return state
 }
