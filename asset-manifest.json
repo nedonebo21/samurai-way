@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/samurai-way/static/css/main.43c26bfe.css",
-    "main.js": "/samurai-way/static/js/main.cfd6fad7.js",
+    "main.js": "/samurai-way/static/js/main.41098566.js",
     "index.html": "/samurai-way/index.html",
     "main.43c26bfe.css.map": "/samurai-way/static/css/main.43c26bfe.css.map",
-    "main.cfd6fad7.js.map": "/samurai-way/static/js/main.cfd6fad7.js.map"
+    "main.41098566.js.map": "/samurai-way/static/js/main.41098566.js.map"
   },
   "entrypoints": [
     "static/css/main.43c26bfe.css",
-    "static/js/main.cfd6fad7.js"
+    "static/js/main.41098566.js"
   ]
 }
