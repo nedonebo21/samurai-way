@@ -12,6 +12,14 @@ export type PostType = {
     message: string
     likes: number
 }
+export type User = {
+    id: number
+    followed: boolean
+    fullName: string
+    status: string
+    avatarUrl: string
+    location: { city: string, country: string }
+}
 
 type UsersOnlineType = {
     id: string
@@ -33,12 +41,15 @@ export type MessagesPageType = {
 export type SideBarType = {
     usersOnlineData: UsersOnlineType[]
 }
-
+export type UsersPageType = {
+    users: User[]
+}
 
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: MessagesPageType
     sideBar: SideBarType
+    usersPage: UsersPageType
 }
 
 export type AddPostActionType = {
@@ -55,8 +66,26 @@ export type UpdateMessageTextType = {
     type: 'UPDATE-NEW-MESSAGE-TEXT'
     newMessage: string
 }
+export type SetUsersActionType = {
+    type: 'SET-USERS'
+    users: User[]
+}
+export type FollowActionType = {
+    type: 'FOLLOW'
+    userId: number
+}
+export type UnFollowActionType = {
+    type: 'UNFOLLOW'
+    userId: number
+}
 
-export type ActionsType = AddPostActionType | UpdatePostTextActionType | AddMessageActionType | UpdateMessageTextType
+export type ActionsType = AddPostActionType
+    | UpdatePostTextActionType
+    | AddMessageActionType
+    | UpdateMessageTextType
+    | FollowActionType
+    | UnFollowActionType
+    | SetUsersActionType
 
 // export type StoreType = {
 //     _state: StateType

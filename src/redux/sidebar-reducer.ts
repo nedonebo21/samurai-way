@@ -20,7 +20,9 @@ let initialState: SideBarType = {
             isOnline: true,
             imgUrl: "https://preview.redd.it/ygt394pc4uz81.jpg?width=300&format=pjpg&auto=webp&s=931c83697822508002307f79ebb05da97537afa4"
         },
-        {id: "4", name: "Viper", isOnline: false, imgUrl: "https://dota2.ru/img/heroes/viper/portrait.jpg"},
+        {
+            id: "4", name: "Viper", isOnline: false, imgUrl: "https://dota2.ru/img/heroes/viper/portrait.jpg"
+        },
         {
             id: "5",
             name: "Phoenix",
