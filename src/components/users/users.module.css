@@ -1,0 +1,51 @@
+.users_page{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.users_page h2 {
+    font-weight: 700;
+}
+.user_items {
+    display: grid;
+    gap: 26px;
+}
+.user_item{
+    color: white;
+    padding: 10px;
+    background-color: #231c43;
+    border: 1px solid white;
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+}
+.user_action{
+    text-align: center;
+    display: grid;
+    gap: 8px;
+}
+.user_description{
+    display: flex;
+    justify-content: space-between;
+    gap: 36px;
+}
+.user_info{
+}
+.user_name{
+    font-weight: 700;
+}
+.user_status{
+    font-style: italic;
+}
+.user_country{
+    font-weight: 700;
+}
+.user_city{
+    font-style: oblique;
+}
+.users_page button {
+    width: 80px;
+    height: 36px;
+    padding: 4px;
+}

@@ -9,6 +9,7 @@ import {NewsPage} from "./pages/news-page";
 import {MusicPage} from "./pages/music-page";
 import {SettingsPage} from "./pages/settings-page";
 import {useStore} from "react-redux";
+import {UsersPage} from "./pages/users-page";
 
 
 export const App = () => {
@@ -25,6 +26,7 @@ export const App = () => {
                 <Route path={'/profile'} render={() => <ProfilePage/>}/>
                 <Route path={'/news'} render={() => <NewsPage/>}/>
                 <Route path={'/music'} render={() => <MusicPage/>}/>
+                <Route path={'/users'} render={() => <UsersPage/>}/>
                 <Route path={'/settings'} render={() => <SettingsPage/>}/>
             </div>
         </div>
