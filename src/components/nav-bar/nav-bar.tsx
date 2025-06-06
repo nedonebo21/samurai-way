@@ -2,6 +2,7 @@ import React from "react";
 import s from './nav-bar.module.css'
 import {NavLink} from "react-router-dom";
 import {SideBarType} from "../../redux/store";
+import {UserAvatar} from "../../shared/ui/user-avatar/user-avatar";
 
 
 export const NavBar = ({usersOnlineData}: SideBarType) => {
@@ -9,7 +10,7 @@ export const NavBar = ({usersOnlineData}: SideBarType) => {
     const usersOnlineItems = usersOnlineData.map((user) => (
         user.isOnline ?
             <li className={s.friends_item} key={user.id}>
-                <img src={user.imgUrl} alt=""/>
+                <UserAvatar avatarUrl={user.imgUrl}/>
                 {user.name}
                 <div className={s.online_circle}></div>
             </li> : null
@@ -28,6 +29,9 @@ export const NavBar = ({usersOnlineData}: SideBarType) => {
             </div>
             <div className={s.item}>
                 <NavLink to="/music" activeClassName={s.active}>Music</NavLink>
+            </div>
+            <div className={s.item}>
+                <NavLink to="/users" activeClassName={s.active}>Users</NavLink>
             </div>
             <div className={s.item}>
                 <NavLink to="/settings" activeClassName={s.active}>Settings</NavLink>

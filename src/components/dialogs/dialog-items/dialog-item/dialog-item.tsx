@@ -2,6 +2,7 @@ import {NavLink} from "react-router-dom";
 import s from "./dialog-item.module.css";
 import a from "../../dialogs.module.css"
 import React from "react";
+import {UserAvatar} from "../../../../shared/ui/user-avatar/user-avatar";
 
 type Props = {
     name: string
@@ -13,7 +14,7 @@ export const DialogItem = ({id, name, ...props}: Props) => {
 
     return (
         <NavLink to={pathId} className={s.dialog} activeClassName={a.active}>
-            <img src={props.imgUrl} alt=""/>
+            <UserAvatar avatarUrl={props.imgUrl}/>
             {name}
         </NavLink>
     )
