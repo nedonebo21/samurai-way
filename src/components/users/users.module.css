@@ -49,3 +49,6 @@
     height: 36px;
     padding: 4px;
 }
+.users_button{
+    min-width: 100px;
+}

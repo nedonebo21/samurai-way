@@ -15,15 +15,18 @@ type UsersType = {
 
 export const Users = (props: UsersType) => {
 
-    if (props.users.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
-            .then(res => {
-                props.setUsers(res.data.items)
-            })
+    const getUsers = () => {
+        if (props.users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users')
+                .then(res => {
+                    props.setUsers(res.data.items)
+                })
+        }
     }
 
     return (
         <div className={s.user_items}>
+            <Button onClick={getUsers} className={s.users_button}>Show Users</Button>
             {
                 props.users.map(el => {
                     return (
@@ -35,12 +38,8 @@ export const Users = (props: UsersType) => {
                                 <div>
                                     {
                                         el.followed
-                                            ? <Button onClick={() => {
-                                                props.unFollow(el.id)
-                                            }}>Unfollow</Button>
-                                            : <Button onClick={() => {
-                                                props.follow(el.id)
-                                            }}>Follow</Button>
+                                            ? <Button onClick={() => {props.unFollow(el.id)}}>Unfollow</Button>
+                                            : <Button onClick={() => {props.follow(el.id)}}>Follow</Button>
                                     }
                                 </div>
                             </span>
