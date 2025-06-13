@@ -1,24 +1,40 @@
-import {ActionsType, FollowActionType, SetUsersActionType, UnFollowActionType, User, UsersPageType} from "./store";
+import {
+    ActionsType,
+    FollowActionType,
+    SetCurrentPageActionType, SetTotalUsersCountActionType,
+    SetUsersActionType,
+    UnFollowActionType,
+    User,
+    UsersPageType
+} from "./store";
 let initialState: UsersPageType = {
-    users: []
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 export const usersReducer = (state: UsersPageType = initialState, action: ActionsType) => {
     switch (action.type){
         case 'FOLLOW':
             return {
                 ...state,
-                users: state.users.map(el => el.id === action.userId ? {...el, followed: true} :el)
+                users: state.users.map(el => el.id === action.userId
+                    ? {...el, followed: true}
+                    :el)
             }
         case 'UNFOLLOW':
             return {
                 ...state,
-                users: state.users.map(el => el.id === action.userId ? {...el, followed: false} :el)
+                users: state.users.map(el => el.id === action.userId
+                    ? {...el, followed: false}
+                    :el)
             }
         case 'SET-USERS':
-            return {
-                ...state,
-                users: [...action.users]
-            }
+            return {...state, users: [...action.users]}
+        case 'SET-CURRENT-PAGE':
+            return {...state, currentPage: action.pageNumber}
+        case 'SET-TOTAL-USERS-COUNT':
+            return {...state, totalUsersCount: action.totalCount}
     }
     return state
 }
@@ -31,4 +47,10 @@ export const unFollowAC = (userId: number): UnFollowActionType => (
 )
 export const setUsersAC = (users: User[]): SetUsersActionType => (
     {type: 'SET-USERS', users}
+)
+export const setCurrentPageAC = (pageNumber: number): SetCurrentPageActionType => (
+    {type: 'SET-CURRENT-PAGE', pageNumber}
+)
+export const setTotalUsersCountAC = (totalCount: number): SetTotalUsersCountActionType => (
+    {type: 'SET-TOTAL-USERS-COUNT', totalCount}
 )

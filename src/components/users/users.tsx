@@ -11,17 +11,36 @@ type UsersType = {
     follow: (userId: number) => void
     unFollow: (userId: number) => void
     setUsers: (users: User[]) => void
+    setCurrentPage: (currentPage: number) => void
+    setTotalUsersCount: (totalCount: number) => void
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 
 export class Users extends React.Component<UsersType> {
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(res => {
+                this.props.setUsers(res.data.items)
+                this.props.setTotalUsersCount(res.data.totalCount)
+            })
+    }
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(res => {
                 this.props.setUsers(res.data.items)
             })
     }
 
     render() {
+        const pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
+        let pages = []
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
         return (
             <div className={s.user_items}>
                 {
@@ -33,16 +52,14 @@ export class Users extends React.Component<UsersType> {
                                         <UserAvatar
                                             avatarUrl={el.photos.small !== null ? el.photos.small : defaultAvatar}/>
                                     </div>
-                                    <div>
-                                        {
-                                            el.followed
-                                                ? <Button onClick={() => {
-                                                    this.props.unFollow(el.id)
-                                                }}>Unfollow</Button>
-                                                : <Button onClick={() => {
-                                                    this.props.follow(el.id)
-                                                }}>Follow</Button>
-                                        }
+                                    <div>{el.followed
+                                        ? <Button onClick={() => {
+                                            this.props.unFollow(el.id)
+                                        }}>Unfollow</Button>
+                                        : <Button onClick={() => {
+                                            this.props.follow(el.id)
+                                        }}>Follow</Button>
+                                    }
                                     </div>
                                 </div>
                                 <div className={s.user_description}>
@@ -59,6 +76,14 @@ export class Users extends React.Component<UsersType> {
                         )
                     })
                 }
+                <div className={s.btn_block}>
+                    {pages.map(el => {
+                        return <Button
+                            disabled={this.props.currentPage === el}
+                            className={this.props.currentPage === el ? s.selected_page : ''}
+                            onClick={() => { this.onPageChanged(el) }}>{el}</Button>
+                    })}
+                </div>
             </div>
         )
     }

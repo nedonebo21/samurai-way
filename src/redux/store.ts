@@ -1,3 +1,5 @@
+import {setTotalUsersCountAC} from "./users-reducer";
+
 export type UserDataType = {
     id: string
     name: string
@@ -18,7 +20,7 @@ export type User = {
     name: string
     status: string
     avatarUrl: string
-    photos: {small: string, large: string}
+    photos: { small: string, large: string }
     location: { city: string, country: string }
 }
 
@@ -44,6 +46,9 @@ export type SideBarType = {
 }
 export type UsersPageType = {
     users: User[]
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 
 export type StateType = {
@@ -79,6 +84,14 @@ export type UnFollowActionType = {
     type: 'UNFOLLOW'
     userId: number
 }
+export type SetCurrentPageActionType = {
+    type: 'SET-CURRENT-PAGE'
+    pageNumber: number
+}
+export type SetTotalUsersCountActionType = {
+    type: 'SET-TOTAL-USERS-COUNT'
+    totalCount: number
+}
 
 export type ActionsType = AddPostActionType
     | UpdatePostTextActionType
@@ -87,6 +100,8 @@ export type ActionsType = AddPostActionType
     | FollowActionType
     | UnFollowActionType
     | SetUsersActionType
+    | SetCurrentPageActionType
+    | SetTotalUsersCountActionType
 
 // export type StoreType = {
 //     _state: StateType
