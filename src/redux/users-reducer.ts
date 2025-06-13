@@ -17,7 +17,7 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
         case 'SET-USERS':
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users: [...action.users]
             }
     }
     return state

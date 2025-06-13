@@ -14,8 +14,7 @@ type UsersType = {
 }
 
 export class Users extends React.Component<UsersType> {
-    constructor(props: UsersType) {
-        super(props)
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(res => {
                 this.props.setUsers(res.data.items)
@@ -29,32 +28,33 @@ export class Users extends React.Component<UsersType> {
                     this.props.users.map(el => {
                         return (
                             <div className={s.user_item} key={el.id}>
-                            <span className={s.user_action}>
-                                <div>
-                                    <UserAvatar avatarUrl={el.photos.small !== null ? el.photos.small : defaultAvatar}/>
+                                <div className={s.user_action}>
+                                    <div>
+                                        <UserAvatar
+                                            avatarUrl={el.photos.small !== null ? el.photos.small : defaultAvatar}/>
+                                    </div>
+                                    <div>
+                                        {
+                                            el.followed
+                                                ? <Button onClick={() => {
+                                                    this.props.unFollow(el.id)
+                                                }}>Unfollow</Button>
+                                                : <Button onClick={() => {
+                                                    this.props.follow(el.id)
+                                                }}>Follow</Button>
+                                        }
+                                    </div>
                                 </div>
-                                <div>
-                                    {
-                                        el.followed
-                                            ? <Button onClick={() => {
-                                                this.props.unFollow(el.id)
-                                            }}>Unfollow</Button>
-                                            : <Button onClick={() => {
-                                                this.props.follow(el.id)
-                                            }}>Follow</Button>
-                                    }
+                                <div className={s.user_description}>
+                                    <div className={s.user_info}>
+                                        <div className={s.user_name}>{el.name}</div>
+                                        <div className={s.user_status}>{el.status}</div>
+                                    </div>
+                                    <div className={s.user_location}>
+                                        <div className={s.user_country}>{'el.location.country'}</div>
+                                        <div className={s.user_city}>{'el.location.city'}</div>
+                                    </div>
                                 </div>
-                            </span>
-                                <span className={s.user_description}>
-                                <span className={s.user_info}>
-                                    <div className={s.user_name}>{el.name}</div>
-                                    <div className={s.user_status}>{el.status}</div>
-                                </span>
-                                <span className={s.user_location}>
-                                    <div className={s.user_country}>{'el.location.country'}</div>
-                                    <div className={s.user_city}>{'el.location.city'}</div>
-                                </span>
-                            </span>
                             </div>
                         )
                     })
