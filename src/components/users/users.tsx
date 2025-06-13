@@ -3,6 +3,8 @@ import {User} from "../../redux/store";
 import {Button} from "../../shared/ui/button/button";
 import {UserAvatar} from "../../shared/ui/user-avatar/user-avatar";
 import s from './users.module.css'
+import axios from "axios";
+import defaultAvatar from '../../assets/img/default-avatar.jpg';
 
 type UsersType = {
     users: User[]
@@ -13,39 +15,11 @@ type UsersType = {
 
 export const Users = (props: UsersType) => {
 
-    if (props.users.length === 0){
-        props.setUsers([
-            {
-                id: 1,
-                followed: false,
-                fullName: 'Pudge',
-                status: 'looking for a job',
-                avatarUrl: 'https://play-lh.googleusercontent.com/82HFnMT2VbR8wgl6_a17UppNiNvzmyafK0BJW4FW4h-CV4BZq2dGTisboxOYNYI5gLDe=w240-h480-rw',
-                location: {
-                    country: 'Russia', city: 'Ulyanovsk'
-                }
-            },
-            {
-                id: 2,
-                followed: true,
-                fullName: 'Morphling',
-                status: 'looking for a boss',
-                avatarUrl: 'https://dota2.ru/img/heroes/morphling/portrait.jpg',
-                location: {
-                    country: 'Russia', city: 'Moscow'
-                }
-            },
-            {
-                id: 3,
-                followed: true,
-                fullName: 'KOTL',
-                status: 'looking for a friends',
-                avatarUrl: 'https://preview.redd.it/ygt394pc4uz81.jpg?width=300&format=pjpg&auto=webp&s=931c83697822508002307f79ebb05da97537afa4',
-                location: {
-                    country: 'USA', city: 'Texas'
-                }
-            },
-        ])
+    if (props.users.length === 0) {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(res => {
+                props.setUsers(res.data.items)
+            })
     }
 
     return (
@@ -56,7 +30,7 @@ export const Users = (props: UsersType) => {
                         <div className={s.user_item} key={el.id}>
                             <span className={s.user_action}>
                                 <div>
-                                    <UserAvatar avatarUrl={el.avatarUrl}/>
+                                    <UserAvatar avatarUrl={el.photos.small !== null ? el.photos.small : defaultAvatar}/>
                                 </div>
                                 <div>
                                     {
@@ -72,12 +46,12 @@ export const Users = (props: UsersType) => {
                             </span>
                             <span className={s.user_description}>
                                 <span className={s.user_info}>
-                                    <div className={s.user_name}>{el.fullName}</div>
+                                    <div className={s.user_name}>{el.name}</div>
                                     <div className={s.user_status}>{el.status}</div>
                                 </span>
                                 <span className={s.user_location}>
-                                    <div className={s.user_country}>{el.location.country}</div>
-                                    <div className={s.user_city}>{el.location.city}</div>
+                                    <div className={s.user_country}>{'el.location.country'}</div>
+                                    <div className={s.user_city}>{'el.location.city'}</div>
                                 </span>
                             </span>
                         </div>

@@ -15,9 +15,10 @@ export type PostType = {
 export type User = {
     id: number
     followed: boolean
-    fullName: string
+    name: string
     status: string
     avatarUrl: string
+    photos: {small: string, large: string}
     location: { city: string, country: string }
 }
 
