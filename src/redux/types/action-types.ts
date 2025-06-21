@@ -1,4 +1,4 @@
-import {User} from "./state-types";
+import {ProfileType, User} from "./state-types";
 
 
 export type AddPostActionType = {
@@ -39,6 +39,10 @@ export type ToggleFetchingActionType = {
     type: 'TOGGLE-FETCHING'
     isFetching: boolean
 }
+export type SetUserProfileActionType = {
+    type: 'SET-USER-PROFILE'
+    profile: ProfileType
+}
 
 export type ActionsType = AddPostActionType
     | UpdatePostTextActionType
@@ -50,3 +54,4 @@ export type ActionsType = AddPostActionType
     | SetCurrentPageActionType
     | SetTotalUsersCountActionType
     | ToggleFetchingActionType
+    | SetUserProfileActionType

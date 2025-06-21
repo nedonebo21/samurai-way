@@ -29,10 +29,35 @@ type UsersOnlineType = {
     imgUrl: string
 }
 
+type ProfileContactsType = {
+    facebook: string | null
+    github: string | null
+    instagram: string | null
+    mainLink: string | null
+    twitter: string | null
+    vk: string | null
+    website: string | null
+    youtube: string | null
+}
+type ProfilePhotosType = {
+    large: string | null
+    small: string | null
+}
+
+export type ProfileType = {
+    aboutMe: string
+    contacts: ProfileContactsType
+    fullName: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    photos: ProfilePhotosType
+    userId: number
+}
 
 export type ProfilePageType = {
     postsData: PostType[]
     newPostText: string
+    profile: ProfileType
 }
 export type MessagesPageType = {
     usersDialogsData: UserDataType[]
