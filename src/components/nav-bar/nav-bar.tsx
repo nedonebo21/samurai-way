@@ -1,8 +1,8 @@
 import React from "react";
 import s from './nav-bar.module.css'
 import {NavLink} from "react-router-dom";
-import {SideBarType} from "../../redux/store";
 import {UserAvatar} from "../../shared/ui/user-avatar/user-avatar";
+import {SideBarType} from "../../redux/types/state-types";
 
 
 export const NavBar = ({usersOnlineData}: SideBarType) => {

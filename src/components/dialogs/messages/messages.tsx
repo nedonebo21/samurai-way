@@ -3,8 +3,7 @@ import s from "../dialogs.module.css";
 import {Textarea} from "../../../shared/ui/textarea/textarea";
 import {Button} from "../../../shared/ui/button/button";
 import {Message} from "./message/message";
-import {ActionsType, MessagesPageType, MessageType} from "../../../redux/store";
-import {addMessageAC, updateMessageTextAC} from "../../../redux/dialogs-reducer"
+import {MessagesPageType} from "../../../redux/types/state-types";
 
 type MessagesProps = {
     messageSend: () => void

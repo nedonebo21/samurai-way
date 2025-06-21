@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "../dialogs.module.css";
 import {DialogItem} from "./dialog-item/dialog-item";
-import {MessagesPageType, UserDataType} from "../../../redux/store";
+import {MessagesPageType} from "../../../redux/types/state-types";
 
 type Props = {
     dialogsPage: MessagesPageType

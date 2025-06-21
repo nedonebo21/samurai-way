@@ -10,10 +10,11 @@ import {MusicPage} from "./pages/music-page";
 import {SettingsPage} from "./pages/settings-page";
 import {useStore} from "react-redux";
 import {UsersPage} from "./pages/users-page";
+import {StoreType} from "./redux/redux-store";
 
 
 export const App = () => {
-    const store = useStore()
+    const store: StoreType = useStore()
     if (!store) return null
 
     const state = store.getState()

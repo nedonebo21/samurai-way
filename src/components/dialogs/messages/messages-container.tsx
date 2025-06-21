@@ -1,7 +1,8 @@
-import {ActionsType, StateType} from "../../../redux/store";
 import {addMessageAC, updateMessageTextAC} from "../../../redux/dialogs-reducer";
 import {connect} from "react-redux";
 import {Messages} from "./messages";
+import {StateType} from "../../../redux/types/state-types";
+import {ActionsType} from "../../../redux/types/action-types";
 
 let mapStateToProps = (state: StateType) => {
     return {

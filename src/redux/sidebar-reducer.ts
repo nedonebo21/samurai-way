@@ -1,4 +1,5 @@
-import {ActionsType, SideBarType} from "./store";
+import {SideBarType} from "./types/state-types";
+import {ActionsType} from "./types/action-types";
 
 let initialState: SideBarType = {
     usersOnlineData: [
@@ -44,6 +45,6 @@ let initialState: SideBarType = {
     ]
 }
 
-export const sidebarReducer = (state: SideBarType = initialState,actions: ActionsType) => {
+export const sidebarReducer = (state: SideBarType = initialState, actions: ActionsType) => {
     return state
 }

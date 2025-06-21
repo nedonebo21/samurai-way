@@ -12,6 +12,5 @@ let reducers = combineReducers({
     sideBar: sidebarReducer,
     usersPage: usersReducer
 })
-
 export type StoreType = typeof store
 export let store = createStore(reducers)

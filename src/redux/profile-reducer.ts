@@ -1,4 +1,5 @@
-import {ActionsType, AddPostActionType, PostType, ProfilePageType, UpdatePostTextActionType} from "./store";
+import {PostType, ProfilePageType} from "./types/state-types";
+import {ActionsType, AddPostActionType, UpdatePostTextActionType} from "./types/action-types";
 
 let initialState: ProfilePageType = {
     postsData: [

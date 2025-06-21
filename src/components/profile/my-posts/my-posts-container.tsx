@@ -1,7 +1,8 @@
 import {addPostAC, updatePostTextAC} from "../../../redux/profile-reducer";
 import {MyPosts} from "./my-posts";
 import {connect} from "react-redux";
-import {ActionsType, StateType} from "../../../redux/store";
+import {StateType} from "../../../redux/types/state-types";
+import {ActionsType} from "../../../redux/types/action-types";
 
 let mapStateToProps = (state: StateType) => {
     console.log('MAP STATE', state.profilePage)
