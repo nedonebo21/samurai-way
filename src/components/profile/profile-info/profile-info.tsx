@@ -1,8 +1,11 @@
 import s from "./profile-info.module.css";
 import {Description} from "./description/description";
 import React from "react";
+import {Preloader} from "../../../shared/ui/preloader/preloader";
 
-export const ProfileInfo = () => {
+export const ProfileInfo = (props:any) => {
+    if (!props.profile) return <Preloader/>
+
     return (
         <>
             <div className={s.bg}>
@@ -10,7 +13,7 @@ export const ProfileInfo = () => {
                     src="https://i.ytimg.com/vi/yLRaDfPSB-4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBJJjQdF_u5FifTIMKMDhilm3S0hA"
                     alt=""/>
             </div>
-            <Description/>
+            <Description profile={props.profile}/>
         </>
     )
 }
