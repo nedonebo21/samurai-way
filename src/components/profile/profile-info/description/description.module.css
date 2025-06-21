@@ -6,8 +6,41 @@
     gap: 1rem;
 
     padding: 0 10px;
+    margin-bottom: 10px;
 }
 .info {
+    color: #a1a1a1;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: #231c43;
+    border-radius: 8px;
+    border: 1px solid white;
+    display: flex;
+    max-width: 600px;
+    gap: 26px;
     align-self: start;
     font-size: 18px;
+}
+.desc_sub_title{
+    color: white;
+}
+.desc_title{
+    color: white;
+}
+
+.desc_sub_title + a{
+    color: #eeadff;
+    transition: .3s;
+}
+.desc_sub_title + a:hover{
+    color: #d467ff;
+}
+.desc_items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.desc_item {
+    display: flex;
+    gap: 8px;
 }
