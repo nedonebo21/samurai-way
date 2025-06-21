@@ -11,7 +11,6 @@ import React from "react";
 import axios from "axios";
 import {Users} from "./users";
 import {StateType, User} from "../../redux/types/state-types";
-import {ActionsType} from "../../redux/types/action-types";
 import {Preloader} from "../../shared/ui/preloader/preloader";
 
 
@@ -39,7 +38,6 @@ class UsersApiComponent extends React.Component<UsersApiType> {
                 this.props.setTotalUsersCount(res.data.totalCount)
             })
     }
-
     onPageChanged = (pageNumber: number) => {
         this.props.setCurrentPage(pageNumber)
         this.props.toggleIsFetching(true)
@@ -67,8 +65,6 @@ class UsersApiComponent extends React.Component<UsersApiType> {
         )
     }
 }
-
-
 let mapStateToProps = (state: StateType) => {
     return {
         users: state.usersPage.users,
@@ -78,27 +74,11 @@ let mapStateToProps = (state: StateType) => {
         isFetching: state.usersPage.isFetching
     }
 }
-let mapDispatchToProps = (dispatch: (action: ActionsType) => void) => {
-    return {
-        follow: (userId: number) => {
-            dispatch(followAC(userId))
-        },
-        unFollow: (userId: number) => {
-            dispatch(unFollowAC(userId))
-        },
-        setUsers: (users: User[]) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (pageNumber: number) => {
-            dispatch(setCurrentPageAC(pageNumber))
-        },
-        setTotalUsersCount: (totalCount: number) => {
-            dispatch(setTotalUsersCountAC(totalCount))
-        },
-        toggleIsFetching: (isFetching: boolean) => {
-            dispatch(toggleFetchingAC(isFetching))
-        }
-    }
-}
-
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersApiComponent)
+export const UsersContainer = connect(mapStateToProps, {
+    follow: followAC,
+    unFollow: unFollowAC,
+    setUsers: setUsersAC,
+    setCurrentPage: setCurrentPageAC,
+    setTotalUsersCount: setTotalUsersCountAC,
+    toggleIsFetching: toggleFetchingAC
+})(UsersApiComponent)
