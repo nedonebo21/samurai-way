@@ -4,7 +4,7 @@ import {Header} from "./components/header/header";
 import {NavBar} from "./components/nav-bar/nav-bar";
 import {ProfilePage} from "./pages/profile-page";
 import {DialogsPage} from "./pages/dialogs-page";
-import {Route} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 import {NewsPage} from "./pages/news-page";
 import {MusicPage} from "./pages/music-page";
 import {SettingsPage} from "./pages/settings-page";
@@ -23,6 +23,8 @@ export const App = () => {
             <Header/>
             <NavBar {...state.sideBar}/>
             <div className="app-wrapper-content">
+                <Route path={'/'} render={() => <Redirect to={'/profile'}/>}></Route>
+
                 <Route path={'/dialogs'} render={() => <DialogsPage/>}/>
                 <Route path={'/profile'} render={() => <ProfilePage/>}/>
                 <Route path={'/news'} render={() => <NewsPage/>}/>
