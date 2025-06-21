@@ -4,6 +4,7 @@ import {Button} from "../../shared/ui/button/button";
 import {UserIcon} from "../../shared/ui/user-icon/user-icon";
 import s from './users.module.css'
 import {User} from "../../redux/types/state-types";
+import {NavLink} from "react-router-dom";
 
 type UsersType = {
     totalUsersCount: number
@@ -30,8 +31,9 @@ export const Users = (props: UsersType) => {
                         <div className={s.user_item} key={el.id}>
                             <div className={s.user_action}>
                                 <div>
-                                    <UserIcon
-                                        avatarUrl={el.photos.small !== null ? el.photos.small : defaultAvatar}/>
+                                    <NavLink to={`/profile/${el.id}`}>
+                                        <UserIcon avatarUrl={el.photos.small !== null ? el.photos.small : defaultAvatar}/>
+                                    </NavLink>
                                 </div>
                                 <div>{el.followed
                                     ? <Button onClick={() => {
