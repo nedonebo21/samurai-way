@@ -1,7 +1,7 @@
 import React from 'react';
 import defaultAvatar from '../../assets/img/default-avatar.jpg';
 import {Button} from "../../shared/ui/button/button";
-import {UserAvatar} from "../../shared/ui/user-avatar/user-avatar";
+import {UserIcon} from "../../shared/ui/user-icon/user-icon";
 import s from './users.module.css'
 import {User} from "../../redux/types/state-types";
 
@@ -30,7 +30,7 @@ export const Users = (props: UsersType) => {
                         <div className={s.user_item} key={el.id}>
                             <div className={s.user_action}>
                                 <div>
-                                    <UserAvatar
+                                    <UserIcon
                                         avatarUrl={el.photos.small !== null ? el.photos.small : defaultAvatar}/>
                                 </div>
                                 <div>{el.followed

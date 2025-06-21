@@ -1,11 +1,11 @@
 import React from 'react';
 import s from './description.module.css'
-import {Avatar} from "../../avatar/avatar";
+import {ProfileAvatar} from "../../../../shared/ui/profile-avatar/profile-avatar";
 
 export const Description = () => {
     return (
         <div className={s.description}>
-            <Avatar/>
+            <ProfileAvatar/>
             <div className={s.info}>
                 <strong>Info</strong>
                 <div><strong>Name:</strong> Stanislav</div>
