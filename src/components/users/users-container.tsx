@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import s from './users.module.css'
 import {
     followAC,
     setCurrentPageAC,
@@ -13,7 +12,7 @@ import axios from "axios";
 import {Users} from "./users";
 import {StateType, User} from "../../redux/types/state-types";
 import {ActionsType} from "../../redux/types/action-types";
-import preloader from 'src/assets/img/infinite-spinner.svg'
+import {Preloader} from "../../shared/ui/preloader/preloader";
 
 
 type UsersApiType = {
@@ -52,16 +51,20 @@ class UsersApiComponent extends React.Component<UsersApiType> {
     }
 
     render() {
-        return <>
-            {this.props.isFetching ? <img className={s.preloader} src={preloader} alt=""/> : null}
-            <Users totalUsersCount={this.props.totalUsersCount}
-                   pageSize={this.props.pageSize}
-                   currentPage={this.props.currentPage}
-                   onPageChanged={this.onPageChanged}
-                   users={this.props.users}
-                   follow={this.props.follow}
-                   unFollow={this.props.unFollow}/>
-        </>
+        return (
+            <>
+                {this.props.isFetching
+                    ? <Preloader/>
+                    : <Users totalUsersCount={this.props.totalUsersCount}
+                             pageSize={this.props.pageSize}
+                             currentPage={this.props.currentPage}
+                             onPageChanged={this.onPageChanged}
+                             users={this.props.users}
+                             follow={this.props.follow}
+                             unFollow={this.props.unFollow}/>
+                }
+            </>
+        )
     }
 }
 
@@ -92,7 +95,7 @@ let mapDispatchToProps = (dispatch: (action: ActionsType) => void) => {
         setTotalUsersCount: (totalCount: number) => {
             dispatch(setTotalUsersCountAC(totalCount))
         },
-        toggleIsFetching: (isFetching: boolean)=> {
+        toggleIsFetching: (isFetching: boolean) => {
             dispatch(toggleFetchingAC(isFetching))
         }
     }
