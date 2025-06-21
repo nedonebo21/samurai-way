@@ -11,7 +11,7 @@ let initialState: ProfilePageType = {
         aboutMe: 'Joskiy 4el',
         contacts: {
             facebook: null,
-            website: null,
+            website: 'pornhub.com',
             vk: 'Контора пидарасов',
             twitter: null,
             instagram: 'залупа.com',

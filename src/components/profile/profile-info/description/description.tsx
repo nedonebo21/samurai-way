@@ -7,25 +7,51 @@ type DescriptionType = {
     profile: ProfileType
 }
 
-export const Description = (props:DescriptionType) => {
+export const Description = (props: DescriptionType) => {
     return (
         <div className={s.description}>
             <ProfileAvatar avatarUrl={props.profile.photos.large}/>
             <div className={s.info}>
-                <strong>Info:</strong>
-                <div><strong>Name:</strong> {props.profile.fullName}</div>
-                <div><strong>About Me</strong>: {props.profile.aboutMe}</div>
-                <div><strong>Looking For a Job</strong>: {props.profile.lookingForAJob ? 'Yes' : 'No'}</div>
-                <div><strong>Looking For</strong>: {props.profile.lookingForAJobDescription || 'No description'}</div>
-                <div><strong>Contacts</strong>:
-                    <div><strong>FaceBook</strong>: {props.profile.contacts.facebook || 'No Link'}</div>
-                    <div><strong>WebSite</strong>: {props.profile.contacts.website || 'No Link'}</div>
-                    <div><strong>VK</strong>: {props.profile.contacts.vk || 'No Link'}</div>
-                    <div><strong>Twitter</strong>: {props.profile.contacts.twitter || 'No Link'}</div>
-                    <div><strong>Inst</strong>: {props.profile.contacts.instagram || 'No Link'}</div>
-                    <div><strong>YT</strong>: {props.profile.contacts.youtube || 'No Link'}</div>
-                    <div><strong>github</strong>: {props.profile.contacts.github || 'No Link'}</div>
-                    <div><strong>MainLink</strong>: {props.profile.contacts.mainLink || 'No Link'}</div>
+                <div className={s.desc_items}><strong className={s.desc_title}>Info:</strong>
+                    <div className={s.desc_item}><strong className={s.desc_sub_title}>Name: </strong>{props.profile.fullName}</div>
+                    <div className={s.desc_item}><strong className={s.desc_sub_title}>About Me: </strong>{props.profile.aboutMe}</div>
+                    <div className={s.desc_item}><strong className={s.desc_sub_title}>Looking For a Job: </strong> {props.profile.lookingForAJob ? 'Yes' : 'No'}</div>
+                    <div className={s.desc_item}><strong className={s.desc_sub_title}>Looking For: </strong>{props.profile.lookingForAJobDescription || 'No description'}
+                    </div>
+                </div>
+                <div className={s.desc_items}><strong className={s.desc_title}>Contacts:</strong>
+                    <div className={s.desc_item}>
+                        <strong className={s.desc_sub_title}>FaceBook: </strong>
+                        {props.profile.contacts.facebook ? <a href={props.profile.contacts.facebook}>{props.profile.contacts.facebook}</a> : 'No Link'}
+                    </div>
+                    <div className={s.desc_item}>
+                        <strong className={s.desc_sub_title}>WebSite: </strong>
+                        {props.profile.contacts.website ? <a href={props.profile.contacts.website}>{props.profile.contacts.website}</a> : 'No Link'}
+                    </div>
+                    <div className={s.desc_item}>
+                        <strong className={s.desc_sub_title}>VK: </strong>
+                        {props.profile.contacts.vk ? <a href={props.profile.contacts.vk}>{props.profile.contacts.vk}</a> : 'No Link'}
+                    </div>
+                    <div className={s.desc_item}>
+                        <strong className={s.desc_sub_title}>Twitter: </strong>
+                        {props.profile.contacts.twitter ? <a href={props.profile.contacts.twitter}>{props.profile.contacts.twitter}</a> : 'No Link'}
+                    </div>
+                    <div className={s.desc_item}>
+                        <strong className={s.desc_sub_title}>Inst: </strong>
+                        {props.profile.contacts.instagram ? <a href={props.profile.contacts.instagram}>{props.profile.contacts.instagram}</a> : 'No Link'}
+                    </div>
+                    <div className={s.desc_item}>
+                        <strong className={s.desc_sub_title}>YT: </strong>
+                        {props.profile.contacts.youtube ? <a href={props.profile.contacts.youtube}>{props.profile.contacts.youtube}</a> : 'No Link'}
+                    </div>
+                    <div className={s.desc_item}>
+                        <strong className={s.desc_sub_title}>github: </strong>
+                        {props.profile.contacts.github ? <a href={props.profile.contacts.github}>{props.profile.contacts.github}</a> : 'No Link'}
+                    </div>
+                    <div className={s.desc_item}>
+                        <strong className={s.desc_sub_title}>MainLink: </strong>
+                        {props.profile.contacts.mainLink ? <a href={props.profile.contacts.mainLink}>{props.profile.contacts.mainLink}</a> : 'No Link'}
+                    </div>
                 </div>
             </div>
         </div>

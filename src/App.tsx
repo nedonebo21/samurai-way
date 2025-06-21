@@ -23,12 +23,10 @@ export const App = () => {
             <Header/>
             <NavBar {...state.sideBar}/>
             <div className="app-wrapper-content">
-                {/*<Route path={'/'} render={() => <Redirect to={'/profile'}/>}></Route>*/}
-
-                <Route path={'/dialogs'} render={() => <DialogsPage/>}/>
-
+                <Route path={'/'} render={() => <Redirect to={'/profile'}/>}></Route>
                 <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
 
+                <Route path={'/dialogs'} render={() => <DialogsPage/>}/>
                 <Route path={'/news'} render={() => <NewsPage/>}/>
                 <Route path={'/music'} render={() => <MusicPage/>}/>
                 <Route path={'/users'} render={() => <UsersPage/>}/>
