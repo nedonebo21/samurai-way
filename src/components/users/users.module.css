@@ -70,3 +70,12 @@
     background-color: #231c43;
     color: #00fdfd;
 }
+
+a img {
+    border: 1px solid #231c43;
+    transition: .3s border;
+}
+
+a img:hover {
+    border: 1px solid white;
+}
