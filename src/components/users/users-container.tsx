@@ -1,9 +1,19 @@
 import {connect} from "react-redux";
-import {ActionsType, StateType, User} from "../../redux/store";
-import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unFollowAC} from "../../redux/users-reducer";
+import s from './users.module.css'
+import {
+    followAC,
+    setCurrentPageAC,
+    setTotalUsersCountAC,
+    setUsersAC,
+    toggleFetchingAC,
+    unFollowAC
+} from "../../redux/users-reducer";
 import React from "react";
 import axios from "axios";
 import {Users} from "./users";
+import {StateType, User} from "../../redux/types/state-types";
+import {ActionsType} from "../../redux/types/action-types";
+import preloader from 'src/assets/img/infinite-spinner.svg'
 
 
 type UsersApiType = {
@@ -13,14 +23,19 @@ type UsersApiType = {
     setUsers: (users: User[]) => void
     setCurrentPage: (currentPage: number) => void
     setTotalUsersCount: (totalCount: number) => void
+    toggleIsFetching: (isFetching: boolean) => void
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 }
+
 class UsersApiComponent extends React.Component<UsersApiType> {
     componentDidMount() {
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(res => {
+                this.props.toggleIsFetching(false)
                 this.props.setUsers(res.data.items)
                 this.props.setTotalUsersCount(res.data.totalCount)
             })
@@ -28,21 +43,25 @@ class UsersApiComponent extends React.Component<UsersApiType> {
 
     onPageChanged = (pageNumber: number) => {
         this.props.setCurrentPage(pageNumber)
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(res => {
+                this.props.toggleIsFetching(false)
                 this.props.setUsers(res.data.items)
             })
     }
 
     render() {
-        return <Users totalUsersCount={this.props.totalUsersCount}
-                      pageSize={this.props.pageSize}
-                      currentPage={this.props.currentPage}
-                      onPageChanged={this.onPageChanged}
-                      users={this.props.users}
-                      follow={this.props.follow}
-                      unFollow={this.props.unFollow}
-        />
+        return <>
+            {this.props.isFetching ? <img className={s.preloader} src={preloader} alt=""/> : null}
+            <Users totalUsersCount={this.props.totalUsersCount}
+                   pageSize={this.props.pageSize}
+                   currentPage={this.props.currentPage}
+                   onPageChanged={this.onPageChanged}
+                   users={this.props.users}
+                   follow={this.props.follow}
+                   unFollow={this.props.unFollow}/>
+        </>
     }
 }
 
@@ -53,6 +72,7 @@ let mapStateToProps = (state: StateType) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching
     }
 }
 let mapDispatchToProps = (dispatch: (action: ActionsType) => void) => {
@@ -71,8 +91,11 @@ let mapDispatchToProps = (dispatch: (action: ActionsType) => void) => {
         },
         setTotalUsersCount: (totalCount: number) => {
             dispatch(setTotalUsersCountAC(totalCount))
+        },
+        toggleIsFetching: (isFetching: boolean)=> {
+            dispatch(toggleFetchingAC(isFetching))
         }
     }
 }
 
-export const UsersContainer = connect(mapStateToProps,mapDispatchToProps)(UsersApiComponent)
+export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersApiComponent)

@@ -70,3 +70,8 @@
     background-color: #231c43;
     color: #00fdfd;
 }
+.preloader{
+    margin: 140px auto;
+    width: 100px;
+    height: 74px;
+}

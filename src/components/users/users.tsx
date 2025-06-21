@@ -3,7 +3,7 @@ import defaultAvatar from '../../assets/img/default-avatar.jpg';
 import {Button} from "../../shared/ui/button/button";
 import {UserAvatar} from "../../shared/ui/user-avatar/user-avatar";
 import s from './users.module.css'
-import {User} from "../../redux/store";
+import {User} from "../../redux/types/state-types";
 
 type UsersType = {
     totalUsersCount: number
