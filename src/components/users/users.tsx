@@ -1,90 +1,72 @@
 import React from 'react';
-import {User} from "../../redux/store";
+import defaultAvatar from '../../assets/img/default-avatar.jpg';
 import {Button} from "../../shared/ui/button/button";
 import {UserAvatar} from "../../shared/ui/user-avatar/user-avatar";
 import s from './users.module.css'
-import axios from "axios";
-import defaultAvatar from '../../assets/img/default-avatar.jpg';
+import {User} from "../../redux/store";
 
 type UsersType = {
-    users: User[]
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    onPageChanged: (pageNumber: number) => void
     follow: (userId: number) => void
     unFollow: (userId: number) => void
-    setUsers: (users: User[]) => void
-    setCurrentPage: (currentPage: number) => void
-    setTotalUsersCount: (totalCount: number) => void
-    pageSize: number
-    totalUsersCount: number
-    currentPage: number
+    users: User[]
 }
+export const Users = (props: UsersType) => {
 
-export class Users extends React.Component<UsersType> {
-    componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(res => {
-                this.props.setUsers(res.data.items)
-                this.props.setTotalUsersCount(res.data.totalCount)
-            })
-    }
-    onPageChanged = (pageNumber: number) => {
-        this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then(res => {
-                this.props.setUsers(res.data.items)
-            })
+    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let pages = []
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
     }
 
-    render() {
-        const pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
-        let pages = []
-        for (let i = 1; i <= pagesCount; i++) {
-            pages.push(i)
-        }
-
-        return (
-            <div className={s.user_items}>
-                {
-                    this.props.users.map(el => {
-                        return (
-                            <div className={s.user_item} key={el.id}>
-                                <div className={s.user_action}>
-                                    <div>
-                                        <UserAvatar
-                                            avatarUrl={el.photos.small !== null ? el.photos.small : defaultAvatar}/>
-                                    </div>
-                                    <div>{el.followed
-                                        ? <Button onClick={() => {
-                                            this.props.unFollow(el.id)
-                                        }}>Unfollow</Button>
-                                        : <Button onClick={() => {
-                                            this.props.follow(el.id)
-                                        }}>Follow</Button>
-                                    }
-                                    </div>
+    return (
+        <div className={s.user_items}>
+            {
+                props.users.map(el => {
+                    return (
+                        <div className={s.user_item} key={el.id}>
+                            <div className={s.user_action}>
+                                <div>
+                                    <UserAvatar
+                                        avatarUrl={el.photos.small !== null ? el.photos.small : defaultAvatar}/>
                                 </div>
-                                <div className={s.user_description}>
-                                    <div className={s.user_info}>
-                                        <div className={s.user_name}>{el.name}</div>
-                                        <div className={s.user_status}>{el.status}</div>
-                                    </div>
-                                    <div className={s.user_location}>
-                                        <div className={s.user_country}>{'el.location.country'}</div>
-                                        <div className={s.user_city}>{'el.location.city'}</div>
-                                    </div>
+                                <div>{el.followed
+                                    ? <Button onClick={() => {
+                                        props.unFollow(el.id)
+                                    }}>Unfollow</Button>
+                                    : <Button onClick={() => {
+                                        props.follow(el.id)
+                                    }}>Follow</Button>
+                                }
                                 </div>
                             </div>
-                        )
-                    })
-                }
-                <div className={s.btn_block}>
-                    {pages.map(el => {
-                        return <Button
-                            disabled={this.props.currentPage === el}
-                            className={this.props.currentPage === el ? s.selected_page : ''}
-                            onClick={() => { this.onPageChanged(el) }}>{el}</Button>
-                    })}
-                </div>
+                            <div className={s.user_description}>
+                                <div className={s.user_info}>
+                                    <div className={s.user_name}>{el.name}</div>
+                                    <div className={s.user_status}>{el.status}</div>
+                                </div>
+                                <div className={s.user_location}>
+                                    <div className={s.user_country}>{'el.location.country'}</div>
+                                    <div className={s.user_city}>{'el.location.city'}</div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+            <div className={s.btn_block}>
+                {pages.map(el => {
+                    return <Button
+                        disabled={props.currentPage === el}
+                        className={props.currentPage === el ? s.selected_page : ''}
+                        onClick={() => {
+                            props.onPageChanged(el)
+                        }}>{el}</Button>
+                })}
             </div>
-        )
-    }
+        </div>
+    )
 }
