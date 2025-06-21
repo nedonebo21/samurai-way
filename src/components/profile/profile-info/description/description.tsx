@@ -12,7 +12,7 @@ export const Description = (props:DescriptionType) => {
         <div className={s.description}>
             <ProfileAvatar avatarUrl={props.profile.photos.large}/>
             <div className={s.info}>
-                <strong>Info</strong>
+                <strong>Info:</strong>
                 <div><strong>Name:</strong> {props.profile.fullName}</div>
                 <div><strong>About Me</strong>: {props.profile.aboutMe}</div>
                 <div><strong>Looking For a Job</strong>: {props.profile.lookingForAJob ? 'Yes' : 'No'}</div>
