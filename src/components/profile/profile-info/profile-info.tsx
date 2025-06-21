@@ -2,8 +2,13 @@ import s from "./profile-info.module.css";
 import {Description} from "./description/description";
 import React from "react";
 import {Preloader} from "../../../shared/ui/preloader/preloader";
+import {ProfileType} from "../../../redux/types/state-types";
 
-export const ProfileInfo = (props:any) => {
+type ProfileInfoType = {
+    profile: ProfileType
+}
+
+export const ProfileInfo = (props: ProfileInfoType) => {
     if (!props.profile) return <Preloader/>
 
     return (

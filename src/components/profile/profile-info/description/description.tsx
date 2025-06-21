@@ -1,8 +1,13 @@
 import React from 'react';
 import s from './description.module.css'
 import {ProfileAvatar} from "../../../../shared/ui/profile-avatar/profile-avatar";
+import {ProfileType} from "../../../../redux/types/state-types";
 
-export const Description = (props:any) => {
+type DescriptionType = {
+    profile: ProfileType
+}
+
+export const Description = (props:DescriptionType) => {
     return (
         <div className={s.description}>
             <ProfileAvatar avatarUrl={props.profile.photos.large}/>
