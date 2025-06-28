@@ -1,47 +1,56 @@
-import {ProfileType, User} from "./state-types";
+import {AuthType, ProfileType, User} from "./state-types";
 
 
 export type AddPostActionType = {
-    type: 'ADD-POST'
+  type: 'ADD-POST'
 }
 export type UpdatePostTextActionType = {
-    type: 'UPDATE-NEW-POST-TEXT'
-    newText: string
+  type: 'UPDATE-NEW-POST-TEXT'
+  newText: string
 }
 export type AddMessageActionType = {
-    type: 'ADD-MESSAGE'
+  type: 'ADD-MESSAGE'
 }
 export type UpdateMessageTextType = {
-    type: 'UPDATE-NEW-MESSAGE-TEXT'
-    newMessage: string
+  type: 'UPDATE-NEW-MESSAGE-TEXT'
+  newMessage: string
 }
 export type SetUsersActionType = {
-    type: 'SET-USERS'
-    users: User[]
+  type: 'SET-USERS'
+  users: User[]
 }
 export type FollowActionType = {
-    type: 'FOLLOW'
-    userId: number
+  type: 'FOLLOW'
+  userId: number
 }
 export type UnFollowActionType = {
-    type: 'UNFOLLOW'
-    userId: number
+  type: 'UNFOLLOW'
+  userId: number
 }
 export type SetCurrentPageActionType = {
-    type: 'SET-CURRENT-PAGE'
-    pageNumber: number
+  type: 'SET-CURRENT-PAGE'
+  pageNumber: number
 }
 export type SetTotalUsersCountActionType = {
-    type: 'SET-TOTAL-USERS-COUNT'
-    totalCount: number
+  type: 'SET-TOTAL-USERS-COUNT'
+  totalCount: number
 }
 export type ToggleFetchingActionType = {
-    type: 'TOGGLE-FETCHING'
-    isFetching: boolean
+  type: 'TOGGLE-FETCHING'
+  isFetching: boolean
 }
 export type SetUserProfileActionType = {
-    type: 'SET-USER-PROFILE'
-    profile: ProfileType
+  type: 'SET-USER-PROFILE'
+  profile: ProfileType
+}
+
+export type SetAuthUserDataType = {
+  type: 'SET-USER-DATA'
+  data: {
+    userId: number | null
+    email: string | null
+    login: string | null
+  }
 }
 
 export type ActionsType = AddPostActionType
@@ -55,3 +64,4 @@ export type ActionsType = AddPostActionType
     | SetTotalUsersCountActionType
     | ToggleFetchingActionType
     | SetUserProfileActionType
+    | SetAuthUserDataType

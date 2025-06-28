@@ -75,9 +75,17 @@ export type UsersPageType = {
     isFetching: boolean
 }
 
+export type AuthType = {
+    userId: number | null
+    email: string | null
+    login: string | null
+    isAuth: boolean
+}
+
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: MessagesPageType
     sideBar: SideBarType
     usersPage: UsersPageType
+    auth: AuthType
 }
