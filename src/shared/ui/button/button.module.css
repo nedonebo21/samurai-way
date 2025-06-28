@@ -9,6 +9,13 @@
     border-radius: 10px;
     transition: .2s;
 }
+.button:disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+.button:disabled:hover{
+    cursor: not-allowed;
+}
 .button:hover {
     cursor: pointer;
     background-color: white;
