@@ -4,11 +4,10 @@ import {
   setCurrentPageAC,
   setTotalUsersCountAC,
   setUsersAC,
-  toggleFetchingAC,
+  toggleFetchingAC, toggleFollowingProgressAC,
   unFollowAC
 } from "../../redux/users-reducer";
 import React from "react";
-import axios from "axios";
 import {Users} from "./users";
 import {StateType, User} from "../../redux/types/state-types";
 import {Preloader} from "../../shared/ui/preloader/preloader";
@@ -23,6 +22,8 @@ type UsersApiType = {
   setCurrentPage: (currentPage: number) => void
   setTotalUsersCount: (totalCount: number) => void
   toggleIsFetching: (isFetching: boolean) => void
+  toggleFollowingProgress: (isFetching: boolean, userId: number) => void
+  followingInProgress: number[]
   pageSize: number
   totalUsersCount: number
   currentPage: number
@@ -59,7 +60,10 @@ class UsersApiComponent extends React.Component<UsersApiType> {
                        onPageChanged={this.onPageChanged}
                        users={this.props.users}
                        follow={this.props.follow}
-                       unFollow={this.props.unFollow}/>
+                       unFollow={this.props.unFollow}
+                       toggleFollowingProgress={this.props.toggleFollowingProgress}
+                       followingInProgress={this.props.followingInProgress}
+              />
           }
         </>
     )
@@ -72,7 +76,8 @@ let mapStateToProps = (state: StateType) => {
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching
+    isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress
   }
 }
 export const UsersContainer = connect(mapStateToProps, {
@@ -81,5 +86,6 @@ export const UsersContainer = connect(mapStateToProps, {
   setUsers: setUsersAC,
   setCurrentPage: setCurrentPageAC,
   setTotalUsersCount: setTotalUsersCountAC,
-  toggleIsFetching: toggleFetchingAC
+  toggleIsFetching: toggleFetchingAC,
+  toggleFollowingProgress: toggleFollowingProgressAC
 })(UsersApiComponent)

@@ -52,6 +52,11 @@ export type SetAuthUserDataType = {
     login: string | null
   }
 }
+export type ToggleFollowingProgressType = {
+  type: 'TOGGLE-FOLLOWING-PROGRESS'
+  isFetching: boolean
+  userId: number
+}
 
 export type ActionsType = AddPostActionType
     | UpdatePostTextActionType
@@ -65,3 +70,4 @@ export type ActionsType = AddPostActionType
     | ToggleFetchingActionType
     | SetUserProfileActionType
     | SetAuthUserDataType
+    | ToggleFollowingProgressType
