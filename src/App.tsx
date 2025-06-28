@@ -11,6 +11,7 @@ import {useStore} from "react-redux";
 import {UsersPage} from "./pages/users-page";
 import {StoreType} from "./redux/redux-store";
 import {ProfileContainer} from "./components/profile/profile-container";
+import {HeaderContainer} from "./components/header/header-container";
 
 
 export const App = () => {
@@ -20,7 +21,7 @@ export const App = () => {
     const state = store.getState()
     return (
         <div className="app-wrapper">
-            <Header/>
+            <HeaderContainer/>
             <NavBar {...state.sideBar}/>
             <div className="app-wrapper-content">
                 <Route path={'/'} render={() => <Redirect to={'/profile'}/>}></Route>
