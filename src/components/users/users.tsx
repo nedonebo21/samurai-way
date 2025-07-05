@@ -5,16 +5,14 @@ import {UserIcon} from "../../shared/ui/user-icon/user-icon";
 import s from './users.module.css'
 import {User} from "../../redux/types/state-types";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
 
 type UsersType = {
   totalUsersCount: number
   pageSize: number
   currentPage: number
   onPageChanged: (pageNumber: number) => void
-  follow: (userId: number) => void
-  unFollow: (userId: number) => void
-  toggleFollowingProgress: (isFetching: boolean, userId: number) => void
+  followThunk: (userId: number) => void
+  unFollowThunk: (userId: number) => void
   followingInProgress: number[]
   users: User[]
 }
@@ -39,24 +37,16 @@ export const Users = (props: UsersType) => {
                       </NavLink>
                     </div>
                     <div>{el.followed
-                        ? <Button disabled={props.followingInProgress.some(id => id === el.id)} onClick={() => {
-                          props.toggleFollowingProgress(true, el.id)
-                          usersAPI.unFollowUser(el.id).then(data => {
-                            if (data.resultCode === 0) {
-                              props.unFollow(el.id)
-                            }
-                            props.toggleFollowingProgress(false, el.id)
-                          })
-                        }}>Unfollow</Button>
-                        : <Button disabled={props.followingInProgress.some(id => id === el.id)} onClick={() => {
-                          props.toggleFollowingProgress(true, el.id)
-                          usersAPI.followUser(el.id).then(data => {
-                            if (data.resultCode === 0) {
-                              props.follow(el.id)
-                            }
-                            props.toggleFollowingProgress(false, el.id)
-                          })
-                        }}>Follow</Button>
+                        ? <Button
+                            disabled={props.followingInProgress.some(id => id === el.id)}
+                            onClick={() => {
+                              props.unFollowThunk(el.id)
+                            }}>Unfollow</Button>
+                        : <Button
+                            disabled={props.followingInProgress.some(id => id === el.id)}
+                            onClick={() => {
+                              props.followThunk(el.id)
+                            }}>Follow</Button>
                     }
                     </div>
                   </div>
