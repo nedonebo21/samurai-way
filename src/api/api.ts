@@ -21,4 +21,10 @@ export const usersAPI = {
     return instance.post(`follow/${userId}`, {})
         .then(res => res.data)
   },
+  getProfile(userId: number) {
+    return instance.get(`profile/${userId}`)
+  }
+}
+export const authAPI = {
+  me() {return instance.get(`auth/me`)}
 }
