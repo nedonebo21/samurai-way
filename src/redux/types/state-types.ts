@@ -1,3 +1,5 @@
+import {store} from "../redux-store";
+
 export type UserDataType = {
     id: string
     name: string
@@ -90,3 +92,4 @@ export type StateType = {
     usersPage: UsersPageType
     auth: AuthType
 }
+export type DispatchType = typeof store.dispatch
