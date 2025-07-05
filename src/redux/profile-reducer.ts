@@ -1,5 +1,6 @@
-import {PostType, ProfilePageType, ProfileType} from "./types/state-types";
+import {DispatchType, PostType, ProfilePageType, ProfileType} from "./types/state-types";
 import {ActionsType, AddPostActionType, SetUserProfileActionType, UpdatePostTextActionType} from "./types/action-types";
+import {usersAPI} from "../api/api";
 
 let initialState: ProfilePageType = {
     postsData: [
@@ -58,3 +59,10 @@ export const updatePostTextAC = (text: string): UpdatePostTextActionType => (
 export const setUserProfile = (profile: ProfileType): SetUserProfileActionType => (
     {type: 'SET-USER-PROFILE', profile}
 )
+export const getUserProfileThunkCreator = (userId: number) => {
+    return (dispatch: DispatchType) => {
+        usersAPI.getProfile(userId).then(res => {
+            dispatch(setUserProfile(res.data))
+        })
+    }
+}

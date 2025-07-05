@@ -5,7 +5,6 @@ import {ProfileType} from "../redux/types/state-types";
 
 type ProfilePageType = {
     profile: ProfileType
-    setUserProfile: (profile: ProfileType) => void
 }
 
 export const ProfilePage = (props: ProfilePageType) => {
