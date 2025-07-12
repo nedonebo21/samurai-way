@@ -12,27 +12,29 @@ import {UsersPage} from "./pages/users-page";
 import {StoreType} from "./redux/redux-store";
 import {ProfileContainer} from "./components/profile/profile-container";
 import {HeaderContainer} from "./components/header/header-container";
+import {Login} from "./components/login/login";
 
 
 export const App = () => {
-    const store: StoreType = useStore()
-    if (!store) return null
+  const store: StoreType = useStore()
+  if (!store) return null
 
-    const state = store.getState()
-    return (
-        <div className="app-wrapper">
-            <HeaderContainer/>
-            <NavBar {...state.sideBar}/>
-            <div className="app-wrapper-content">
-                <Route path={'/'} render={() => <Redirect to={'/profile'}/>}></Route>
-                <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
+  const state = store.getState()
+  return (
+      <div className="app-wrapper">
+        <HeaderContainer/>
+        <NavBar {...state.sideBar}/>
+        <div className="app-wrapper-content">
+          <Route path={'/'} render={() => <Redirect to={'/profile'}/>}></Route>
+          <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
 
-                <Route path={'/dialogs'} render={() => <DialogsPage/>}/>
-                <Route path={'/news'} render={() => <NewsPage/>}/>
-                <Route path={'/music'} render={() => <MusicPage/>}/>
-                <Route path={'/users'} render={() => <UsersPage/>}/>
-                <Route path={'/settings'} render={() => <SettingsPage/>}/>
-            </div>
+          <Route path={'/dialogs'} render={() => <DialogsPage/>}/>
+          <Route path={'/news'} render={() => <NewsPage/>}/>
+          <Route path={'/music'} render={() => <MusicPage/>}/>
+          <Route path={'/users'} render={() => <UsersPage/>}/>
+          <Route path={'/settings'} render={() => <SettingsPage/>}/>
+          <Route path={'/login'} render={() => <Login/>}/>
         </div>
-    )
+      </div>
+  )
 }
