@@ -7,6 +7,8 @@ import React from "react";
 import {Users} from "./users";
 import {StateType, User} from "../../redux/types/state-types";
 import {Preloader} from "../../shared/ui/preloader/preloader";
+import {compose} from "redux";
+import {WithAuthRedirect} from "../../hoc/with-auth-redirect";
 
 
 type UsersApiType = {
@@ -19,6 +21,7 @@ type UsersApiType = {
   totalUsersCount: number
   currentPage: number
   isFetching: boolean
+  isAuth: boolean
 }
 
 class UsersApiComponent extends React.Component<UsersApiType> {
@@ -57,11 +60,16 @@ let mapStateToProps = (state: StateType) => {
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
-    followingInProgress: state.usersPage.followingInProgress
+    followingInProgress: state.usersPage.followingInProgress,
+    isAuth: state.auth.isAuth
   }
 }
-export const UsersContainer = connect(mapStateToProps, {
-  getUsersThunk: getUsersThunkCreator,
-  followThunk: followThunkCreator,
-  unFollowThunk: unFollowThunkCreator
-})(UsersApiComponent)
+const ComposedComponent = compose<React.ComponentType>(
+    connect(mapStateToProps, {
+      getUsersThunk: getUsersThunkCreator,
+      followThunk: followThunkCreator,
+      unFollowThunk: unFollowThunkCreator
+    }),
+    WithAuthRedirect
+)(UsersApiComponent)
+export const UsersContainer = () => <ComposedComponent/>
