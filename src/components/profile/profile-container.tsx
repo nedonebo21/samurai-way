@@ -1,11 +1,9 @@
 import React from 'react';
 import {ProfilePage} from "../../pages/profile-page";
-import axios from "axios";
 import {connect} from "react-redux";
 import {ProfileType, StateType} from "../../redux/types/state-types";
-import {getUserProfileThunkCreator, setUserProfile} from "../../redux/profile-reducer";
-import {RouteComponentProps, withRouter} from "react-router-dom";
-import {usersAPI} from "../../api/api";
+import {getUserProfileThunkCreator} from "../../redux/profile-reducer";
+import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
 
 interface RouteParams {
   userId: string
@@ -14,6 +12,7 @@ interface RouteParams {
 type ProfileApiType = {
   getUserProfileThunk: (userId: number) => void
   profile: ProfileType
+  isAuth: boolean
 } & RouteComponentProps<RouteParams>
 
 export class ProfileApiComponent extends React.Component<ProfileApiType> {
@@ -24,12 +23,15 @@ export class ProfileApiComponent extends React.Component<ProfileApiType> {
   }
 
   render() {
+    if (!this.props.isAuth) return <Redirect to={'/login'}/>
+
     return <ProfilePage {...this.props} profile={this.props.profile}/>
   }
 }
 
 let mapStateToProps = (state: StateType) => ({
-  profile: state.profilePage.profile
+  profile: state.profilePage.profile,
+  isAuth: state.auth.isAuth
 })
 
 let WithUrlDataContainer = withRouter(ProfileApiComponent)
