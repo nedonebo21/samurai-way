@@ -60,6 +60,7 @@ export type ProfilePageType = {
     postsData: PostType[]
     newPostText: string
     profile: ProfileType
+    status: string
 }
 export type MessagesPageType = {
     usersDialogsData: UserDataType[]

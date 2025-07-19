@@ -22,9 +22,23 @@ export const usersAPI = {
         .then(res => res.data)
   },
   getProfile(userId: number) {
+    console.warn('Use profileAPI object')
+    return profileAPI.getProfile(userId)
+  }
+}
+export const profileAPI = {
+  getProfile(userId: number) {
     return instance.get(`profile/${userId}`)
+  },
+  getStatus(userId: number) {
+    return instance.get(`profile/status/${userId}`)
+  },
+  updateStatus(status: string) {
+    return instance.put(`profile/status`, {status})
   }
 }
 export const authAPI = {
-  me() {return instance.get(`auth/me`)}
+  me() {
+    return instance.get(`auth/me`)
+  }
 }

@@ -44,6 +44,11 @@ export type SetUserProfileActionType = {
   profile: ProfileType
 }
 
+export type SetUserStatusActionType = {
+  type: 'SET-STATUS'
+  status: string
+}
+
 export type SetAuthUserDataType = {
   type: 'SET-USER-DATA'
   data: {
@@ -71,3 +76,4 @@ export type ActionsType = AddPostActionType
     | SetUserProfileActionType
     | SetAuthUserDataType
     | ToggleFollowingProgressType
+    | SetUserStatusActionType
