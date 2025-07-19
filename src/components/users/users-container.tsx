@@ -2,13 +2,13 @@ import {connect} from "react-redux";
 import {
   followThunkCreator, getUsersThunkCreator,
   unFollowThunkCreator
-} from "../../redux/users-reducer";
+} from "./model/users-reducer";
 import React from "react";
 import {Users} from "./users";
-import {StateType, User} from "../../redux/types/state-types";
+import {StateType, User} from "../../shared/types/state-types";
 import {Preloader} from "../../shared/ui/preloader/preloader";
 import {compose} from "redux";
-import {WithAuthRedirect} from "../../hoc/with-auth-redirect";
+import {WithAuthRedirect} from "../../shared/hoc/with-auth-redirect";
 
 
 type UsersApiType = {

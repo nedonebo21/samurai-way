@@ -1,4 +1,4 @@
-import {store} from "../redux-store";
+import {store} from "../../app/redux-store";
 
 export type UserDataType = {
     id: string

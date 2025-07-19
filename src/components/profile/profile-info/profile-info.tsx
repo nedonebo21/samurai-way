@@ -2,7 +2,7 @@ import s from "./profile-info.module.css";
 import {Description} from "./description/description";
 import React from "react";
 import {Preloader} from "../../../shared/ui/preloader/preloader";
-import {ProfileType} from "../../../redux/types/state-types";
+import {ProfileType} from "../../../shared/types/state-types";
 
 type ProfileInfoType = {
     profile: ProfileType

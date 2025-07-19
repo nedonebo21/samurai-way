@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "../dialogs.module.css";
 import {DialogItem} from "./dialog-item/dialog-item";
-import {MessagesPageType} from "../../../redux/types/state-types";
+import {MessagesPageType} from "../../../shared/types/state-types";
 import {Redirect} from "react-router-dom";
 
 type Props = {

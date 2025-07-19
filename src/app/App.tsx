@@ -1,17 +1,17 @@
 import React from 'react';
 import './App.css';
-import {NavBar} from "./components/nav-bar/nav-bar";
-import {DialogsPage} from "./pages/dialogs-page";
+import {NavBar} from "../components/nav-bar/nav-bar";
+import {DialogsPage} from "../pages/dialogs-page";
 import {Redirect, Route} from "react-router-dom";
-import {NewsPage} from "./pages/news-page";
-import {MusicPage} from "./pages/music-page";
-import {SettingsPage} from "./pages/settings-page";
+import {NewsPage} from "../pages/news-page";
+import {MusicPage} from "../pages/music-page";
+import {SettingsPage} from "../pages/settings-page";
 import {useStore} from "react-redux";
-import {UsersPage} from "./pages/users-page";
-import {StoreType} from "./redux/redux-store";
-import {ProfileContainer} from "./components/profile/profile-container";
-import {HeaderContainer} from "./components/header/header-container";
-import {Login} from "./components/login/login";
+import {UsersPage} from "../pages/users-page";
+import {StoreType} from "./redux-store";
+import {ProfileContainer} from "../components/profile/profile-container";
+import {HeaderContainer} from "../components/header/header-container";
+import {Login} from "../components/login/login";
 
 
 export const App = () => {

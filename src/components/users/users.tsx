@@ -3,7 +3,7 @@ import defaultAvatar from '../../assets/img/default-avatar.jpg';
 import {Button} from "../../shared/ui/button/button";
 import {UserIcon} from "../../shared/ui/user-icon/user-icon";
 import s from './users.module.css'
-import {User} from "../../redux/types/state-types";
+import {User} from "../../shared/types/state-types";
 import {NavLink} from "react-router-dom";
 
 type UsersType = {

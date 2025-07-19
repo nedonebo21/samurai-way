@@ -1,5 +1,5 @@
-import {MessagesPageType, MessageType} from "./types/state-types";
-import {ActionsType, AddMessageActionType, UpdateMessageTextType} from "./types/action-types";
+import {MessagesPageType, MessageType} from "../../../shared/types/state-types";
+import {ActionsType, AddMessageActionType, UpdateMessageTextType} from "../../../shared/types/action-types";
 
 let initialState = {
     usersDialogsData: [

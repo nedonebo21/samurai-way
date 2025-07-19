@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './description.module.css'
 import {ProfileAvatar} from "../../../../shared/ui/profile-avatar/profile-avatar";
-import {ProfileType} from "../../../../redux/types/state-types";
+import {ProfileType} from "../../../../shared/types/state-types";
 import {ProfileStatus} from "./profile-status/profile-status";
 
 type DescriptionType = {

@@ -1,5 +1,5 @@
-import {ActionsType, SetAuthUserDataType} from "./types/action-types";
-import {AuthType, DispatchType} from "./types/state-types";
+import {ActionsType, SetAuthUserDataType} from "../types/action-types";
+import {AuthType, DispatchType} from "../types/state-types";
 import {authAPI} from "../api/api";
 
 let initialState: AuthType = {

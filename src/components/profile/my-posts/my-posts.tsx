@@ -3,7 +3,7 @@ import s from "./my-posts.module.css";
 import {Post} from "./post/post";
 import {Button} from "../../../shared/ui/button/button";
 import {Textarea} from "../../../shared/ui/textarea/textarea";
-import {ProfilePageType} from "../../../redux/types/state-types";
+import {ProfilePageType} from "../../../shared/types/state-types";
 
 type MyPostsType = {
     updateNewPostText: (text: string) => void

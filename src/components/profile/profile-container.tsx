@@ -1,10 +1,10 @@
 import React from 'react';
 import {ProfilePage} from "../../pages/profile-page";
 import {connect} from "react-redux";
-import {ProfileType, StateType} from "../../redux/types/state-types";
-import {getUserProfileThunkCreator} from "../../redux/profile-reducer";
+import {ProfileType, StateType} from "../../shared/types/state-types";
+import {getUserProfileThunkCreator} from "./model/profile-reducer";
 import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
-import {WithAuthRedirect} from "../../hoc/with-auth-redirect";
+import {WithAuthRedirect} from "../../shared/hoc/with-auth-redirect";
 import {compose} from "redux";
 import {DialogItems} from "../dialogs/dialog-items/dialog-items";
 
