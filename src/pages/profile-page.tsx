@@ -5,12 +5,14 @@ import {ProfileType} from "../shared/types/state-types";
 
 type ProfilePageType = {
   profile: ProfileType
+  status: string
+  updateStatusThunk: (status: string) => void
 }
 
 export const ProfilePage = (props: ProfilePageType) => {
   return (
       <div>
-        <ProfileInfo profile={props.profile}/>
+        <ProfileInfo profile={props.profile} status={props.status} updateStatusThunk={props.updateStatusThunk}/>
         <MyPostsContainer/>
       </div>
   )

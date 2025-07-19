@@ -2,11 +2,10 @@ import React from 'react';
 import {ProfilePage} from "../../pages/profile-page";
 import {connect} from "react-redux";
 import {ProfileType, StateType} from "../../shared/types/state-types";
-import {getUserProfileThunkCreator} from "./model/profile-reducer";
-import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
+import {getUserProfileThunkCreator, getUserStatusThunkCreator, updateStatusThunkCreator} from "./model/profile-reducer";
+import {RouteComponentProps, withRouter} from "react-router-dom";
 import {WithAuthRedirect} from "../../shared/hoc/with-auth-redirect";
 import {compose} from "redux";
-import {DialogItems} from "../dialogs/dialog-items/dialog-items";
 
 interface RouteParams {
   userId: string
@@ -16,6 +15,9 @@ type ProfileApiType = {
   getUserProfileThunk: (userId: number) => void
   profile: ProfileType
   isAuth: boolean
+  getUserStatusThunk: (userId: number) => void
+  updateStatusThunk: (status: string) => void
+  status: string
 } & RouteComponentProps<RouteParams>
 
 export class ProfileApiComponent extends React.Component<ProfileApiType> {
@@ -23,6 +25,7 @@ export class ProfileApiComponent extends React.Component<ProfileApiType> {
     let userId = parseInt(this.props.match.params.userId, 10);
     if (!userId) userId = 2342324329843
     this.props.getUserProfileThunk(userId)
+    this.props.getUserStatusThunk(userId)
   }
 
   render() {
@@ -32,11 +35,14 @@ export class ProfileApiComponent extends React.Component<ProfileApiType> {
 
 let mapStateToProps = (state: StateType) => ({
   profile: state.profilePage.profile,
+  status: state.profilePage.status
 })
 
 const ComposedComponent = compose<React.ComponentType>(
     connect(mapStateToProps, {
-      getUserProfileThunk: getUserProfileThunkCreator
+      getUserProfileThunk: getUserProfileThunkCreator,
+      getUserStatusThunk: getUserStatusThunkCreator,
+      updateStatusThunk: updateStatusThunkCreator,
     }),
     withRouter,
     WithAuthRedirect

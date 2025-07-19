@@ -6,6 +6,8 @@ import {ProfileStatus} from "./profile-status/profile-status";
 
 type DescriptionType = {
     profile: ProfileType
+    status: string
+    updateStatusThunk: (status: string) => void
 }
 
 export const Description = (props: DescriptionType) => {
@@ -13,7 +15,7 @@ export const Description = (props: DescriptionType) => {
         <div className={s.description}>
             <ProfileAvatar avatarUrl={props.profile.photos.large}/>
             <div className={s.info}>
-                <ProfileStatus status={'yo'}/>
+                <ProfileStatus status={props.status} updateStatusThunk={props.updateStatusThunk}/>
                 <div className={s.items_container}>
                     <div className={s.desc_items}><strong className={s.desc_title}>Info:</strong>
                         <div className={s.desc_item}><strong
