@@ -8,6 +8,36 @@ import {
 } from "../../../shared/types/action-types";
 import {profileAPI} from "../../../shared/api/api";
 
+// let initialState: ProfilePageType = {
+//   postsData: [
+//     {id: "1", message: "Yo", likes: 12},
+//     {id: "2", message: "Its my social network!!!", likes: 73},
+//     {id: "3", message: "I hope serega pirat will be my fan", likes: 999},
+//   ],
+//   profile: {
+//     aboutMe: 'Joskiy 4el',
+//     contacts: {
+//       facebook: null,
+//       website: 'pornhub.com',
+//       vk: 'Контора пидарасов',
+//       twitter: null,
+//       instagram: 'залупа.com',
+//       youtube: null,
+//       github: 'https://github.com/nedonebo21',
+//       mainLink: null
+//     },
+//     fullName: 'Stanislav',
+//     lookingForAJob: true,
+//     lookingForAJobDescription: 'yo',
+//     photos: {
+//       large: 'https://i.ytimg.com/vi/qbxteW4kI6k/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGHEgOyhyMA8=&rs=AOn4CLDiLrIP6bTF4-NrmKQH970OwjNRsg',
+//       small: 'https://i.ytimg.com/vi/qbxteW4kI6k/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGHEgOyhyMA8=&rs=AOn4CLDiLrIP6bTF4-NrmKQH970OwjNRsg',
+//     },
+//     userId: 32493,
+//   },
+//   newPostText: 'Yo',
+//   status: '',
+// }
 let initialState: ProfilePageType = {
   postsData: [
     {id: "1", message: "Yo", likes: 12},
@@ -15,30 +45,29 @@ let initialState: ProfilePageType = {
     {id: "3", message: "I hope serega pirat will be my fan", likes: 999},
   ],
   profile: {
-    aboutMe: 'Joskiy 4el',
+    aboutMe: '',
     contacts: {
       facebook: null,
-      website: 'pornhub.com',
-      vk: 'Контора пидарасов',
+      website: null,
+      vk: null,
       twitter: null,
-      instagram: 'залупа.com',
+      instagram: null,
       youtube: null,
-      github: 'https://github.com/nedonebo21',
+      github: null,
       mainLink: null
     },
-    fullName: 'Stanislav',
+    fullName: '',
     lookingForAJob: true,
-    lookingForAJobDescription: 'yo',
+    lookingForAJobDescription: '',
     photos: {
-      large: 'https://i.ytimg.com/vi/qbxteW4kI6k/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGHEgOyhyMA8=&rs=AOn4CLDiLrIP6bTF4-NrmKQH970OwjNRsg',
-      small: 'https://i.ytimg.com/vi/qbxteW4kI6k/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGHEgOyhyMA8=&rs=AOn4CLDiLrIP6bTF4-NrmKQH970OwjNRsg',
+      large: null,
+      small: null,
     },
     userId: 32493,
   },
-  newPostText: 'Yo',
-  status: 'qwe',
+  newPostText: '',
+  status: '',
 }
-
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionsType) => {
   switch (action.type) {
     case 'ADD-POST':
@@ -74,14 +103,14 @@ export const setUserStatus = (status: string): SetUserStatusActionType => (
 export const getUserProfileThunkCreator = (userId: number) => {
   return (dispatch: DispatchType) => {
     profileAPI.getProfile(userId).then(res => {
-      dispatch(setUserProfile(res.data.data))
+      dispatch(setUserProfile(res.data))
     })
   }
 }
 export const getUserStatusThunkCreator = (userId: number) => {
   return (dispatch: DispatchType) => {
     profileAPI.getStatus(userId).then(res => {
-      dispatch(setUserStatus(res.data.data))
+      dispatch(setUserStatus(res.data))
     })
   }
 }
