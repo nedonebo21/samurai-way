@@ -22,6 +22,13 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
   changeStatus = (e: ChangeEvent<HTMLInputElement>) => {
     this.setState({status: e.currentTarget.value})
   }
+  componentDidUpdate(prevProps: ProfileStatusPropsType, prevState: typeof this.state) {
+    if (prevProps.status !== this.props.status){
+      this.setState({
+        status: this.props.status
+      })
+    }
+  }
 
   render() {
     return (
