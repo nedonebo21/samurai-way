@@ -1,10 +1,17 @@
 import React from 'react';
 import s from "./posts-avatar.module.css";
+import defaultAvatar from '../../../../assets/img/default-avatar.jpg'
 
-export const PostsAvatar = () => {
-    return (
-        <img className={s.img}
-             src="https://i.ytimg.com/vi/qbxteW4kI6k/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGHEgOyhyMA8=&rs=AOn4CLDiLrIP6bTF4-NrmKQH970OwjNRsg"
-             alt=""/>
-    );
+type PostsAvatarPropsType = {
+  avatar: string | null
+}
+
+export const PostsAvatar = (props: PostsAvatarPropsType) => {
+  return (
+      <img className={s.img}
+           src={!!props.avatar
+               ? props.avatar
+               : defaultAvatar}
+           alt=""/>
+  );
 };

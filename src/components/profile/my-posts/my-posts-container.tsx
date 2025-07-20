@@ -6,7 +6,8 @@ import {StateType} from "../../../shared/types/state-types";
 let mapStateToProps = (state: StateType) => {
     console.log('MAP STATE', state.profilePage)
     return {
-        profilePage: state.profilePage
+        profilePage: state.profilePage,
+        avatar: state.profilePage.profile.photos.small
     }
 }
 

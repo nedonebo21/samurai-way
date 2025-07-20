@@ -12,7 +12,6 @@ type ProfileInfoType = {
 
 export const ProfileInfo = (props: ProfileInfoType) => {
   if (!props.profile) return <Preloader/>
-
   return (
       <>
         <div className={s.bg}>

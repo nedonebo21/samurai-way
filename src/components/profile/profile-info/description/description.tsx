@@ -13,7 +13,7 @@ type DescriptionType = {
 export const Description = (props: DescriptionType) => {
     return (
         <div className={s.description}>
-            <ProfileAvatar avatarUrl={props.profile.photos.large}/>
+            <ProfileAvatar avatarUrl={props.profile.photos?.large}/>
             <div className={s.info}>
                 <ProfileStatus status={props.status} updateStatusThunk={props.updateStatusThunk}/>
                 <div className={s.items_container}>

@@ -9,12 +9,13 @@ type MyPostsType = {
     updateNewPostText: (text: string) => void
     addPost: () => void
     profilePage: ProfilePageType
+    avatar: string | null
 }
 
 export const MyPosts = (props: MyPostsType) => {
     const postsList = props.profilePage.postsData
         .map((post) => (
-            <Post key={post.id} message={post.message} likesCount={post.likes}/>
+            <Post key={post.id} message={post.message} avatar={props.avatar} likesCount={post.likes}/>
         ))
     const postsItems = props.profilePage.postsData.length ? postsList : <p>No posts. Lets post something!</p>
 

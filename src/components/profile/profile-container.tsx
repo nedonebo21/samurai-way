@@ -23,7 +23,7 @@ type ProfileApiType = {
 export class ProfileApiComponent extends React.Component<ProfileApiType> {
   componentDidMount() {
     let userId = parseInt(this.props.match.params.userId, 10);
-    if (!userId) userId = 2342324329843
+    if (!userId) userId = 32493
     this.props.getUserProfileThunk(userId)
     this.props.getUserStatusThunk(userId)
   }
