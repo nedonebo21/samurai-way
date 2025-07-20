@@ -21,10 +21,10 @@ export const usersAPI = {
     return instance.post(`follow/${userId}`, {})
         .then(res => res.data)
   },
-  getProfile(userId: number) {
-    console.warn('Use profileAPI object')
-    return profileAPI.getProfile(userId)
-  }
+  // getProfile(userId: number) {
+  //   console.warn('Use profileAPI object')
+  //   return profileAPI.getProfile(userId)
+  // }
 }
 export const profileAPI = {
   getProfile(userId: number) {
