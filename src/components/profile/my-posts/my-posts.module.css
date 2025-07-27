@@ -36,11 +36,3 @@ h3 {
 .new_post button:last-of-type{
 
 }
-.field{
-    resize: none;
-    width: 1200px;
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #231c43;
-}

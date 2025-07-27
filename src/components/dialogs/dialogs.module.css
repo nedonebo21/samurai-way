@@ -31,17 +31,6 @@
     align-items: center;
     justify-self: end;
 }
-.send_message textarea{
-    width: 100%;
-}
 .send_message button{
     padding: 12px;
-}
-.field{
-    resize: none;
-    min-width: 1230px;
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #231c43;
 }
