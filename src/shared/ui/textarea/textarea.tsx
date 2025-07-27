@@ -1,25 +1,19 @@
 import React, {forwardRef} from 'react';
-import {KeyboardEvent} from 'react';
 import s from './textarea.module.css';
 
-type TextareaProps = {
-    value: string
-    onChange: () => void
-    onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void
-    placeholder: string
-}
 
-export const Textarea =forwardRef<HTMLTextAreaElement, TextareaProps>(
-    ({value,onChange,onKeyDown, placeholder}, ref) => {
-        return (
-            <textarea
-                onKeyDown={onKeyDown}
-                onChange={onChange}
-                value={value}
-                ref={ref}
-                placeholder={placeholder}
-                className={s.textarea}
-            ></textarea>
-        )
+export const Textarea = forwardRef<HTMLTextAreaElement, any>(
+    ({input, meta, ...props}) => {
+
+      const isError = meta.touched && meta.error
+
+      return (
+          <div className={isError && s.error}>
+            <textarea className={s.textarea} {...input} {...props}/>
+            <div>
+              {isError && <span className={s.error_text}>{meta.error}</span>}
+            </div>
+          </div>
+      )
     }
 )
