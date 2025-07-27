@@ -1,4 +1,4 @@
-import {addPostAC, updatePostTextAC} from "../model/profile-reducer";
+import {addPostAC} from "../model/profile-reducer";
 import {MyPosts} from "./my-posts";
 import {connect} from "react-redux";
 import {StateType} from "../../../shared/types/state-types";
@@ -13,5 +13,4 @@ let mapStateToProps = (state: StateType) => {
 
 export const MyPostsContainer = connect(mapStateToProps,{
     addPost: addPostAC,
-    updateNewPostText: updatePostTextAC
 })(MyPosts)

@@ -1,44 +1,49 @@
-import React, {KeyboardEvent} from 'react';
+import React from 'react';
 import s from "../dialogs.module.css";
-import {Textarea} from "../../../shared/ui/textarea/textarea";
 import {Button} from "../../../shared/ui/button/button";
 import {Message} from "./message/message";
 import {MessagesPageType} from "../../../shared/types/state-types";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
 type MessagesProps = {
-    messageSend: () => void
-    messageChange: (text: string) => void
-    dialogsPage: MessagesPageType
+  messageSend: (message: string) => void
+  dialogsPage: MessagesPageType
 }
 
 export const Messages = (props: MessagesProps) => {
-    const {dialogsPage} = props
+  const {dialogsPage} = props
 
-    const messagesList = dialogsPage.messagesData
-        .map((message) => (<Message key={message.id} message={message.message}/>))
-    const messagesItems = dialogsPage.messagesData.length ? messagesList
-        : <p>No messages. Write smth to start dialog</p>
+  const messagesList = dialogsPage.messagesData
+      .map((message) => (<Message key={message.id} message={message.message}/>))
+  const messagesItems = dialogsPage.messagesData.length ? messagesList
+      : <p>No messages. Write smth to start dialog</p>
 
-    const newMessage = React.createRef<any>()
+  const addNewMessage = (values: any) => {
+    props.messageSend(values.message)
+  }
 
-    const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-        if (event.key === 'Enter') handleMessageSend()
-    }
-    const handleMessageSend = () => {
-        props.messageSend()
-    }
-    const handleMessageChange = () => {
-        const text = newMessage.current.value
-        props.messageChange(text)
-    }
-    return (
-        <div className={s.messages}>
-            {messagesItems}
-            <div className={s.send_message}>
-                <Textarea onKeyDown={handleKeyDown} value={props.dialogsPage.newMessageText} onChange={handleMessageChange}
-                          ref={newMessage} placeholder={"Пишем"}/>
-                <Button onClick={handleMessageSend}>Send</Button>
-            </div>
-        </div>
-    );
+  return (
+      <div className={s.messages}>
+        {messagesItems}
+        <AddMessageReduxForm onSubmit={addNewMessage}/>
+      </div>
+  );
 };
+
+
+const AddMessageForm = (props: InjectedFormProps) => {
+  return (
+      <form onSubmit={props.handleSubmit} className={s.send_message}>
+        <div>
+          <label>
+            <Field className={s.field} name={'message'} placeholder={'Type your message'} component={'input'}/>
+          </label>
+        </div>
+        <div>
+          <Button className={s.send_message_button} onClick={() => {
+          }}>Send</Button>
+        </div>
+      </form>
+  )
+}
+const AddMessageReduxForm = reduxForm({form: 'message'})(AddMessageForm)

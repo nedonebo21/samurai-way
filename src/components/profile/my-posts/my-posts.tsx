@@ -4,46 +4,53 @@ import {Post} from "./post/post";
 import {Button} from "../../../shared/ui/button/button";
 import {Textarea} from "../../../shared/ui/textarea/textarea";
 import {ProfilePageType} from "../../../shared/types/state-types";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
 type MyPostsType = {
-    updateNewPostText: (text: string) => void
-    addPost: () => void
-    profilePage: ProfilePageType
-    avatar: string | null
+  addPost: (newPost: string) => void
+  profilePage: ProfilePageType
+  avatar: string | null
 }
 
 export const MyPosts = (props: MyPostsType) => {
-    const postsList = props.profilePage.postsData
-        .map((post) => (
-            <Post key={post.id} message={post.message} avatar={props.avatar} likesCount={post.likes}/>
-        ))
-    const postsItems = props.profilePage.postsData.length ? postsList : <p>No posts. Lets post something!</p>
+  const postsList = props.profilePage.postsData
+      .map((post) => (
+          <Post key={post.id} message={post.message} avatar={props.avatar} likesCount={post.likes}/>
+      ))
+  const postsItems = props.profilePage.postsData.length ? postsList : <p>No posts. Lets post something!</p>
 
-    const newPostElement = React.createRef<any>()
-    const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-        if (event.ctrlKey && event.key === "Enter") {
-            handleAddPost()
-        }
-    }
-    const handleAddPost = () => {
-        props.addPost()
-    }
-    const handlePostChange = () => {
-        const text = newPostElement.current.value
-        props.updateNewPostText(text)
-    }
+  const handleAddPost = (values: any) => {
+    props.addPost(values.newPost)
+  }
 
-    return (
-        <div className={s.posts_wrapper}>
-            <h3>My Posts</h3>
-            <div className={s.new_post}>
-                <Textarea onKeyDown={handleKeyDown} ref={newPostElement} value={props.profilePage.newPostText} onChange={handlePostChange} placeholder={'Черкани че-нить....'}/>
-                <Button onClick={handleAddPost}>Add Post</Button>
-                <Button onClick={() => {}}>Remove</Button>
-            </div>
-            <div className={s.posts}>
-                {postsItems}
-            </div>
+  return (
+      <div className={s.posts_wrapper}>
+        <h3>My Posts</h3>
+        <AddPostReduxForm onSubmit={handleAddPost}/>
+        <div className={s.posts}>
+          {postsItems}
         </div>
-    );
-};
+      </div>
+  )
+}
+
+const AddPostForm = (props: InjectedFormProps) => {
+  return (
+      <form className={s.new_post} onSubmit={props.handleSubmit}>
+        <div>
+          <label>
+            <Field className={s.field} name={'newPost'} placeholder={'Enter new post'} component={'input'}/>
+          </label>
+        </div>
+        <div>
+          <Button onClick={() => {
+          }}>Add Post</Button>
+        </div>
+        <div>
+          <Button onClick={() => {
+          }}>Clear</Button>
+        </div>
+      </form>
+  )
+}
+const AddPostReduxForm = reduxForm({form: 'newPost'})(AddPostForm)
