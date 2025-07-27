@@ -24,7 +24,7 @@ export const App = () => {
         <HeaderContainer/>
         <NavBar {...state.sideBar}/>
         <div className="app-wrapper-content">
-          <Route path={'/'} render={() => <Redirect to={'/profile'}/>}></Route>
+          <Route path={'/'} render={() => <Redirect to={'/profile'}/>}/>
           <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
 
           <Route path={'/dialogs'} render={() => <DialogsPage/>}/>

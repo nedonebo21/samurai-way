@@ -3,17 +3,11 @@ import {AuthType, ProfileType, User} from "./state-types";
 
 export type AddPostActionType = {
   type: 'ADD-POST'
-}
-export type UpdatePostTextActionType = {
-  type: 'UPDATE-NEW-POST-TEXT'
-  newText: string
+  newPost: string
 }
 export type AddMessageActionType = {
   type: 'ADD-MESSAGE'
-}
-export type UpdateMessageTextType = {
-  type: 'UPDATE-NEW-MESSAGE-TEXT'
-  newMessage: string
+  message: string
 }
 export type SetUsersActionType = {
   type: 'SET-USERS'
@@ -64,9 +58,7 @@ export type ToggleFollowingProgressType = {
 }
 
 export type ActionsType = AddPostActionType
-    | UpdatePostTextActionType
     | AddMessageActionType
-    | UpdateMessageTextType
     | FollowActionType
     | UnFollowActionType
     | SetUsersActionType
