@@ -10,6 +10,10 @@ type MessagesProps = {
   dialogsPage: MessagesPageType
 }
 
+type NewMessageFormDataType = {
+  message: string
+}
+
 export const Messages = (props: MessagesProps) => {
   const {dialogsPage} = props
 
@@ -18,7 +22,7 @@ export const Messages = (props: MessagesProps) => {
   const messagesItems = dialogsPage.messagesData.length ? messagesList
       : <p>No messages. Write smth to start dialog</p>
 
-  const addNewMessage = (values: any) => {
+  const addNewMessage = (values: NewMessageFormDataType) => {
     props.messageSend(values.message)
   }
 
@@ -31,7 +35,7 @@ export const Messages = (props: MessagesProps) => {
 };
 
 
-const AddMessageForm = (props: InjectedFormProps) => {
+const AddMessageForm: React.FC<InjectedFormProps<NewMessageFormDataType>> = (props) => {
   return (
       <form onSubmit={props.handleSubmit} className={s.send_message}>
         <div>
@@ -46,4 +50,4 @@ const AddMessageForm = (props: InjectedFormProps) => {
       </form>
   )
 }
-const AddMessageReduxForm = reduxForm({form: 'message'})(AddMessageForm)
+const AddMessageReduxForm = reduxForm<NewMessageFormDataType>({form: 'message'})(AddMessageForm)

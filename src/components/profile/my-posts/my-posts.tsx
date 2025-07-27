@@ -1,8 +1,7 @@
-import React, {KeyboardEvent} from 'react';
+import React from 'react';
 import s from "./my-posts.module.css";
 import {Post} from "./post/post";
 import {Button} from "../../../shared/ui/button/button";
-import {Textarea} from "../../../shared/ui/textarea/textarea";
 import {ProfilePageType} from "../../../shared/types/state-types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
@@ -10,6 +9,9 @@ type MyPostsType = {
   addPost: (newPost: string) => void
   profilePage: ProfilePageType
   avatar: string | null
+}
+type AddPostFormDataType = {
+  newPost: string
 }
 
 export const MyPosts = (props: MyPostsType) => {
@@ -19,7 +21,7 @@ export const MyPosts = (props: MyPostsType) => {
       ))
   const postsItems = props.profilePage.postsData.length ? postsList : <p>No posts. Lets post something!</p>
 
-  const handleAddPost = (values: any) => {
+  const handleAddPost = (values: AddPostFormDataType) => {
     props.addPost(values.newPost)
   }
 
@@ -34,7 +36,7 @@ export const MyPosts = (props: MyPostsType) => {
   )
 }
 
-const AddPostForm = (props: InjectedFormProps) => {
+const AddPostForm: React.FC<InjectedFormProps<AddPostFormDataType>> = (props) => {
   return (
       <form className={s.new_post} onSubmit={props.handleSubmit}>
         <div>
@@ -53,4 +55,4 @@ const AddPostForm = (props: InjectedFormProps) => {
       </form>
   )
 }
-const AddPostReduxForm = reduxForm({form: 'newPost'})(AddPostForm)
+const AddPostReduxForm = reduxForm<AddPostFormDataType>({form: 'newPost'})(AddPostForm)
