@@ -13,9 +13,14 @@ h3 {
 }
 
 .new_post {
-    display: flex;
+    display: grid;
     justify-content: center;
     gap: 8px;
+}
+.btn_block{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
 }
 .new_post textarea {
     grid-column: 1 / -1;
@@ -32,6 +37,8 @@ h3 {
 
 }
 .field{
+    resize: none;
+    width: 1200px;
     font-size: 18px;
     padding: 10px;
     border-radius: 10px;

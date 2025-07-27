@@ -38,6 +38,8 @@
     padding: 12px;
 }
 .field{
+    resize: none;
+    min-width: 1230px;
     font-size: 18px;
     padding: 10px;
     border-radius: 10px;
