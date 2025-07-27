@@ -26,6 +26,7 @@
 }
 .send_message{
     display: flex;
+    justify-content: center;
     gap: 6px;
     align-items: center;
     justify-self: end;
@@ -34,6 +35,11 @@
     width: 100%;
 }
 .send_message button{
-    width: 64px;
-    height:64px;
+    padding: 12px;
+}
+.field{
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #231c43;
 }

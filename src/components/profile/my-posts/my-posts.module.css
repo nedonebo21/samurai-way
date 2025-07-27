@@ -13,17 +13,16 @@ h3 {
 }
 
 .new_post {
-    display: grid;
+    display: flex;
+    justify-content: center;
     gap: 8px;
-    grid-template-columns: 1fr 1fr;
 }
 .new_post textarea {
     grid-column: 1 / -1;
     max-width: 100%;
 }
 .new_post button {
-    width: 80px;
-    height: 30px;
+    padding: 12px;
 }
 
 .new_post button:first-of-type{
@@ -31,4 +30,10 @@ h3 {
 }
 .new_post button:last-of-type{
 
+}
+.field{
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #231c43;
 }

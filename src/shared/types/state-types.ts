@@ -58,14 +58,12 @@ export type ProfileType = {
 
 export type ProfilePageType = {
     postsData: PostType[]
-    newPostText: string
     profile: ProfileType
     status: string
 }
 export type MessagesPageType = {
     usersDialogsData: UserDataType[]
     messagesData: MessageType[]
-    newMessageText: string
 }
 export type SideBarType = {
     usersOnlineData: UsersOnlineType[]
