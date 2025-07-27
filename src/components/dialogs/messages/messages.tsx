@@ -4,6 +4,8 @@ import {Button} from "../../../shared/ui/button/button";
 import {Message} from "./message/message";
 import {MessagesPageType} from "../../../shared/types/state-types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {Textarea} from "../../../shared/ui/textarea/textarea";
+import {maxLengthCreator, required} from "../../../shared/utils/validators/validators";
 
 type MessagesProps = {
   messageSend: (message: string) => void
@@ -34,13 +36,15 @@ export const Messages = (props: MessagesProps) => {
   )
 }
 
+const maxLength50 = maxLengthCreator(50)
 
 const AddMessageForm: React.FC<InjectedFormProps<NewMessageFormDataType>> = (props) => {
   return (
       <form onSubmit={props.handleSubmit} className={s.send_message}>
         <div>
           <label>
-            <Field className={s.field} name={'message'} placeholder={'Type your message'} component={'textarea'}/>
+            <Field validate={[required, maxLength50]}
+                   name={'message'} placeholder={'Type your message'} component={Textarea}/>
           </label>
         </div>
         <div>

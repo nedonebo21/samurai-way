@@ -4,7 +4,8 @@ import {Post} from "./post/post";
 import {Button} from "../../../shared/ui/button/button";
 import {ProfilePageType} from "../../../shared/types/state-types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {required} from "../../../shared/utils/validators/validators";
+import {maxLengthCreator, required} from "../../../shared/utils/validators/validators";
+import {Textarea} from "../../../shared/ui/textarea/textarea";
 
 type MyPostsType = {
   addPost: (newPost: string) => void
@@ -37,13 +38,15 @@ export const MyPosts = (props: MyPostsType) => {
   )
 }
 
+const maxLength10 = maxLengthCreator(10)
+
 const AddPostForm: React.FC<InjectedFormProps<AddPostFormDataType>> = (props) => {
   return (
       <form className={s.new_post} onSubmit={props.handleSubmit}>
         <div>
           <label>
-            <Field validate={[required]}
-                   className={s.field} name={'newPost'} placeholder={'Enter new post'} component={'textarea'}/>
+            <Field validate={[required, maxLength10]}
+                   name={'newPost'} placeholder={'Enter new post'} component={Textarea}/>
           </label>
         </div>
         <div className={s.btn_block}>
