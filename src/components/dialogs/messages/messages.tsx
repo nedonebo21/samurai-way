@@ -31,8 +31,8 @@ export const Messages = (props: MessagesProps) => {
         {messagesItems}
         <AddMessageReduxForm onSubmit={addNewMessage}/>
       </div>
-  );
-};
+  )
+}
 
 
 const AddMessageForm: React.FC<InjectedFormProps<NewMessageFormDataType>> = (props) => {
@@ -40,7 +40,7 @@ const AddMessageForm: React.FC<InjectedFormProps<NewMessageFormDataType>> = (pro
       <form onSubmit={props.handleSubmit} className={s.send_message}>
         <div>
           <label>
-            <Field className={s.field} name={'message'} placeholder={'Type your message'} component={'input'}/>
+            <Field className={s.field} name={'message'} placeholder={'Type your message'} component={'textarea'}/>
           </label>
         </div>
         <div>

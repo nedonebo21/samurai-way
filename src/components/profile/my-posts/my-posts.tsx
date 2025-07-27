@@ -4,6 +4,7 @@ import {Post} from "./post/post";
 import {Button} from "../../../shared/ui/button/button";
 import {ProfilePageType} from "../../../shared/types/state-types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {required} from "../../../shared/utils/validators/validators";
 
 type MyPostsType = {
   addPost: (newPost: string) => void
@@ -41,16 +42,19 @@ const AddPostForm: React.FC<InjectedFormProps<AddPostFormDataType>> = (props) =>
       <form className={s.new_post} onSubmit={props.handleSubmit}>
         <div>
           <label>
-            <Field className={s.field} name={'newPost'} placeholder={'Enter new post'} component={'input'}/>
+            <Field validate={[required]}
+                   className={s.field} name={'newPost'} placeholder={'Enter new post'} component={'textarea'}/>
           </label>
         </div>
-        <div>
-          <Button onClick={() => {
-          }}>Add Post</Button>
-        </div>
-        <div>
-          <Button onClick={() => {
-          }}>Clear</Button>
+        <div className={s.btn_block}>
+          <div>
+            <Button onClick={() => {
+            }}>Add Post</Button>
+          </div>
+          <div>
+            <Button onClick={() => {
+            }}>Clear</Button>
+          </div>
         </div>
       </form>
   )
