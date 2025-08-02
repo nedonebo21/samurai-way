@@ -1,6 +1,7 @@
 import {store, StoreType} from "../../app/redux-store";
 import {ThunkDispatch} from "redux-thunk";
 import {ActionsType} from "./action-types";
+import {FormAction} from "redux-form";
 
 export type UserDataType = {
     id: string
@@ -93,4 +94,4 @@ export type StateType = {
     usersPage: UsersPageType
     auth: AuthType
 }
-export type DispatchType = ThunkDispatch<StoreType, unknown, ActionsType>
+export type DispatchType = ThunkDispatch<StoreType, unknown, ActionsType | FormAction>
