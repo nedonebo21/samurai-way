@@ -1,4 +1,6 @@
-import {store} from "../../app/redux-store";
+import {store, StoreType} from "../../app/redux-store";
+import {ThunkDispatch} from "redux-thunk";
+import {ActionsType} from "./action-types";
 
 export type UserDataType = {
     id: string
@@ -91,4 +93,4 @@ export type StateType = {
     usersPage: UsersPageType
     auth: AuthType
 }
-export type DispatchType = typeof store.dispatch
+export type DispatchType = ThunkDispatch<StoreType, unknown, ActionsType>
