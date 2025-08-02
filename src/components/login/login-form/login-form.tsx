@@ -11,13 +11,13 @@ const LoginForm = (props: InjectedFormProps) => {
         <div>
           <label>
             <span>Login: </span>
-            <Field validate={[required]} name={'login'} placeholder={'Login'} component={Input}/>
+            <Field validate={[required]} name={'email'} placeholder={'Email'} component={Input}/>
           </label>
         </div>
         <div>
           <label>
             <span>Password: </span>
-            <Field validate={[required]} name={'password'} placeholder={'Password'} component={Input}/>
+            <Field validate={[required]} name={'password'} type={'password'} placeholder={'Password'} component={Input}/>
           </label>
         </div>
         <div>

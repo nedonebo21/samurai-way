@@ -6,14 +6,12 @@ import {ProfilePageType} from "../../../shared/types/state-types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../shared/utils/validators/validators";
 import {Textarea} from "../../../shared/ui/textarea/textarea";
+import {FormDataType} from "../../../shared/types/form-data-type";
 
 type MyPostsType = {
   addPost: (newPost: string) => void
   profilePage: ProfilePageType
   avatar: string | null
-}
-type AddPostFormDataType = {
-  newPost: string
 }
 
 export const MyPosts = (props: MyPostsType) => {
@@ -23,8 +21,8 @@ export const MyPosts = (props: MyPostsType) => {
       ))
   const postsItems = props.profilePage.postsData.length ? postsList : <p>No posts. Lets post something!</p>
 
-  const handleAddPost = (values: AddPostFormDataType) => {
-    props.addPost(values.newPost)
+  const handleAddPost = (values: FormDataType) => {
+    if (values.newPost) props.addPost(values.newPost)
   }
 
   return (
@@ -40,7 +38,7 @@ export const MyPosts = (props: MyPostsType) => {
 
 const maxLength10 = maxLengthCreator(10)
 
-const AddPostForm: React.FC<InjectedFormProps<AddPostFormDataType>> = (props) => {
+const AddPostForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
   return (
       <form className={s.new_post} onSubmit={props.handleSubmit}>
         <div>
@@ -62,4 +60,4 @@ const AddPostForm: React.FC<InjectedFormProps<AddPostFormDataType>> = (props) =>
       </form>
   )
 }
-const AddPostReduxForm = reduxForm<AddPostFormDataType>({form: 'newPost'})(AddPostForm)
+const AddPostReduxForm = reduxForm<FormDataType>({form: 'newPost'})(AddPostForm)

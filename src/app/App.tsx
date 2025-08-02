@@ -11,7 +11,7 @@ import {UsersPage} from "../pages/users-page";
 import {StoreType} from "./redux-store";
 import {ProfileContainer} from "../components/profile/profile-container";
 import {HeaderContainer} from "../components/header/header-container";
-import {Login} from "../components/login/login";
+import Login from "../components/login/login";
 
 
 export const App = () => {
