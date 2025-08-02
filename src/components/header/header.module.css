@@ -28,6 +28,12 @@
     border: 1px solid rgba(255, 255, 255, 0.35);
 }
 .userName {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-weight: 700;
     color: white;
+}
+.userName button {
+    font-weight: 700;
 }
