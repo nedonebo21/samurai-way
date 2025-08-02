@@ -7,7 +7,7 @@ import {required} from "../../../shared/utils/validators/validators";
 
 const LoginForm = (props: InjectedFormProps) => {
   return (
-      <form onSubmit={props.handleSubmit}>
+      <form className={s.form} onSubmit={props.handleSubmit}>
         <div>
           <label>
             <span>Login: </span>
@@ -26,6 +26,9 @@ const LoginForm = (props: InjectedFormProps) => {
             <span>Remember me</span>
           </label>
         </div>
+        {props.error && <div className={s.form_error}>
+          {props.error}
+        </div>}
         <div>
           <Button onClick={() => {
           }}>Login</Button>
