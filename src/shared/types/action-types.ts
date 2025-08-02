@@ -49,6 +49,7 @@ export type SetAuthUserDataType = {
     userId: number | null
     email: string | null
     login: string | null
+    isAuth: boolean
   }
 }
 export type ToggleFollowingProgressType = {
