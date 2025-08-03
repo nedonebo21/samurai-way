@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {loginThunkCreator, logoutThunkCreator} from "../../shared/model/auth-reducer";
 import {FormDataType} from "../../shared/types/form-data-type";
 import {Redirect} from "react-router-dom";
+import s from './login-form/login-form.module.css'
 import {StateType} from "../../shared/types/state-types";
 
 type LoginPropsType = {
@@ -30,8 +31,7 @@ const Login = (props: LoginPropsType) => {
   }
 
   return (
-      <div>
-        <h1>Login</h1>
+      <div className={s.login_form}>
         <LoginReduxForm onSubmit={onSubmit}/>
       </div>
   )
