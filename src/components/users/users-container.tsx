@@ -9,6 +9,14 @@ import {StateType, User} from "../../shared/types/state-types";
 import {Preloader} from "../../shared/ui/preloader/preloader";
 import {compose} from "redux";
 import {WithAuthRedirect} from "../../shared/hoc/with-auth-redirect";
+import {
+  getCurrentPage,
+  getFollowingInProgress,
+  getIsFetching,
+  getPageSize,
+  getTotalUsersCount,
+  getUsers
+} from "./model/users-selectors";
 
 
 type UsersApiType = {
@@ -55,12 +63,12 @@ class UsersApiComponent extends React.Component<UsersApiType> {
 
 let mapStateToProps = (state: StateType) => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    followingInProgress: state.usersPage.followingInProgress,
+    users: getUsers(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    followingInProgress: getFollowingInProgress(state),
     isAuth: state.auth.isAuth
   }
 }
