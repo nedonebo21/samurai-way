@@ -86,6 +86,9 @@ export type AuthType = {
     login: string | null
     isAuth: boolean
 }
+export type AppType = {
+    init: boolean
+}
 
 export type StateType = {
     profilePage: ProfilePageType
@@ -93,5 +96,6 @@ export type StateType = {
     sideBar: SideBarType
     usersPage: UsersPageType
     auth: AuthType
+    app: AppType
 }
 export type DispatchType = ThunkDispatch<StoreType, unknown, ActionsType | FormAction>

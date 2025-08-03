@@ -57,6 +57,9 @@ export type ToggleFollowingProgressType = {
   isFetching: boolean
   userId: number
 }
+export type SetInitType = {
+  type: 'SET-INIT'
+}
 
 export type ActionsType = AddPostActionType
     | AddMessageActionType
@@ -70,3 +73,4 @@ export type ActionsType = AddPostActionType
     | SetAuthUserDataType
     | ToggleFollowingProgressType
     | SetUserStatusActionType
+    | SetInitType
