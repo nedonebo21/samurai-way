@@ -21,7 +21,7 @@ export const setAuthUserDataAC = (userId: number | null, email: string | null, l
     {type: 'SET-USER-DATA', data: {userId, email, login, isAuth}}
 )
 export const getAuthUserDataThunkCreator = () => (dispatch: DispatchType) => {
-  authAPI.me().then(res => {
+  return authAPI.me().then(res => {
     if (res.data.resultCode === 0) {
       let {id, login, email} = res.data.data
       dispatch(setAuthUserDataAC(id, email, login, true))
