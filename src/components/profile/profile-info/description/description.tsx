@@ -2,7 +2,7 @@ import React from 'react';
 import s from './description.module.css'
 import {ProfileAvatar} from "../../../../shared/ui/profile-avatar/profile-avatar";
 import {ProfileType} from "../../../../shared/types/state-types";
-import {ProfileStatus} from "./profile-status/profile-status";
+import {ProfileStatusHooks} from "./profile-status/profile-status-hooks";
 
 type DescriptionType = {
     profile: ProfileType
@@ -15,7 +15,7 @@ export const Description = (props: DescriptionType) => {
         <div className={s.description}>
             <ProfileAvatar avatarUrl={props.profile.photos?.large}/>
             <div className={s.info}>
-                <ProfileStatus status={props.status} updateStatusThunk={props.updateStatusThunk}/>
+                <ProfileStatusHooks status={props.status} updateStatusThunk={props.updateStatusThunk}/>
                 <div className={s.items_container}>
                     <div className={s.desc_items}><strong className={s.desc_title}>Info:</strong>
                         <div className={s.desc_item}><strong
