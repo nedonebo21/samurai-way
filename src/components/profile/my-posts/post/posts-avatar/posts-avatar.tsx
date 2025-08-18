@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./posts-avatar.module.css";
-import defaultAvatar from '../../../../assets/img/default-avatar.jpg'
+import defaultAvatar from '../../../../../assets/img/default-avatar.jpg'
 
 type PostsAvatarPropsType = {
   avatar: string | null
