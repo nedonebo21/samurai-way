@@ -14,26 +14,34 @@ type MyPostsType = {
   avatar: string | null
 }
 
-export const MyPosts = (props: MyPostsType) => {
-  const postsList = props.profilePage.postsData
-      .map((post) => (
-          <Post key={post.id} message={post.message} avatar={props.avatar} likesCount={post.likes}/>
-      ))
-  const postsItems = props.profilePage.postsData.length ? postsList : <p>No posts. Lets post something!</p>
 
-  const handleAddPost = (values: FormDataType) => {
-    if (values.newPost) props.addPost(values.newPost)
+
+export class MyPosts extends React.PureComponent<MyPostsType> {
+  shouldComponentUpdate(nextProps: Readonly<MyPostsType>, nextState: Readonly<{}>): boolean {
+    return nextProps != this.props || nextState != this.state
   }
+  render() {
+    console.log('qwe')
+    const postsList = this.props.profilePage.postsData
+        .map((post) => (
+            <Post key={post.id} message={post.message} avatar={this.props.avatar} likesCount={post.likes}/>
+        ))
+    const postsItems = this.props.profilePage.postsData.length ? postsList : <p>No posts. Lets post something!</p>
 
-  return (
-      <div className={s.posts_wrapper}>
-        <h3>My Posts</h3>
-        <AddPostReduxForm onSubmit={handleAddPost}/>
-        <div className={s.posts}>
-          {postsItems}
+    const handleAddPost = (values: FormDataType) => {
+      if (values.newPost) this.props.addPost(values.newPost)
+    }
+
+    return (
+        <div className={s.posts_wrapper}>
+          <h3>My Posts</h3>
+          <AddPostReduxForm onSubmit={handleAddPost}/>
+          <div className={s.posts}>
+            {postsItems}
+          </div>
         </div>
-      </div>
-  )
+    )
+  }
 }
 
 const maxLength10 = maxLengthCreator(10)
