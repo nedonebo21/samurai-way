@@ -21,7 +21,6 @@ export class MyPosts extends React.PureComponent<MyPostsType> {
     return nextProps != this.props || nextState != this.state
   }
   render() {
-    console.log('qwe')
     const postsList = this.props.profilePage.postsData
         .map((post) => (
             <Post key={post.id} message={post.message} avatar={this.props.avatar} likesCount={post.likes}/>

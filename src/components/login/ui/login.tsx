@@ -17,7 +17,6 @@ type LoginPropsType = {
 const Login = (props: LoginPropsType) => {
 
   const onSubmit = (formData: FormDataType) => {
-    console.log(formData)
     if (formData.email && formData.password) {
       props.login(
           formData.email,

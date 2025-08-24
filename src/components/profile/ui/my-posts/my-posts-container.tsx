@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {StateType} from "../../../../shared/types";
 
 let mapStateToProps = (state: StateType) => {
-    console.log('MAP STATE', state.profilePage)
     return {
         profilePage: state.profilePage,
         avatar: state.profilePage.profile.photos.small
