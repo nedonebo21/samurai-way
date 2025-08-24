@@ -1,10 +1,11 @@
 import React from 'react';
-import defaultAvatar from '../../assets/img/default-avatar.jpg';
-import {Button} from "../../shared/ui/button/button";
-import {UserIcon} from "../../shared/ui/user-icon/user-icon";
+import defaultAvatar from '../../../../assets/img/default-avatar.jpg';
+import {Button} from "../../../../shared/ui/button/button";
+import {UserIcon} from "../../../../shared/ui/user-icon/user-icon";
 import s from './users.module.css'
-import {User} from "../../shared/types/state-types";
+import {User} from "../../../../shared/types/state-types";
 import {NavLink} from "react-router-dom";
+import {Paginator} from "./paginator/paginator";
 
 type UsersType = {
   totalUsersCount: number
@@ -64,16 +65,7 @@ export const Users = (props: UsersType) => {
             )
           })
         }
-        <div className={s.btn_block}>
-          {pages.map(el => {
-            return <Button
-                disabled={props.currentPage === el}
-                className={props.currentPage === el ? s.selected_page : ''}
-                onClick={() => {
-                  props.onPageChanged(el)
-                }}>{el}</Button>
-          })}
-        </div>
+        <Paginator pages={pages} onPageChanged={props.onPageChanged} currentPage={props.currentPage}/>
       </div>
   )
 }
