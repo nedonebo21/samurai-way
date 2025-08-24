@@ -1,11 +1,11 @@
 import React from 'react';
 import {LoginReduxForm} from "./login-form/login-form";
 import {connect} from "react-redux";
-import {loginTC, logoutTC} from "../../shared/model/auth-reducer";
-import {FormDataType} from "../../shared/types/form-data-type";
+import {loginTC, logoutTC} from "../../../shared/model/auth-reducer";
+import {FormDataType} from "../../../shared/types/form-data-type";
 import {Redirect} from "react-router-dom";
 import s from './login-form/login-form.module.css'
-import {StateType} from "../../shared/types/state-types";
+import {StateType} from "../../../shared/types/state-types";
 
 type LoginPropsType = {
   login: (email: string, password: string, rememberMe: boolean) => void

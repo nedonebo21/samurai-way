@@ -10,7 +10,7 @@ import {connect} from "react-redux";
 import {UsersPage} from "../pages/users-page";
 import {ProfileContainer} from "../components/profile/ui/profile-container";
 import {HeaderContainer} from "../components/header/header-container";
-import Login from "../components/login/login";
+import Login from "../components/login/ui/login";
 import {SideBarType, StateType} from "../shared/types/state-types";
 import {compose} from "redux";
 import {initializeAppTC} from "./app-reducer";

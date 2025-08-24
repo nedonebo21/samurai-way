@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {Button} from "../../../shared/ui/button/button";
+import {Button} from "../../../../shared/ui/button/button";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {Input} from "../../../shared/ui/input/input";
+import {Input} from "../../../../shared/ui/input/input";
 import s from './login-form.module.css'
-import {required} from "../../../shared/utils/validators/validators";
+import {required} from "../../../../shared/utils/validators/validators";
 
 const LoginForm = ({handleSubmit, error}: InjectedFormProps) => {
   return (
