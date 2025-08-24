@@ -20,7 +20,7 @@ export const authReducer = (state: AuthType = initialState, action: ActionsType)
 export const setAuthUserDataAC = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): SetAuthUserDataType => (
     {type: 'SET-USER-DATA', data: {userId, email, login, isAuth}}
 )
-export const getAuthUserDataThunkCreator = () => async (dispatch: DispatchType) => {
+export const getAuthUserDataTC = () => async (dispatch: DispatchType) => {
   let res = await authAPI.me()
 
   if (res.data.resultCode === 0) {
@@ -29,17 +29,17 @@ export const getAuthUserDataThunkCreator = () => async (dispatch: DispatchType) 
   }
 }
 
-export const loginThunkCreator = (email: string, password: string, rememberMe: boolean = false) => async (dispatch: DispatchType) => {
+export const loginTC = (email: string, password: string, rememberMe: boolean = false) => async (dispatch: DispatchType) => {
   let res = await authAPI.login(email, password, rememberMe)
 
   if (res.data.resultCode === 0) {
-    dispatch(getAuthUserDataThunkCreator())
+    dispatch(getAuthUserDataTC())
   } else {
     let message: string = res.data.messages.length > 0 ? res.data.messages[0] : 'Some Error'
     dispatch(stopSubmit('login', {_error: message}))
   }
 }
-export const logoutThunkCreator = () => async (dispatch: DispatchType) => {
+export const logoutTC = () => async (dispatch: DispatchType) => {
   let res = await authAPI.logout()
 
   if (res.data.resultCode === 0) {

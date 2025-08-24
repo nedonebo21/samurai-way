@@ -1,6 +1,6 @@
 import {AppType, DispatchType} from "../shared/types/state-types";
 import {ActionsType, SetInitType} from "../shared/types/action-types";
-import {getAuthUserDataThunkCreator} from "../shared/model/auth-reducer";
+import {getAuthUserDataTC} from "../shared/model/auth-reducer";
 
 let initialState: AppType = {
   init: false
@@ -19,7 +19,7 @@ export const setInitAC = (): SetInitType => (
 )
 
 export const initializeAppTC = () => (dispatch: DispatchType) => {
-  const promise = dispatch(getAuthUserDataThunkCreator())
+  const promise = dispatch(getAuthUserDataTC())
   Promise.all([promise]).then(() => {
     dispatch(setInitAC())
   })

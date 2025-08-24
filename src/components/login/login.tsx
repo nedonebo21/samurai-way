@@ -1,7 +1,7 @@
 import React from 'react';
 import {LoginReduxForm} from "./login-form/login-form";
 import {connect} from "react-redux";
-import {loginThunkCreator, logoutThunkCreator} from "../../shared/model/auth-reducer";
+import {loginTC, logoutTC} from "../../shared/model/auth-reducer";
 import {FormDataType} from "../../shared/types/form-data-type";
 import {Redirect} from "react-router-dom";
 import s from './login-form/login-form.module.css'
@@ -42,6 +42,6 @@ const mapStateToProps = (state: StateType) => (
 )
 
 export default connect(mapStateToProps, {
-  login: loginThunkCreator,
-  logout: logoutThunkCreator
+  login: loginTC,
+  logout: logoutTC
 })(Login)

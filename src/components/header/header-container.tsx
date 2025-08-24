@@ -1,7 +1,7 @@
 import React from "react";
 import {Header} from "./header";
 import {connect} from "react-redux";
-import {logoutThunkCreator} from "../../shared/model/auth-reducer";
+import {logoutTC} from "../../shared/model/auth-reducer";
 import {StateType} from "../../shared/types/state-types";
 
 type HeaderApiType = {
@@ -24,5 +24,5 @@ const mapStateToProps = (state: StateType) => (
 )
 
 export const HeaderContainer = connect(mapStateToProps, {
-  logout: logoutThunkCreator
+  logout: logoutTC
 })(HeaderAPIComponent)
