@@ -1,7 +1,7 @@
 import React from "react";
 import {Header} from "./header";
 import {connect} from "react-redux";
-import {logoutTC} from "../../shared/model/auth-reducer";
+import {logoutTC} from "../login/model/auth-reducer";
 import {StateType} from "../../shared/types/state-types";
 
 type HeaderApiType = {

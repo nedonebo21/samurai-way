@@ -1,6 +1,6 @@
-import {ActionsType, SetAuthUserDataType} from "../types/action-types";
-import {AuthType, DispatchType} from "../types/state-types";
-import {authAPI} from "../api/api";
+import {ActionsType, SetAuthUserDataType} from "../../../shared/types/action-types";
+import {AuthType, DispatchType} from "../../../shared/types/state-types";
+import {authAPI} from "../../../shared/api/api";
 import {stopSubmit} from "redux-form";
 
 let initialState: AuthType = {

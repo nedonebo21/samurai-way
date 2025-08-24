@@ -1,6 +1,6 @@
 import {AppType, DispatchType} from "../shared/types/state-types";
 import {ActionsType, SetInitType} from "../shared/types/action-types";
-import {getAuthUserDataTC} from "../shared/model/auth-reducer";
+import {getAuthUserDataTC} from "../components/login/model/auth-reducer";
 
 let initialState: AppType = {
   init: false

@@ -1,7 +1,7 @@
 import React from 'react';
 import {LoginReduxForm} from "./login-form/login-form";
 import {connect} from "react-redux";
-import {loginTC, logoutTC} from "../../../shared/model/auth-reducer";
+import {loginTC, logoutTC} from "../model/auth-reducer";
 import {FormDataType} from "../../../shared/types/form-data-type";
 import {Redirect} from "react-router-dom";
 import s from './login-form/login-form.module.css'
