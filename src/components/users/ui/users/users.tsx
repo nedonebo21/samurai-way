@@ -18,9 +18,18 @@ type UsersType = {
   followingInProgress: number[]
   users: UserType[]
 }
-export const Users = ({users, followThunk, unFollowThunk, followingInProgress, ...props}: UsersType) => {
+export const Users = ({
+                        users,
+                        followThunk,
+                        unFollowThunk,
+                        followingInProgress,
+                        onPageChanged,
+                        currentPage,
+                        pageSize,
+                        totalUsersCount
+                      }: UsersType) => {
 
-  const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+  const pagesCount = Math.ceil(totalUsersCount / pageSize)
   let pages = []
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i)
@@ -28,8 +37,9 @@ export const Users = ({users, followThunk, unFollowThunk, followingInProgress, .
 
   return (
       <div className={s.user_items}>
-        <User users={users} followThunk={followThunk} unFollowThunk={unFollowThunk} followingInProgress={followingInProgress}/>
-        <Paginator pages={pages} onPageChanged={props.onPageChanged} currentPage={props.currentPage}/>
+        <User users={users} followThunk={followThunk} unFollowThunk={unFollowThunk}
+              followingInProgress={followingInProgress}/>
+        <Paginator pages={pages} onPageChanged={onPageChanged} currentPage={currentPage}/>
       </div>
   )
 }
