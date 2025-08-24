@@ -73,36 +73,31 @@ export const toggleFollowingProgressAC = (isFetching: boolean, userId: number): 
     {type: 'TOGGLE-FOLLOWING-PROGRESS', isFetching, userId}
 )
 
-export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
-  return (dispatch: DispatchType) => {
-    dispatch(toggleFetchingAC(true))
-    usersAPI.getUsers(currentPage, pageSize).then(data => {
-      dispatch(toggleFetchingAC(false))
-      dispatch(setCurrentPageAC(currentPage))
-      dispatch(setUsersAC(data.items))
-      dispatch(setTotalUsersCountAC(data.totalCount))
-    })
-  }
+export const getUsersThunkCreator = (currentPage: number, pageSize: number) => async (dispatch: DispatchType) => {
+  dispatch(toggleFetchingAC(true))
+  let data = await usersAPI.getUsers(currentPage, pageSize)
+
+  dispatch(toggleFetchingAC(false))
+  dispatch(setCurrentPageAC(currentPage))
+  dispatch(setUsersAC(data.items))
+  dispatch(setTotalUsersCountAC(data.totalCount))
 }
-export const followThunkCreator = (userId: number) => {
-  return (dispatch: DispatchType) => {
-    dispatch(toggleFollowingProgressAC(true, userId))
-    usersAPI.followUser(userId).then(data => {
-      if (data.resultCode === 0) {
-        dispatch(followAC(userId))
-      }
-      dispatch(toggleFollowingProgressAC(false, userId))
-    })
+
+export const followThunkCreator = (userId: number) => async (dispatch: DispatchType) => {
+  dispatch(toggleFollowingProgressAC(true, userId))
+  let res = await usersAPI.followUser(userId)
+
+  if (res.data.resultCode === 0) {
+    dispatch(followAC(userId))
   }
+  dispatch(toggleFollowingProgressAC(false, userId))
 }
-export const unFollowThunkCreator = (userId: number) => {
-  return (dispatch: DispatchType) => {
-    dispatch(toggleFollowingProgressAC(true, userId))
-    usersAPI.unFollowUser(userId).then(data => {
-      if (data.resultCode === 0) {
-        dispatch(unFollowAC(userId))
-      }
-      dispatch(toggleFollowingProgressAC(false, userId))
-    })
+
+export const unFollowThunkCreator = (userId: number) => async (dispatch: DispatchType) => {
+  dispatch(toggleFollowingProgressAC(true, userId))
+  let res = await usersAPI.unFollowUser(userId)
+  if (res.data.resultCode === 0) {
+    dispatch(unFollowAC(userId))
   }
+  dispatch(toggleFollowingProgressAC(false, userId))
 }
