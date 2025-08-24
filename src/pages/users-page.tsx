@@ -1,6 +1,6 @@
 import React from 'react';
-import {UsersContainer} from "../components/users/users-container";
-import s from '../components/users/users.module.css'
+import {UsersContainer} from "../components/users/ui/users-container";
+import s from '../components/users/ui/users/users.module.css'
 
 export const UsersPage = () => {
     return (

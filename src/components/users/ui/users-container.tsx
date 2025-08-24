@@ -2,13 +2,13 @@ import {connect} from "react-redux";
 import {
   followTC, getUsersTC,
   unFollowTC
-} from "./model/users-reducer";
+} from "../model/users-reducer";
 import React from "react";
-import {Users} from "./users";
-import {StateType, User} from "../../shared/types/state-types";
-import {Preloader} from "../../shared/ui/preloader/preloader";
+import {Users} from "./users/users";
+import {StateType, User} from "../../../shared/types/state-types";
+import {Preloader} from "../../../shared/ui/preloader/preloader";
 import {compose} from "redux";
-import {WithAuthRedirect} from "../../shared/hoc/with-auth-redirect";
+import {WithAuthRedirect} from "../../../shared/hoc/with-auth-redirect";
 import {
   getCurrentPage,
   getFollowingInProgress,
@@ -16,7 +16,7 @@ import {
   getPageSize,
   getTotalUsersCount,
   getUsers
-} from "./model/users-selectors";
+} from "../model/users-selectors";
 
 
 type UsersApiType = {
