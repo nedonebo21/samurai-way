@@ -2,7 +2,7 @@ import {NavLink} from "react-router-dom";
 import s from "./dialog-item.module.css";
 import a from "../../dialogs.module.css"
 import React from "react";
-import {UserIcon} from "../../../../shared/ui/user-icon/user-icon";
+import {UserIcon} from "../../../../../shared/ui/user-icon/user-icon";
 
 type Props = {
     name: string

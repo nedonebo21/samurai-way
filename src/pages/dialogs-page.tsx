@@ -1,7 +1,7 @@
 import React from 'react';
-import s from '../components/dialogs/dialogs.module.css'
-import {DialogsItemsContainer} from "../components/dialogs/dialog-items/dialogs-items-container";
-import {MessagesContainer} from "../components/dialogs/messages/messages-container";
+import s from '../components/dialogs/ui/dialogs.module.css'
+import {DialogsItemsContainer} from "../components/dialogs/ui/dialog-items/dialogs-items-container";
+import {MessagesContainer} from "../components/dialogs/ui/messages/messages-container";
 
 
 export const DialogsPage = () => {
