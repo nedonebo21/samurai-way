@@ -10,6 +10,7 @@ import {
   UnFollowActionType
 } from "../../../shared/types/action-types";
 import {usersAPI} from "../../../shared/api/api";
+import {updateObjInArray} from "../../../shared/utils/object-helpers/object-helpers";
 
 let initialState: UsersPageType = {
   users: [],
@@ -24,16 +25,12 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
     case 'FOLLOW':
       return {
         ...state,
-        users: state.users.map(el => el.id === action.userId
-            ? {...el, followed: true}
-            : el)
+        users: updateObjInArray(state.users, action.userId, 'id', {followed: true})
       }
     case 'UNFOLLOW':
       return {
         ...state,
-        users: state.users.map(el => el.id === action.userId
-            ? {...el, followed: false}
-            : el)
+        users: updateObjInArray(state.users, action.userId, 'id', {followed: false})
       }
     case 'SET-USERS':
       return {...state, users: [...action.users]}
