@@ -1,10 +1,6 @@
 import React from 'react';
-import defaultAvatar from '../../../../assets/img/default-avatar.jpg';
-import {Button} from "../../../../shared/ui/button/button";
-import {UserIcon} from "../../../../shared/ui/user-icon/user-icon";
 import s from './users.module.css'
 import {UserType} from "../../../../shared/types/state-types";
-import {NavLink} from "react-router-dom";
 import {Paginator} from "./paginator/paginator";
 import {User} from "./user/user";
 
