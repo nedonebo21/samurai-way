@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {NavBar} from "../components/nav-bar/nav-bar";
+import {NavBar} from "../components/nav-bar/ui/nav-bar";
 import {DialogsPage} from "../pages/dialogs-page";
 import {Redirect, Route, withRouter} from "react-router-dom";
 import {NewsPage} from "../pages/news-page";

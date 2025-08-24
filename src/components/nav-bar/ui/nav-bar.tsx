@@ -1,8 +1,8 @@
 import React from "react";
 import s from './nav-bar.module.css'
 import {NavLink} from "react-router-dom";
-import {UserIcon} from "../../shared/ui/user-icon/user-icon";
-import {SideBarType} from "../../shared/types/state-types";
+import {UserIcon} from "../../../shared/ui/user-icon/user-icon";
+import {SideBarType} from "../../../shared/types/state-types";
 
 
 export const NavBar = ({usersOnlineData}: SideBarType) => {
