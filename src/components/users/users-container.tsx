@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {
-  followThunkCreator, getUsersThunkCreator,
-  unFollowThunkCreator
+  followTC, getUsersTC,
+  unFollowTC
 } from "./model/users-reducer";
 import React from "react";
 import {Users} from "./users";
@@ -74,9 +74,9 @@ let mapStateToProps = (state: StateType) => {
 }
 const ComposedComponent = compose<React.ComponentType>(
     connect(mapStateToProps, {
-      getUsersThunk: getUsersThunkCreator,
-      followThunk: followThunkCreator,
-      unFollowThunk: unFollowThunkCreator
+      getUsersThunk: getUsersTC,
+      followThunk: followTC,
+      unFollowThunk: unFollowTC
     }),
     WithAuthRedirect
 )(UsersApiComponent)
