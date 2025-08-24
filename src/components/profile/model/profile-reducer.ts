@@ -61,26 +61,20 @@ export const setUserProfile = (profile: ProfileType): SetUserProfileActionType =
 export const setUserStatus = (status: string): SetUserStatusActionType => (
     {type: 'SET-STATUS', status}
 )
-export const getUserProfileThunkCreator = (userId: number) => {
-  return (dispatch: DispatchType) => {
-    profileAPI.getProfile(userId).then(res => {
-      dispatch(setUserProfile(res.data))
-    })
-  }
+export const getUserProfileThunkCreator = (userId: number) => async (dispatch: DispatchType) => {
+  let res = await profileAPI.getProfile(userId)
+  dispatch(setUserProfile(res.data))
 }
-export const getUserStatusThunkCreator = (userId: number) => {
-  return (dispatch: DispatchType) => {
-    profileAPI.getStatus(userId).then(res => {
-      dispatch(setUserStatus(res.data))
-    })
-  }
+
+export const getUserStatusThunkCreator = (userId: number) => async (dispatch: DispatchType) => {
+  let res = await profileAPI.getStatus(userId)
+  dispatch(setUserStatus(res.data))
 }
-export const updateStatusThunkCreator = (status: string) => {
-  return (dispatch: DispatchType) => {
-    profileAPI.updateStatus(status).then(res => {
-      if (res.data.resultCode === 0) {
-        dispatch(setUserStatus(status))
-      }
-    })
+
+export const updateStatusThunkCreator = (status: string) => async (dispatch: DispatchType) => {
+  let res = await profileAPI.updateStatus(status)
+
+  if (res.data.resultCode === 0) {
+    dispatch(setUserStatus(status))
   }
 }
