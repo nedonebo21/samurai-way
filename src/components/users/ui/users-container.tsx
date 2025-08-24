@@ -5,7 +5,7 @@ import {
 } from "../model/users-reducer";
 import React from "react";
 import {Users} from "./users/users";
-import {StateType, User} from "../../../shared/types/state-types";
+import {StateType, UserType} from "../../../shared/types/state-types";
 import {Preloader} from "../../../shared/ui/preloader/preloader";
 import {compose} from "redux";
 import {WithAuthRedirect} from "../../../shared/hoc/with-auth-redirect";
@@ -20,7 +20,7 @@ import {
 
 
 type UsersApiType = {
-  users: User[]
+  users: UserType[]
   followingInProgress: number[]
   getUsersThunk: (currentPage: number, pageSize: number) => void
   followThunk: (userId: number) => void

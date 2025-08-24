@@ -1,4 +1,4 @@
-import {DispatchType, User, UsersPageType} from "../../../shared/types/state-types";
+import {DispatchType, UserType, UsersPageType} from "../../../shared/types/state-types";
 import {
   ActionsType,
   FollowActionType,
@@ -57,7 +57,7 @@ export const followAC = (userId: number): FollowActionType => (
 export const unFollowAC = (userId: number): UnFollowActionType => (
     {type: 'UNFOLLOW', userId}
 )
-export const setUsersAC = (users: User[]): SetUsersActionType => (
+export const setUsersAC = (users: UserType[]): SetUsersActionType => (
     {type: 'SET-USERS', users}
 )
 export const setCurrentPageAC = (pageNumber: number): SetCurrentPageActionType => (

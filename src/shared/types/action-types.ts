@@ -1,4 +1,4 @@
-import {AuthType, ProfileType, User} from "./state-types";
+import {AuthType, ProfileType, UserType} from "./state-types";
 
 
 export type AddPostActionType = {
@@ -11,7 +11,7 @@ export type AddMessageActionType = {
 }
 export type SetUsersActionType = {
   type: 'SET-USERS'
-  users: User[]
+  users: UserType[]
 }
 export type FollowActionType = {
   type: 'FOLLOW'

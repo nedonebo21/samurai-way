@@ -17,7 +17,7 @@ export type PostType = {
     message: string
     likes: number
 }
-export type User = {
+export type UserType = {
     id: number
     followed: boolean
     name: string
@@ -72,7 +72,7 @@ export type SideBarType = {
     usersOnlineData: UsersOnlineType[]
 }
 export type UsersPageType = {
-    users: User[]
+    users: UserType[]
     pageSize: number
     totalUsersCount: number
     currentPage: number
