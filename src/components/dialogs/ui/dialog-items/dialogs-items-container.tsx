@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {DialogItems} from "./dialog-items";
-import {StateType} from "../../../../shared/types/state-types";
-import {WithAuthRedirect} from "../../../../shared/hoc/with-auth-redirect";
+import {StateType} from "../../../../shared/types";
+import {WithAuthRedirect} from "../../../../shared/hoc";
 import {compose} from "redux";
 
 let mapStateToProps = (state: StateType) => {

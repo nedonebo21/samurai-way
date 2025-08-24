@@ -1,6 +1,6 @@
 import React from 'react';
 import {Redirect} from "react-router-dom";
-import {StateType} from "../types/state-types";
+import {StateType} from "../types";
 import {connect} from "react-redux";
 
 interface AuthProps {

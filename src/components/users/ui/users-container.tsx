@@ -5,10 +5,10 @@ import {
 } from "../model/users-reducer";
 import React from "react";
 import {Users} from "./users/users";
-import {StateType, UserType} from "../../../shared/types/state-types";
+import {StateType, UserType} from "../../../shared/types";
 import {Preloader} from "../../../shared/ui/preloader/preloader";
 import {compose} from "redux";
-import {WithAuthRedirect} from "../../../shared/hoc/with-auth-redirect";
+import {WithAuthRedirect} from "../../../shared/hoc";
 import {
   getCurrentPage,
   getFollowingInProgress,
