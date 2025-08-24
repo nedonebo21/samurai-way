@@ -1,7 +1,7 @@
 import {addPostAC} from "../../model/profile-reducer";
 import {MyPosts} from "./my-posts";
 import {connect} from "react-redux";
-import {StateType} from "../../../../shared/types/state-types";
+import {StateType} from "../../../../shared/types";
 
 let mapStateToProps = (state: StateType) => {
     console.log('MAP STATE', state.profilePage)

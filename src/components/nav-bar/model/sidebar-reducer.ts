@@ -1,5 +1,5 @@
-import {SideBarType} from "../../../shared/types/state-types";
-import {ActionsType} from "../../../shared/types/action-types";
+import {SideBarType} from "../../../shared/types";
+import {ActionsType} from "../../../shared/types";
 
 let initialState: SideBarType = {
     usersOnlineData: [

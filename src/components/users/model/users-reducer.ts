@@ -1,4 +1,4 @@
-import {DispatchType, UserType, UsersPageType} from "../../../shared/types/state-types";
+import {DispatchType, UserType, UsersPageType} from "../../../shared/types";
 import {
   ActionsType,
   FollowActionType,
@@ -8,9 +8,9 @@ import {
   ToggleFetchingActionType,
   ToggleFollowingProgressType,
   UnFollowActionType
-} from "../../../shared/types/action-types";
+} from "../../../shared/types";
 import {usersAPI} from "../../../shared/api/api";
-import {updateObjInArray} from "../../../shared/utils/object-helpers/object-helpers";
+import {updateObjInArray} from "../../../shared/utils";
 
 let initialState: UsersPageType = {
   users: [],

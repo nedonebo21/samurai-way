@@ -4,7 +4,7 @@ import {UserIcon} from "../../../../../shared/ui/user-icon/user-icon";
 import defaultAvatar from "../../../../../assets/img/default-avatar.jpg";
 import {Button} from "../../../../../shared/ui/button/button";
 import React from "react";
-import {UserType} from "../../../../../shared/types/state-types";
+import {UserType} from "../../../../../shared/types";
 
 type UserPropsType = {
   users: UserType[]

@@ -1,10 +1,10 @@
-import {DispatchType, PostType, ProfilePageType, ProfileType} from "../../../shared/types/state-types";
+import {DispatchType, PostType, ProfilePageType, ProfileType} from "../../../shared/types";
 import {
   ActionsType,
   AddPostActionType,
   SetUserProfileActionType,
   SetUserStatusActionType,
-} from "../../../shared/types/action-types";
+} from "../../../shared/types";
 import {profileAPI} from "../../../shared/api/api";
 
 let initialState: ProfilePageType = {

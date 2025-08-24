@@ -2,11 +2,11 @@ import React from 'react';
 import s from "./my-posts.module.css";
 import {Post} from "./post/post";
 import {Button} from "../../../../shared/ui/button/button";
-import {ProfilePageType} from "../../../../shared/types/state-types";
+import {ProfilePageType} from "../../../../shared/types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {maxLengthCreator, required} from "../../../../shared/utils/validators/validators";
+import {maxLengthCreator, required} from "../../../../shared/utils";
 import {Textarea} from "../../../../shared/ui/textarea/textarea";
-import {FormDataType} from "../../../../shared/types/form-data-type";
+import {FormDataType} from "../../../../shared/types";
 
 type MyPostsType = {
   addPost: (newPost: string) => void

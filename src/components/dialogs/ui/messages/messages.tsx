@@ -2,10 +2,10 @@ import React from 'react';
 import s from "../dialogs.module.css";
 import {Button} from "../../../../shared/ui/button/button";
 import {Message} from "./message/message";
-import {MessagesPageType} from "../../../../shared/types/state-types";
+import {MessagesPageType} from "../../../../shared/types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Textarea} from "../../../../shared/ui/textarea/textarea";
-import {maxLengthCreator, required} from "../../../../shared/utils/validators/validators";
+import {maxLengthCreator, required} from "../../../../shared/utils";
 
 type MessagesProps = {
   messageSend: (message: string) => void
