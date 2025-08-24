@@ -1,4 +1,4 @@
-import {StateType} from "../../../shared/types/state-types";
+import {StateType} from "../../../shared/types";
 import {createSelector} from "reselect";
 
 const getUsersSelector = (state: StateType) => state.usersPage.users

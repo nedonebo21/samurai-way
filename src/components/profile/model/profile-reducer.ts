@@ -5,7 +5,7 @@ import {
   SetUserProfileActionType,
   SetUserStatusActionType,
 } from "../../../shared/types";
-import {profileAPI} from "../../../shared/api/api";
+import {profileAPI} from "../../../shared/api";
 
 let initialState: ProfilePageType = {
   postsData: [

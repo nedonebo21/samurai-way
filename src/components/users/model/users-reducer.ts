@@ -9,7 +9,7 @@ import {
   ToggleFollowingProgressType,
   UnFollowActionType
 } from "../../../shared/types";
-import {usersAPI} from "../../../shared/api/api";
+import {usersAPI} from "../../../shared/api";
 import {updateObjInArray} from "../../../shared/utils";
 
 let initialState: UsersPageType = {
