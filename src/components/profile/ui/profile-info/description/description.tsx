@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './description.module.css'
-import {ProfileAvatar} from "../../../../shared/ui/profile-avatar/profile-avatar";
-import {ProfileType} from "../../../../shared/types/state-types";
+import {ProfileAvatar} from "../../../../../shared/ui/profile-avatar/profile-avatar";
+import {ProfileType} from "../../../../../shared/types/state-types";
 import {ProfileStatusHooks} from "./profile-status/profile-status-hooks";
 
 type DescriptionType = {

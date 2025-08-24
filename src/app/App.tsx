@@ -8,7 +8,7 @@ import {MusicPage} from "../pages/music-page";
 import {SettingsPage} from "../pages/settings-page";
 import {connect} from "react-redux";
 import {UsersPage} from "../pages/users-page";
-import {ProfileContainer} from "../components/profile/profile-container";
+import {ProfileContainer} from "../components/profile/ui/profile-container";
 import {HeaderContainer} from "../components/header/header-container";
 import Login from "../components/login/login";
 import {SideBarType, StateType} from "../shared/types/state-types";

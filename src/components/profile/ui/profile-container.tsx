@@ -1,10 +1,10 @@
 import React from 'react';
-import {ProfilePage} from "../../pages/profile-page";
+import {ProfilePage} from "../../../pages/profile-page";
 import {connect} from "react-redux";
-import {ProfileType, StateType} from "../../shared/types/state-types";
-import {getUserProfileTC, getUserStatusTC, updateStatusTC} from "./model/profile-reducer";
+import {ProfileType, StateType} from "../../../shared/types/state-types";
+import {getUserProfileTC, getUserStatusTC, updateStatusTC} from "../model/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
-import {WithAuthRedirect} from "../../shared/hoc/with-auth-redirect";
+import {WithAuthRedirect} from "../../../shared/hoc/with-auth-redirect";
 import {compose} from "redux";
 
 interface RouteParams {
