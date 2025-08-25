@@ -1,5 +1,5 @@
 import {addPostAC, profileReducer} from "../profile-reducer";
-import {ProfilePageType} from "../../../../shared/types/state-types";
+import {ProfilePageType} from "../../../../shared/types";
 
 let initialState: ProfilePageType = {
   postsData: [

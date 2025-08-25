@@ -15,17 +15,14 @@ export const usersAPI = {
   },
   unFollowUser(userId: number) {
     return instance.delete(`follow/${userId}`)
-        .then(res => res.data)
+        .then(res => res)
   },
   followUser(userId: number) {
     return instance.post(`follow/${userId}`, {})
-        .then(res => res.data)
+        .then(res => res)
   },
-  // getProfile(userId: number) {
-  //   console.warn('Use profileAPI object')
-  //   return profileAPI.getProfile(userId)
-  // }
 }
+
 export const profileAPI = {
   getProfile(userId: number) {
     return instance.get(`profile/${userId}`)

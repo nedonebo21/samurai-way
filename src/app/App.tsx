@@ -2,19 +2,20 @@ import React from 'react';
 import './App.css';
 import {NavBar} from "../components/nav-bar/ui/nav-bar";
 import {DialogsPage} from "../pages/dialogs-page";
-import {Redirect, Route, withRouter} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, withRouter} from "react-router-dom";
 import {NewsPage} from "../pages/news-page";
 import {MusicPage} from "../pages/music-page";
 import {SettingsPage} from "../pages/settings-page";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {UsersPage} from "../pages/users-page";
 import {ProfileContainer} from "../components/profile/ui/profile-container";
 import {HeaderContainer} from "../components/header/header-container";
 import Login from "../components/login/ui/login";
-import {SideBarType, StateType} from "../shared/types/state-types";
+import {SideBarType, StateType} from "../shared/types";
 import {compose} from "redux";
 import {initializeAppTC} from "./app-reducer";
 import {Preloader} from "../shared/ui/preloader/preloader";
+import {store} from "./redux-store";
 
 type AppPropsType = {
   sideBar: SideBarType
@@ -26,6 +27,7 @@ class App extends React.Component<AppPropsType> {
   componentDidMount() {
     this.props.initializeApp()
   }
+
   render() {
     if (!this.props.init) return <Preloader/>
 
@@ -56,10 +58,15 @@ const mapStateToProps = (state: StateType) => (
     }
 )
 
-// export default connect(mapStateToProps, {
-//   getAuthUserDataThunk: getAuthUserDataThunkCreator,
-// })(App)
-export default compose<React.ComponentType>(
+const AppContainer = compose<React.ComponentType>(
     withRouter,
     connect(mapStateToProps, {initializeApp: initializeAppTC})
 )(App)
+
+export const SamuraiJsApp = () => {
+  return <BrowserRouter>
+    <Provider store={store}>
+      <AppContainer/>
+    </Provider>
+  </BrowserRouter>
+}
