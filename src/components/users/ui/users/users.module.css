@@ -52,7 +52,6 @@
 .btn_block{
     display: flex;
     gap: 4px;
-    overflow: auto;
 }
 .btn_block button{
     min-width: 40px;
@@ -78,4 +77,8 @@ a img {
 
 a img:hover {
     border: 1px solid white;
+}
+
+.prev_next_btn{
+    color: #00fdfd;
 }
