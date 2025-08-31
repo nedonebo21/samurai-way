@@ -1,7 +1,7 @@
 import React, {Suspense} from 'react';
 import './App.css';
 import {NavBar} from "../components/nav-bar/ui/nav-bar";
-import {BrowserRouter, Redirect, Route, withRouter} from "react-router-dom";
+import {HashRouter, Redirect, Route, withRouter} from "react-router-dom";
 import {NewsPage} from "../pages/news-page";
 import {MusicPage} from "../pages/music-page";
 import {SettingsPage} from "../pages/settings-page";
@@ -15,7 +15,6 @@ import {initializeAppTC} from "./app-reducer";
 import {Preloader} from "../shared/ui/preloader/preloader";
 import {store} from "./redux-store";
 import {withSuspense} from "../shared/hoc";
-import * as process from "node:process";
 
 const DialogsPage = React.lazy(() => import('../pages/dialogs-page'))
 const ProfileContainer = React.lazy(() => import('../components/profile/ui/profile-container'))
@@ -67,9 +66,9 @@ const AppContainer = compose<React.ComponentType>(
 )(App)
 
 export const SamuraiJsApp = () => {
-  return <BrowserRouter basename={process.env.PUBLIC_URL}>
+  return <HashRouter>
     <Provider store={store}>
       <AppContainer/>
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
 }
