@@ -1,14 +1,12 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import './App.css';
 import {NavBar} from "../components/nav-bar/ui/nav-bar";
-import {DialogsPage} from "../pages/dialogs-page";
 import {BrowserRouter, Redirect, Route, withRouter} from "react-router-dom";
 import {NewsPage} from "../pages/news-page";
 import {MusicPage} from "../pages/music-page";
 import {SettingsPage} from "../pages/settings-page";
 import {connect, Provider} from "react-redux";
 import {UsersPage} from "../pages/users-page";
-import {ProfileContainer} from "../components/profile/ui/profile-container";
 import {HeaderContainer} from "../components/header/header-container";
 import Login from "../components/login/ui/login";
 import {SideBarType, StateType} from "../shared/types";
@@ -16,6 +14,10 @@ import {compose} from "redux";
 import {initializeAppTC} from "./app-reducer";
 import {Preloader} from "../shared/ui/preloader/preloader";
 import {store} from "./redux-store";
+import {withSuspense} from "../shared/hoc";
+
+const DialogsPage = React.lazy(() => import('../pages/dialogs-page'))
+const ProfileContainer = React.lazy(() => import('../components/profile/ui/profile-container'))
 
 type AppPropsType = {
   sideBar: SideBarType
@@ -37,9 +39,9 @@ class App extends React.Component<AppPropsType> {
           <NavBar {...this.props.sideBar}/>
           <div className="app-wrapper-content">
             <Route path={'/'} render={() => <Redirect to={'/profile'}/>}/>
-            <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
+            <Route path={'/profile/:userId?'} render={withSuspense(ProfileContainer)}/>
 
-            <Route path={'/dialogs'} render={() => <DialogsPage/>}/>
+            <Route path={'/dialogs'} render={withSuspense(DialogsPage)}/>
             <Route path={'/news'} render={() => <NewsPage/>}/>
             <Route path={'/music'} render={() => <MusicPage/>}/>
             <Route path={'/users'} render={() => <UsersPage/>}/>

@@ -54,4 +54,5 @@ const ComposedComponent = compose<React.ComponentType>(
     WithAuthRedirect
 )(ProfileApiComponent)
 
-export const ProfileContainer= () => <ComposedComponent/>
+const ProfileContainer= () => <ComposedComponent/>
+export default ProfileContainer

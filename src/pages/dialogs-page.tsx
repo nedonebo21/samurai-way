@@ -4,7 +4,7 @@ import {DialogsItemsContainer} from "../components/dialogs/ui/dialog-items/dialo
 import {MessagesContainer} from "../components/dialogs/ui/messages/messages-container";
 
 
-export const DialogsPage = () => {
+const DialogsPage = () => {
 
     return (
         <div className={s.dialogs}>
@@ -13,3 +13,4 @@ export const DialogsPage = () => {
         </div>
     )
 }
+export default DialogsPage
