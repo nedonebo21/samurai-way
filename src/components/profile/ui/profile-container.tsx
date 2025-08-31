@@ -22,7 +22,7 @@ type ProfileApiType = {
 } & RouteComponentProps<RouteParams>
 
 export class ProfileApiComponent extends React.Component<ProfileApiType> {
-  componentDidMount() {
+  refreshProfile (){
     let userId = parseInt(this.props.match.params.userId, 10);
     if (!userId) {
       userId = this.props.userId
@@ -30,6 +30,14 @@ export class ProfileApiComponent extends React.Component<ProfileApiType> {
     }
     this.props.getUserProfileThunk(userId)
     this.props.getUserStatusThunk(userId)
+  }
+  componentDidMount() {
+    this.refreshProfile()
+  }
+  componentDidUpdate(prevProps: Readonly<ProfileApiType>, prevState: Readonly<{}>, snapshot?: any) {
+    if (prevProps.match.params.userId !== this.props.match.params.userId){
+      this.refreshProfile()
+    }
   }
 
   render() {

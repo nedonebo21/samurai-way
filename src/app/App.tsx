@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import './App.css';
 import {NavBar} from "../components/nav-bar/ui/nav-bar";
 import {HashRouter, Redirect, Route, withRouter} from "react-router-dom";
