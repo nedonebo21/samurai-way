@@ -50,3 +50,10 @@
     display: flex;
     gap: 8px;
 }
+
+.avatar_changer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+}

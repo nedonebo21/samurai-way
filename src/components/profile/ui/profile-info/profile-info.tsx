@@ -8,6 +8,8 @@ type ProfileInfoType = {
   profile: ProfileType
   status: string
   updateStatusThunk: (status: string) => void
+  isOwner: boolean
+  saveAvatar: (file: File) => void
 }
 
 export const ProfileInfo = (props: ProfileInfoType) => {
@@ -19,7 +21,7 @@ export const ProfileInfo = (props: ProfileInfoType) => {
               src="https://i.ytimg.com/vi/yLRaDfPSB-4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBJJjQdF_u5FifTIMKMDhilm3S0hA"
               alt=""/>
         </div>
-        <Description profile={props.profile} status={props.status} updateStatusThunk={props.updateStatusThunk}/>
+        <Description isOwner={props.isOwner} saveAvatar={props.saveAvatar} profile={props.profile} status={props.status} updateStatusThunk={props.updateStatusThunk}/>
       </>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import {ProfilePage} from "../../../pages/profile-page";
 import {connect} from "react-redux";
 import {ProfileType, StateType} from "../../../shared/types";
-import {getUserProfileTC, getUserStatusTC, updateStatusTC} from "../model/profile-reducer";
+import {getUserProfileTC, getUserStatusTC, saveAvatarTC, updateStatusTC} from "../model/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {WithAuthRedirect} from "../../../shared/hoc";
 import {compose} from "redux";
@@ -19,6 +19,7 @@ type ProfileApiType = {
   updateStatusThunk: (status: string) => void
   userId: number
   status: string
+  saveAvatar: (file: File) => void
 } & RouteComponentProps<RouteParams>
 
 export class ProfileApiComponent extends React.Component<ProfileApiType> {
@@ -41,7 +42,7 @@ export class ProfileApiComponent extends React.Component<ProfileApiType> {
   }
 
   render() {
-    return <ProfilePage {...this.props} profile={this.props.profile}/>
+    return <ProfilePage {...this.props} saveAvatar={this.props.saveAvatar} isOwner={!this.props.match.params.userId} profile={this.props.profile}/>
   }
 }
 
@@ -57,6 +58,7 @@ const ComposedComponent = compose<React.ComponentType>(
       getUserProfileThunk: getUserProfileTC,
       getUserStatusThunk: getUserStatusTC,
       updateStatusThunk: updateStatusTC,
+      saveAvatar: saveAvatarTC,
     }),
     withRouter,
     WithAuthRedirect

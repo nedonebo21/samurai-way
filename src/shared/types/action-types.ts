@@ -42,6 +42,10 @@ export type SetUserStatusActionType = {
   type: 'SET-STATUS'
   status: string
 }
+export type SaveAvatarSuccessActionType = {
+  type: 'SAVE-AVATAR-SUCCES'
+  file: File
+}
 
 export type SetAuthUserDataType = {
   type: 'SET-USER-DATA'
@@ -73,4 +77,4 @@ export type ActionsType = AddPostActionType
     | SetAuthUserDataType
     | ToggleFollowingProgressType
     | SetUserStatusActionType
-    | SetInitType
+    | SetInitType | SaveAvatarSuccessActionType

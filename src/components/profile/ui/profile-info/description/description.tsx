@@ -1,20 +1,36 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './description.module.css'
 import {ProfileAvatar} from "../../../../../shared/ui/profile-avatar/profile-avatar";
-import {ProfileType} from "../../../../../shared/types/state-types";
+import {ProfileType} from "../../../../../shared/types";
 import {ProfileStatusHooks} from "./profile-status/profile-status-hooks";
 
 type DescriptionType = {
     profile: ProfileType
     status: string
     updateStatusThunk: (status: string) => void
+    isOwner: boolean
+    saveAvatar: (file: File) => void
 }
 
 export const Description = (props: DescriptionType) => {
+
+    const handleAvatarSelect = (e: ChangeEvent<HTMLInputElement>) => {
+        if(e.target.files?.length){
+            props.saveAvatar(e.target.files[0])
+        }
+    }
+
     return (
         <div className={s.description}>
             <ProfileAvatar avatarUrl={props.profile.photos?.large}/>
             <div className={s.info}>
+                {
+                    props.isOwner &&
+                    <div className={s.avatar_changer}>
+                        Change Avatar:
+                        <input type="file" onChange={handleAvatarSelect}/>
+                    </div>
+                }
                 <ProfileStatusHooks status={props.status} updateStatusThunk={props.updateStatusThunk}/>
                 <div className={s.items_container}>
                     <div className={s.desc_items}><strong className={s.desc_title}>Info:</strong>

@@ -1,4 +1,4 @@
-import {DispatchType, PostType, ProfilePageType, ProfileType} from "../../../shared/types";
+import {DispatchType, PostType, ProfilePageType, ProfileType, SaveAvatarSuccessActionType} from "../../../shared/types";
 import {
   ActionsType,
   AddPostActionType,
@@ -48,6 +48,8 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
       return {...state, profile: action.profile}
     case 'SET-STATUS':
       return {...state, status: action.status}
+    case "SAVE-AVATAR-SUCCES":
+      return {...state, profile: {...state.profile, photos: action.file}}
   }
   return state
 }
@@ -61,6 +63,10 @@ export const setUserProfile = (profile: ProfileType): SetUserProfileActionType =
 export const setUserStatus = (status: string): SetUserStatusActionType => (
     {type: 'SET-STATUS', status}
 )
+export const saveAvatarSuccess = (file: File): SaveAvatarSuccessActionType => (
+    {type: 'SAVE-AVATAR-SUCCES', file}
+)
+
 export const getUserProfileTC = (userId: number) => async (dispatch: DispatchType) => {
   let res = await profileAPI.getProfile(userId)
   dispatch(setUserProfile(res.data))
@@ -76,5 +82,12 @@ export const updateStatusTC = (status: string) => async (dispatch: DispatchType)
 
   if (res.data.resultCode === 0) {
     dispatch(setUserStatus(status))
+  }
+}
+
+export const saveAvatarTC = (file: File) => async (dispatch: DispatchType) => {
+  let res = await profileAPI.saveAvatar(file)
+  if (res.data.resultCode === 0) {
+    dispatch(saveAvatarSuccess(res.data.data.photos))
   }
 }
