@@ -6,6 +6,9 @@ import {
   SetUserStatusActionType,
 } from "../../../shared/types";
 import {profileAPI} from "../../../shared/api";
+import {FormDataProfileType} from "../ui/profile-info/description/profile-status/profile-data-form/profile-data-form";
+import {AppStateType, StoreType} from "../../../app/redux-store";
+import {stopSubmit} from "redux-form";
 
 let initialState: ProfilePageType = {
   postsData: [
@@ -89,5 +92,19 @@ export const saveAvatarTC = (file: File) => async (dispatch: DispatchType) => {
   let res = await profileAPI.saveAvatar(file)
   if (res.data.resultCode === 0) {
     dispatch(saveAvatarSuccess(res.data.data.photos))
+  }
+}
+
+export const saveProfileTC = (formData: FormDataProfileType) => async (dispatch: DispatchType, getState: () => AppStateType) => {
+  const userId = getState().auth.userId
+  let res = await profileAPI.saveProfile(formData)
+  if (res.data.resultCode === 0) {
+    if (userId){
+      dispatch(getUserProfileTC(userId))
+    }
+  } else {
+    let message: string = res.data.messages.length > 0 ? res.data.messages[0] : 'Some Error'
+    dispatch(stopSubmit('edit-profile', {_error: message}))
+    return Promise.reject(message)
   }
 }

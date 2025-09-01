@@ -2,10 +2,11 @@ import React from 'react';
 import {ProfilePage} from "../../../pages/profile-page";
 import {connect} from "react-redux";
 import {ProfileType, StateType} from "../../../shared/types";
-import {getUserProfileTC, getUserStatusTC, saveAvatarTC, updateStatusTC} from "../model/profile-reducer";
+import {getUserProfileTC, getUserStatusTC, saveAvatarTC, saveProfileTC, updateStatusTC} from "../model/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {WithAuthRedirect} from "../../../shared/hoc";
 import {compose} from "redux";
+import {FormDataProfileType} from "./profile-info/description/profile-status/profile-data-form/profile-data-form";
 
 interface RouteParams {
   userId: string
@@ -20,6 +21,7 @@ type ProfileApiType = {
   userId: number
   status: string
   saveAvatar: (file: File) => void
+  saveProfile: (formData: FormDataProfileType) => Promise<void>
 } & RouteComponentProps<RouteParams>
 
 export class ProfileApiComponent extends React.Component<ProfileApiType> {
@@ -59,6 +61,7 @@ const ComposedComponent = compose<React.ComponentType>(
       getUserStatusThunk: getUserStatusTC,
       updateStatusThunk: updateStatusTC,
       saveAvatar: saveAvatarTC,
+      saveProfile: saveProfileTC,
     }),
     withRouter,
     WithAuthRedirect
