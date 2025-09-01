@@ -17,6 +17,8 @@
   color: red;
   font-size: 16px;
   font-weight: 700;
+
+  margin: 8px 0;
 }
 .login_form{
   display: flex;

@@ -1,6 +1,5 @@
 .textarea {
-    resize: none;
-    width: 1234px;
+    resize: inline;
     font-size: 18px;
     padding: 10px;
     border-radius: 4px;
