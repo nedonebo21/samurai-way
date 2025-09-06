@@ -15,7 +15,7 @@ export const authReducer = (state: AuthType = initialState, action: ActionsType)
     case 'SET-USER-DATA':
       return {...state, ...action.data}
     case "GET-CAPTCHA-SUCCES":
-      return {...state, ...action.payload}
+      return {...state, captcha: action.payload.url}
   }
   return state
 }
