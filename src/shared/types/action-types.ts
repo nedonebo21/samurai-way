@@ -56,6 +56,12 @@ export type SetAuthUserDataType = {
     isAuth: boolean
   }
 }
+export type GetCaptchaActionType = {
+  type: 'GET-CAPTCHA-SUCCES'
+  payload: {
+    url: string
+  }
+}
 export type ToggleFollowingProgressType = {
   type: 'TOGGLE-FOLLOWING-PROGRESS'
   isFetching: boolean
@@ -77,4 +83,4 @@ export type ActionsType = AddPostActionType
     | SetAuthUserDataType
     | ToggleFollowingProgressType
     | SetUserStatusActionType
-    | SetInitType | SaveAvatarSuccessActionType
+    | SetInitType | SaveAvatarSuccessActionType | GetCaptchaActionType

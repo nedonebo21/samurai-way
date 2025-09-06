@@ -4,8 +4,14 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../../../../shared/ui/input/input";
 import s from './login-form.module.css'
 import {required} from "../../../../shared/utils";
+import {FormDataType} from "../../../../shared/types";
 
-const LoginForm = ({handleSubmit, error}: InjectedFormProps) => {
+type LoginFormOwnProps = {
+  captcha: string | null | undefined
+}
+type LoginFormProps = InjectedFormProps<FormDataType, LoginFormOwnProps> & LoginFormOwnProps
+
+const LoginForm = ({handleSubmit, error, captcha}: LoginFormProps ) => {
   return (
       <form className={s.form} onSubmit={handleSubmit}>
         <div>
@@ -27,6 +33,11 @@ const LoginForm = ({handleSubmit, error}: InjectedFormProps) => {
             <span>Remember me</span>
           </label>
         </div>
+        {captcha && <img src={captcha} alt="captcha"/>}
+        {
+          captcha &&
+            <Field name={'captcha'} type={'text'} component={Input} validate={[required]}/>
+        }
         {error && <div className={s.form_error}>{error}</div>}
         <div>
           <Button onClick={() => {
@@ -35,4 +46,4 @@ const LoginForm = ({handleSubmit, error}: InjectedFormProps) => {
       </form>
   )
 }
-export const LoginReduxForm = reduxForm({form: 'login',})(LoginForm)
+export const LoginReduxForm = reduxForm<FormDataType, LoginFormOwnProps>({form: 'login',})(LoginForm)

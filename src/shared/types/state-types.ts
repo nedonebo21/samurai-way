@@ -85,6 +85,7 @@ export type AuthType = {
     email: string | null
     login: string | null
     isAuth: boolean
+    captcha: string | null
 }
 export type AppType = {
     init: boolean

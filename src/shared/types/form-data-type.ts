@@ -3,4 +3,5 @@ export type FormDataType = {
   password?: string
   rememberMe?: boolean
   newPost?: string
+  captcha?: string | null
 }
