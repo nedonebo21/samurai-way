@@ -26,8 +26,15 @@ type AppPropsType = {
 }
 
 class App extends React.Component<AppPropsType> {
+  handleErrors = (promiseRejectionEvent: any) => {
+    alert('some error occured')
+  }
   componentDidMount() {
     this.props.initializeApp()
+    window.addEventListener('unhandledrejection', this.handleErrors)
+  }
+  componentWillUnmount() {
+    window.removeEventListener('unhandledrejection', this.handleErrors)
   }
 
   render() {
@@ -48,7 +55,7 @@ class App extends React.Component<AppPropsType> {
             <Route path={'/settings'} render={() => <SettingsPage/>}/>
             <Route path={'/login'} render={() => <Login/>}/>
 
-            <Route path={'*'} render={() => <div>404 Page Not Found</div>}/>
+            <Route path={'/*'} render={() => <div>404 Page Not Found</div>}/>
           </div>
         </div>
     )
