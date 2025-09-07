@@ -38,7 +38,7 @@ class App extends React.Component<AppPropsType> {
           <HeaderContainer/>
           <NavBar {...this.props.sideBar}/>
           <div className="app-wrapper-content">
-            <Route path={'/'} render={() => <Redirect to={'/profile'}/>}/>
+            <Route exact path={'/'} render={() => <Redirect to={'/profile'}/>}/>
             <Route path={'/profile/:userId?'} render={withSuspense(ProfileContainer)}/>
 
             <Route path={'/dialogs'} render={withSuspense(DialogsPage)}/>
@@ -47,6 +47,8 @@ class App extends React.Component<AppPropsType> {
             <Route path={'/users'} render={() => <UsersPage/>}/>
             <Route path={'/settings'} render={() => <SettingsPage/>}/>
             <Route path={'/login'} render={() => <Login/>}/>
+
+            <Route path={'*'} render={() => <div>404 Page Not Found</div>}/>
           </div>
         </div>
     )
